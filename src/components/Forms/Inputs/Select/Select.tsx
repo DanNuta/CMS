@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./style.scss";
-
 interface SelectProps {
   name: string;
   options: string[];

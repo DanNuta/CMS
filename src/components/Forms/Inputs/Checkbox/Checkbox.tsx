@@ -2,8 +2,6 @@ import React from "react";
 
 import { InputProps } from "types/input";
 
-import "./style.scss";
-
 interface CheckboxProps extends InputProps {
   label: string;
 }

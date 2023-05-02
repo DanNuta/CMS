@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { InputProps } from "types/input";
 
 import { Input, ShowHidePassword } from "../";
-import "./style.scss";
 
-// types
 type PasswordProps = Omit<InputProps, "type">;
 
 export const Password: React.FC<PasswordProps> = (props) => {

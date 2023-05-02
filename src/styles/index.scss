@@ -4,4 +4,10 @@
 @forward "../components/Forms/Inputs/Password/style.scss";
 @forward "../components/Forms/Inputs/Select/style.scss";
 @forward "../components/Forms/Inputs/ShowHidePassword/style.scss";
+@forward "../components/Forms/Form/style.scss";
+
+@forward "../features/auth/Register/style.scss";
+
 @forward "./mixin/button.mixin.scss";
+@forward "./mixin/form.mixin.scss";
+@forward "./mixin/input.mixin.scss";

@@ -2,8 +2,6 @@ import React from "react";
 
 import { InputProps } from "types";
 
-import "./style.scss";
-
 export const Input: React.FC<InputProps> = ({ errorMsj, ...props }) => {
   return (
     <div className="container_input">

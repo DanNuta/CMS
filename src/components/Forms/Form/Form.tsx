@@ -1,7 +1,5 @@
 import React, { PropsWithChildren } from "react";
 
-import "./style.scss";
-
 interface FormProps {
   onSendFn: (e: React.FormEvent<HTMLFormElement>) => void;
   title?: string;

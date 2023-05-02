@@ -15,7 +15,6 @@ import { postUsers } from "../../../api/index";
 import { UserProps } from "types";
 
 import { patternRegEx } from "./pattern";
-import "./style.scss";
 
 export const Register: React.FC = () => {
   const [name, setName] = useState("");

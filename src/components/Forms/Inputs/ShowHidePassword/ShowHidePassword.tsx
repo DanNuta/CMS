@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./style.scss";
-
 interface HideProps {
   onShowHideFn: () => void;
   state: boolean;
