@@ -71,6 +71,39 @@
       "gender": "Femenin",
       "password": "asd",
       "id": 0.6159619509689647
+    },
+    {
+      "name": "Dan",
+      "prenume": "Nuta",
+      "email": "dan@gmail.com",
+      "gender": "Masculin",
+      "password": "asd",
+      "id": 0.2218479141380667
+    },
+    {
+      "name": "Dan",
+      "prenume": "Nuta",
+      "email": "dan@gmail.com",
+      "gender": "Masculin",
+      "password": "asd",
+      "id": 0.1903034206676779
+    },
+    {
+      "name": "Dan",
+      "prenume": "Nuta",
+      "email": "dan@gmail.com",
+      "gender": "Masculin",
+      "password": "asd",
+      "id": 0.32300541166622354
+    },
+    {
+      "name": "Nuta",
+      "prenume": "Dan",
+      "email": "dan@gmail.com",
+      "gender": "Femenin",
+      "password": "asd",
+      "rol": "moderator",
+      "id": 0.6737650036396747
     }
   ]
 }

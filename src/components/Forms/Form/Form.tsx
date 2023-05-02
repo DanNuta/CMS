@@ -1,7 +1,5 @@
 import React, { PropsWithChildren } from "react";
 
-import "../../../../styles/Mixin/form.mixin.scss";
-
 import "./style.scss";
 
 interface FormProps {
@@ -15,7 +13,7 @@ export const Form: React.FC<PropsWithChildren<FormProps>> = ({
   children,
 }) => {
   return (
-    <div className="container">
+    <div className="form">
       <form onSubmit={onSendFn}>
         {title && <h1>{title}</h1>}
 

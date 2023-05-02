@@ -1,0 +1,8 @@
+.card_row {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    width: calc(90% / 6);
+  }
+}

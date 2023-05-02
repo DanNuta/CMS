@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Input,
@@ -7,11 +7,12 @@ import {
   Password,
   Select,
   Button,
-} from "../../components";
+} from "../../../components";
 import { useMutation } from "@tanstack/react-query";
 
-import { ROUTES_PATHS } from "../../routes";
-import { postUsers } from "../../api/index";
+import { ROUTES_PATHS } from "../../../routes";
+import { postUsers } from "../../../api/index";
+import { UserProps } from "types";
 
 import { patternRegEx } from "./pattern";
 import "./style.scss";
@@ -67,7 +68,7 @@ export const Register: React.FC = () => {
     setGender(value);
   }
 
-  const mutationUsersPost = useMutation({
+  const { error, data, mutate } = useMutation({
     mutationFn: postUsers,
   });
 
@@ -179,17 +180,22 @@ export const Register: React.FC = () => {
     setCheckBox(false);
     setVerifyPassword("");
 
-    const dataForm = {
+    const dataForm: UserProps = {
       name,
       prenume,
       email,
       gender,
       password,
+      rol: "moderator",
       id: Math.random(),
     };
 
-    mutationUsersPost.mutate(dataForm);
+    mutate(dataForm);
   }
+
+  useEffect(() => {
+    console.log(data, error);
+  }, [data, error]);
 
   return (
     <Form onSendFn={onSendData} title="Sign up">
@@ -256,7 +262,7 @@ export const Register: React.FC = () => {
         errorMsj={errCheckbox}
       />
 
-      <Button title="Sign Up"/>
+      <Button title="Sign Up" />
     </Form>
   );
 };

@@ -1,6 +1,6 @@
-@use "../../../../styles/Mixin/form.mixin.scss" as mixin;
+@use "../../../styles/mixin/form.mixin.scss" as mixin;
 
-.container {
+.form {
   display: flex;
   justify-content: center;
   align-items: center;

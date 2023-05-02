@@ -1,3 +1,5 @@
+@use "../../../../styles/variables.scss" as variable;
+
 .container_select {
   position: relative;
 
@@ -14,7 +16,7 @@
     background-color: transparent;
     border: 1px solid #f0f1f7;
     border-radius: 8px;
-    color: #b5b8c4;
+    color: variable.$clr-black;
 
     option {
       border: none;

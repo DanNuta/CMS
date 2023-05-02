@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Form, Password, Input, Button } from "../../components";
-import { ROUTES_PATHS } from "../../routes";
+import { Form, Password, Input, Button } from "../../../components";
+import { ROUTES_PATHS } from "../../../routes";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +39,6 @@ export const Login = () => {
       email,
       password,
     };
-    
   }
 
   return (

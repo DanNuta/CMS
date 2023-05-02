@@ -4,5 +4,6 @@ export interface UserProps {
   email: string;
   gender: string;
   password: string;
+  rol: "moderator" | "administrator";
   id: number;
 }

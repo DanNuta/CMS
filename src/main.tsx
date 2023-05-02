@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import App from "./App";
 import { ROUTES_PATHS } from "./routes";
-import { Register, Login, Users } from "./pages";
+import { Register, Login, Users } from "./features/auth";
 
 const router = createBrowserRouter([
   {

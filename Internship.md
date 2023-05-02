@@ -162,17 +162,14 @@ ex. Button/ - Button.tsx - Button.css - Button.test.tsx
 - App.tsx - componenta principală
 - routes.ts - lista cu rute
 
-
-
-
-
-
-----------------------------------------------------
+---
 
 Intrebari:
 
-1) Cand apasam pe butonul de "adaugare" de ce nu trebuie sa fie inregistrarea campul pentru parola ?
+1. Cand apasam pe butonul de "adaugare" de ce nu trebuie sa fie inregistrarea campul pentru parola ?
 
-2) Cand ne creem cont, datele noastre tot trebuie sa faca parte din lista de utilizatori ?
+2. Cand ne creem cont, datele noastre tot trebuie sa faca parte din lista de utilizatori ? -> Da
 
-3) Unde trebuie sa stabilim rolul utilizatorului? Initial cand ne creem un cont nu avem acesta optiune inclusa.
+3. Unde trebuie sa stabilim rolul utilizatorului? Initial cand ne creem un cont nu avem acesta optiune inclusa. -> By default "Moderator"
+
+4. Datele din JSON, trebuie vina pe front-end si cu parola sau se poate de renuntat la parola preint-un select ?
