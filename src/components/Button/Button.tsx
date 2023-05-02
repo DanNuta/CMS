@@ -1,4 +1,3 @@
-import "./style.scss";
 
 interface ButtonProps {
   title: string;

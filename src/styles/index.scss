@@ -1,7 +1,7 @@
-@import "../components/Button/style.scss";
-@import "../components/Forms//Inputs/Input/style.scss";
-@import "../components/Forms/Inputs/Checkbox/style.scss";
-@import "../components/Forms/Inputs/Password/style.scss";
-@import "../components/Forms/Inputs/Select/style.scss";
-@import "../components/Forms/Inputs/ShowHidePassword/style.scss";
-@import "./mixin/button.mixin.scss";
+@forward "../components/Button/style.scss";
+@forward "../components/Forms//Inputs/Input/style.scss";
+@forward "../components/Forms/Inputs/Checkbox/style.scss";
+@forward "../components/Forms/Inputs/Password/style.scss";
+@forward "../components/Forms/Inputs/Select/style.scss";
+@forward "../components/Forms/Inputs/ShowHidePassword/style.scss";
+@forward "./mixin/button.mixin.scss";
