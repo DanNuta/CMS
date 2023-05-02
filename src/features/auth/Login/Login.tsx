@@ -63,7 +63,7 @@ export const Login = () => {
         errorMsj={errPassword}
       />
 
-      <Button title="Log in" />
+      <Button>Log in</Button>
     </Form>
   );
 };

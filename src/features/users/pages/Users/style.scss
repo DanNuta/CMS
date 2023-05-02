@@ -1,8 +1,15 @@
-.card_row {
-  display: flex;
-  justify-content: space-between;
+.users {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
 
-  span {
-    width: calc(90% / 6);
+  .card_row {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      width: calc(90% / 6);
+    }
   }
 }

@@ -172,4 +172,4 @@ Intrebari:
 
 3. Unde trebuie sa stabilim rolul utilizatorului? Initial cand ne creem un cont nu avem acesta optiune inclusa. -> By default "Moderator"
 
-4. Datele din JSON, trebuie vina pe front-end si cu parola sau se poate de renuntat la parola preint-un select ?
+4. Datele din JSON, trebuie vina pe front-end si cu parola sau se poate de renuntat la parola preint-un select ? -> Da si cu parola, dar nu este ok pentru securitate.

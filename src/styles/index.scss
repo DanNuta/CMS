@@ -1,3 +1,4 @@
+//componets
 @forward "../components/Button/style.scss";
 @forward "../components/Forms//Inputs/Input/style.scss";
 @forward "../components/Forms/Inputs/Checkbox/style.scss";
@@ -5,9 +6,12 @@
 @forward "../components/Forms/Inputs/Select/style.scss";
 @forward "../components/Forms/Inputs/ShowHidePassword/style.scss";
 @forward "../components/Forms/Form/style.scss";
+@forward "../features/users/components/Table/style.scss";
 
+//pages
 @forward "../features/auth/Register/style.scss";
 
+//mixin
 @forward "./mixin/button.mixin.scss";
 @forward "./mixin/form.mixin.scss";
 @forward "./mixin/input.mixin.scss";

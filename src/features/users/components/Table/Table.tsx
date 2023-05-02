@@ -1,14 +1,33 @@
+import { useEffect } from "react";
+import { useMutation } from "@tanstack/react-query";
+
 import { UserProps } from "types";
-
-import { Button } from "components";
-
-import "./style.scss";
+import { Button } from "../../../../components";
+import Delete from "../../../../icons/delete.svg";
+import Edit from "../../../../icons/edit.svg";
+import { deleteUser } from "../../../../api";
 
 interface UserPropsData {
   user: UserProps;
 }
 
 export const Table: React.FC<UserPropsData> = ({ user }) => {
+  const { data, mutate, error } = useMutation({
+    mutationFn: deleteUser,
+  });
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  function editUser(id: number) {
+    console.log(id);
+  }
+
+  function deleteUserFn(id: number) {
+    mutate(id);
+  }
+
   return (
     <div className="card_row">
       <div className="card_name card_col">
@@ -26,9 +45,14 @@ export const Table: React.FC<UserPropsData> = ({ user }) => {
       <div className="card_role card_col">
         <p>{user.rol}</p>
       </div>
+
       <div className="card_edit_delete card_col">
-        <button>Delete</button>
-        <button>Edit</button>
+        <Button onClick={() => deleteUserFn(user.id)}>
+          <img src={Delete} />
+        </Button>
+        <Button onClick={() => editUser(user.id)}>
+          <img src={Edit} />
+        </Button>
       </div>
     </div>
   );

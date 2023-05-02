@@ -17,18 +17,17 @@ export const Users = () => {
   });
 
   return (
-    <div>
+    <div className="users">
       {isLoading && <h1>Loading...</h1>}
 
       {addUser && <UserModalForm />}
 
-      <div>
+      <div className="users__header">
         <h1>Utilizatori</h1>
 
-        <Button
-          title="Adauga utilizator"
-          onClick={() => setAddUser((prev) => !prev)}
-        />
+        <Button onClick={() => setAddUser((prev) => !prev)}>
+          Adauga utilizator
+        </Button>
       </div>
 
       <div className="list_users">

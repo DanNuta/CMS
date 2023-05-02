@@ -1,5 +1,11 @@
 @use "../../styles/mixin/button.mixin.scss" as mixin;
 
-button {
+.text {
   @include mixin.btn(#0e8cc2);
+}
+
+.img {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

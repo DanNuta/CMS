@@ -1,13 +1,24 @@
+import React, { PropsWithChildren } from "react";
+
 interface ButtonProps {
-  title: string;
   onClick?: () => void;
   disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ onClick, title, disabled }) => {
+export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
+  onClick,
+  disabled,
+  children,
+}) => {
+  const typeChildren = typeof children;
+
   return (
-    <button disabled={disabled} onClick={onClick}>
-      {title}
+    <button
+      className={typeChildren === "string" ? "text" : "img"}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
     </button>
   );
 };

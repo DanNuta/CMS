@@ -4,13 +4,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-block: 21px;
+  border-bottom: 1px solid variables.$clr-underline;
 
   .card_col {
     width: calc(90% / 6);
   }
 
+  > *:first-child {
+    h1 {
+      font-size: variables.$fs-15;
+      font-weight: variables.$fw-600;
+      color: variables.$clr-black;
+    }
+  }
   > *:not(:first-child) {
-    color: variables.$clr-primary;
+    p {
+      font-size: variables.$fs-13;
+      font-weight: variables.$fw-400;
+      color: variables.$clr-primary;
+    }
   }
 
   .card_edit_delete {

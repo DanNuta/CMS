@@ -261,7 +261,7 @@ export const Register: React.FC = () => {
         errorMsj={errCheckbox}
       />
 
-      <Button title="Sign Up" />
+      <Button>Sign Up</Button>
     </Form>
   );
 };

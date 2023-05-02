@@ -2,17 +2,25 @@ import axios from "axios";
 
 import { UserProps } from "../types";
 
+const urlUsers = import.meta.env.VITE_ENDPOINT_USERS;
+
 export async function postUsers(data: UserProps) {
-  const req = await axios.post(`${import.meta.env.VITE_ENDPOINT_USERS}`, data);
+  const req = await axios.post(`${urlUsers}`, data);
   const response = await req.data;
-  // const stringData = JSON.stringify(response)
 
   return response;
 }
 
 export async function getsUsers<T>(): Promise<T> {
-  const data = await axios.get(`${import.meta.env.VITE_ENDPOINT_USERS}`);
+  const data = await axios.get(`${urlUsers}`);
   const res = await data.data;
+
+  return res;
+}
+
+export async function deleteUser(id: number): Promise<any> {
+  const deleteUser = await axios.delete(`${urlUsers}/${id}`);
+  const res = await deleteUser.data;
 
   return res;
 }
