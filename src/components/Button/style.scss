@@ -1,0 +1,4 @@
+@use "../../styles/Mixin/button.mixin.scss" as mixin;
+button {
+  @include mixin.btn(#0e8cc2);
+}

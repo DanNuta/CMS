@@ -1,0 +1,11 @@
+.container_checkbox {
+  position: relative;
+  margin-bottom: 30px;
+
+  .error {
+    position: absolute;
+    top: 100%;
+    font-size: 14px;
+    color: red;
+  }
+}

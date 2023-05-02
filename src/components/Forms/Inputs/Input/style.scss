@@ -1,0 +1,17 @@
+@use "../../../../styles/Mixin/input.mixin.scss" as mixin;
+
+.container_input {
+  margin-bottom: 30px;
+  position: relative;
+
+  .input {
+    @include mixin.input();
+  }
+
+  .error {
+    position: absolute;
+    top: 100%;
+    font-size: 14px;
+    color: red;
+  }
+}

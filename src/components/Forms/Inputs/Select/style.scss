@@ -1,0 +1,24 @@
+.container_select {
+  position: relative;
+
+  margin-bottom: 30px;
+  cursor: pointer;
+
+  select {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-inline: 16px;
+    height: 42px;
+    background-color: transparent;
+    border: 1px solid #f0f1f7;
+    border-radius: 8px;
+    color: #b5b8c4;
+
+    option {
+      border: none;
+      outline: none;
+    }
+  }
+}

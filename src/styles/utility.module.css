@@ -1,0 +1,33 @@
+.mb_24 {
+  margin-bottom: 24px;
+}
+
+.mt_5 {
+  margin-top: 5px;
+}
+
+.padding_inline_16 {
+  padding-inline: 16px;
+}
+
+/* flex */
+
+.display {
+  display: flex;
+}
+
+.flex_row {
+  flex-direction: row;
+}
+
+.flex_col {
+  flex-direction: column;
+}
+
+.clr_red {
+  color: red;
+}
+
+.font_size_16 {
+  font-size: 14px;
+}
