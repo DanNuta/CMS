@@ -12,4 +12,10 @@
       width: calc(90% / 6);
     }
   }
+
+  .modal_form {
+    position: absolute;
+    background-color: red;
+    width: 100%;
+  }
 }

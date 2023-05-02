@@ -1,17 +1,9 @@
 @use "../../../styles/mixin/form.mixin.scss" as mixin;
 
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #eeeded;
+form {
+  @include mixin.formModel();
 
-  form {
-    @include mixin.formModel();
-
-    h1 {
-      margin-bottom: 10px;
-    }
+  h1 {
+    margin-bottom: 10px;
   }
 }

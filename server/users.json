@@ -1,22 +1,6 @@
 {
   "users": [
     {
-      "name": "das",
-      "prenume": "sdsd",
-      "email": "dan@gmAIL.COM",
-      "gender": "Ma abtin",
-      "password": "asd",
-      "id": 0.5981300991903056
-    },
-    {
-      "name": "ndan",
-      "prenume": "dasn",
-      "email": "dan@gmail.com",
-      "gender": "Femenin",
-      "password": "asd",
-      "id": 0.9027575662971499
-    },
-    {
       "name": "dan",
       "prenume": "asdn",
       "email": "dasn@gmail.com",

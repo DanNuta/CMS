@@ -1,5 +1,5 @@
 import { Button } from "./Button/Button";
-import { Modal } from "./Modal";
+import { Modal } from "./Modal/Modal";
 import { Card } from "./Card";
 import { Table } from "./Table";
 import { Chart } from "./Chart";

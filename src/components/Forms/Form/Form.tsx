@@ -11,12 +11,9 @@ export const Form: React.FC<PropsWithChildren<FormProps>> = ({
   children,
 }) => {
   return (
-    <div className="form">
-      <form onSubmit={onSendFn}>
-        {title && <h1>{title}</h1>}
-
-        {children}
-      </form>
-    </div>
+    <form onSubmit={onSendFn}>
+      {title && <h1>{title}</h1>}
+      {children}
+    </form>
   );
 };

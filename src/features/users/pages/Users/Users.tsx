@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { createPortal } from "react-dom";
 
 import { getsUsers } from "../../../../api";
-import { Button } from "../../../../components";
+import { Button, Modal } from "../../../../components";
 import { Table, UserModalForm } from "../../components";
 import { UserProps } from "../../../../types";
 
@@ -20,14 +21,22 @@ export const Users = () => {
     <div className="users">
       {isLoading && <h1>Loading...</h1>}
 
-      {addUser && <UserModalForm />}
+      {addUser &&
+        createPortal(
+          <Modal onCancel={() => setAddUser((prev) => !prev)}>
+            <UserModalForm />
+          </Modal>,
+          document.body
+        )}
 
       <div className="users__header">
         <h1>Utilizatori</h1>
 
-        <Button onClick={() => setAddUser((prev) => !prev)}>
-          Adauga utilizator
-        </Button>
+        <div>
+          <Button onClick={() => setAddUser((prev) => !prev)}>
+            Adauga utilizator
+          </Button>
+        </div>
       </div>
 
       <div className="list_users">

@@ -44,8 +44,6 @@ export const UserModalForm = () => {
         id="user"
         errorMsj={null}
       />
-
-      <Button title="Add new user" />
     </Form>
   );
 };
