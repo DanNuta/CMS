@@ -16,7 +16,7 @@ import { ROUTES_PATHS } from "../../../routes";
 import { postUsers } from "../../../api";
 import { UserProps } from "types";
 
-import { patternRegEx } from "./pattern";
+import { patternRegEx } from "../../../regEx";
 import { errorInputs } from "../../../utils";
 
 export const Register: React.FC = () => {

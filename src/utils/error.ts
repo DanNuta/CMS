@@ -7,6 +7,7 @@ interface ErrorProps {
   passwordErr: string;
   checkboxErr: string;
   passwordIsNotTheSame: string;
+  rolErr: string;
 }
 
 export const errorInputs: ErrorProps = {
@@ -19,4 +20,6 @@ export const errorInputs: ErrorProps = {
   passwordErr: "Trebuie sa introduci o parola",
   weakPassword: "Acesta nu este o parola puternica",
   passwordIsNotTheSame: "Parolele nu coicid",
+
+  rolErr: "Selecteaza un rol",
 };

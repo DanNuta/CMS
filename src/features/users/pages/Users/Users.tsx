@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { useQuery, useMutation, QueryClient } from "@tanstack/react-query";
+import {
+  useQuery,
+  useMutation,
+  QueryClient,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { createPortal } from "react-dom";
 
 import { getsUsers, deleteUser } from "../../../../api";
@@ -10,22 +15,21 @@ import { UserProps } from "../../../../types";
 export const Users = () => {
   const [addUser, setAddUser] = useState(false);
 
-  //const queryClient = new QueryClient()
+  const queryClient = useQueryClient();
+
+  queryClient.invalidateQueries({ queryKey: ["users"] });
 
   const { data, isLoading } = useQuery<UserProps[]>({
     queryKey: ["users"],
     queryFn: getsUsers,
   });
 
-  // const deleteUserElement = useMutation({
-  //   mutationFn: deleteUser,
-  //   onSuccess: data => {
-  //     queryClient.setQueryData(["users"], data)
-  //   }
-  // });
+  const deleteUserElement = useMutation({
+    mutationFn: deleteUser,
+  });
 
   function deleteUserFn(id: number) {
-    //deleteUserElement.mutate(id)
+    deleteUserElement.mutate(id);
   }
 
   return (
