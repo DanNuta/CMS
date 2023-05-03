@@ -1,24 +1,6 @@
 {
   "users": [
     {
-      "name": "gdfgdfgdf",
-      "prenume": "dfgdfgdfg",
-      "email": "dfgdfgdfgdfg@gmail.com",
-      "gender": "Femenin",
-      "password": "fghfghfgh",
-      "rol": "Moderator",
-      "id": 0.3561729032426193
-    },
-    {
-      "name": "dfgdfg",
-      "prenume": "dfgdfgdf",
-      "email": "gdfgdf@gmail.com",
-      "gender": "Femenin",
-      "password": "fdgdfgdf",
-      "rol": "moderator",
-      "id": 0.010732519709244714
-    },
-    {
       "name": "ghfghfg",
       "prenume": "hfghfgh",
       "email": "gfhfgh@gmail.com",
@@ -35,6 +17,33 @@
       "password": "ghfghfg",
       "rol": "moderator",
       "id": 0.27538859934796034
+    },
+    {
+      "name": "fghfgh",
+      "prenume": "fghfghg",
+      "email": "fghfgh@gmail.com",
+      "gender": "masculin",
+      "password": "jghj",
+      "rol": "moderator",
+      "id": 0.10267849530206297
+    },
+    {
+      "name": "dan",
+      "prenume": "nuta",
+      "email": "dan@gmail.com",
+      "gender": "Femenin",
+      "password": "dan",
+      "rol": "moderator",
+      "id": 0.6692057557180429
+    },
+    {
+      "name": "ddsads",
+      "prenume": "cffsdfd",
+      "email": "fsdfsd@gmail.com",
+      "gender": "masculin",
+      "password": "dan",
+      "rol": "moderator",
+      "id": 0.02924770635050633
     }
   ]
 }

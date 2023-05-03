@@ -1,0 +1,19 @@
+@use "../../styles/variables.scss" as variable;
+
+.pop-up {
+  position: absolute;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: variable.$radius;
+}
+
+.danger {
+  background-color: variable.$clr-danger;
+}
+
+.primary {
+  background-color: variable.$clr-black;
+}

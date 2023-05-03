@@ -1,11 +1,13 @@
-.container_checkbox {
+@use "../../../../styles/variables.scss" as variable;
+
+.checkbox {
   position: relative;
   margin-bottom: 30px;
 
   .error {
     position: absolute;
     top: 100%;
-    font-size: 14px;
-    color: red;
+    font-size: variable.$fs-14;
+    color: variable.$clr-danger;
   }
 }

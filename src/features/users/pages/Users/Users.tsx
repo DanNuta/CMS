@@ -1,19 +1,16 @@
 import { useState } from "react";
-import {
-  useQuery,
-  useMutation,
-  QueryClient,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPortal } from "react-dom";
 
-import { getsUsers, deleteUser } from "../../../../api";
+import { getsUsers, deleteUser, getUser } from "../../../../api";
 import { Button, Modal } from "../../../../components";
 import { Table, UserModalForm } from "../../components";
 import { UserProps } from "../../../../types";
 
 export const Users = () => {
   const [addUser, setAddUser] = useState(false);
+  const [editUserState, setEditUserState] = useState(false);
+  const [userId, setUserId] = useState<number>(1);
 
   const queryClient = useQueryClient();
 
@@ -24,12 +21,17 @@ export const Users = () => {
     queryFn: getsUsers,
   });
 
-  const deleteUserElement = useMutation({
+  const { mutate } = useMutation({
     mutationFn: deleteUser,
   });
 
   function deleteUserFn(id: number) {
-    deleteUserElement.mutate(id);
+    mutate(id);
+  }
+
+  function editUser(id: number) {
+    setEditUserState((prev) => !prev);
+    console.log(data);
   }
 
   return (
@@ -46,6 +48,8 @@ export const Users = () => {
           </Modal>,
           document.body
         )}
+
+      {editUserState && <h1>Edit</h1>}
 
       <div className="users__header">
         <h1>Utilizatori</h1>
@@ -69,7 +73,14 @@ export const Users = () => {
 
         {data &&
           data.map((item, i) => {
-            return <Table key={i} user={item} onDelete={deleteUserFn} />;
+            return (
+              <Table
+                key={i}
+                user={item}
+                onEdit={editUser}
+                onDelete={deleteUserFn}
+              />
+            );
           })}
       </div>
     </div>

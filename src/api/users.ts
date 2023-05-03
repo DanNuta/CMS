@@ -27,3 +27,19 @@ export async function deleteUser(id: number): Promise<any> {
     throw new Error("Request-ul a esuat!");
   }
 }
+
+export async function getUser(id: number): Promise<any> {
+  const data = await axios.get(`${urlUsers}/${id}`);
+  const res = await data.data;
+
+  return res;
+}
+
+export async function logIn<T>(email: string, password: string): Promise<T> {
+  const data = await axios.get(
+    `${urlUsers}?email=${email}&password=${password}`
+  );
+  const res = await data.data;
+
+  return res;
+}

@@ -11,6 +11,14 @@
   cursor: pointer;
 }
 
+.full {
+  width: 100%;
+}
+
+.custom {
+  padding-inline: 25px;
+}
+
 .danger {
   @include mixin.btnColor(variable.$clr-danger, variable.$clr-white);
 }

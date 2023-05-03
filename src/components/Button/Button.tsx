@@ -4,6 +4,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: "danger" | "primary";
+  dimension?: "full" | "custom";
 }
 
 export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
@@ -11,12 +12,15 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   disabled,
   children,
   type,
+  dimension,
 }) => {
   const typeChildren = typeof children;
 
   return (
     <button
-      className={`${typeChildren === "string" ? "text" : "img"} ${type}`}
+      className={`${typeChildren === "string" ? "text" : "img"} ${type} ${
+        dimension ?? "custom"
+      }`}
       disabled={disabled}
       onClick={onClick}
     >

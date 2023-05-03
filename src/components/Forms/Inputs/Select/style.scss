@@ -1,6 +1,6 @@
 @use "../../../../styles/variables.scss" as variable;
 
-.container_select {
+.select {
   position: relative;
 
   margin-bottom: 30px;
@@ -22,5 +22,12 @@
       border: none;
       outline: none;
     }
+  }
+
+  .error {
+    position: absolute;
+    top: 100%;
+    font-size: 14px;
+    color: variable.$clr-danger;
   }
 }

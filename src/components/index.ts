@@ -6,6 +6,7 @@ import { Chart } from "./Chart";
 import { ConfirmationModal } from "./ConfirmationModal";
 import { Form } from "./Forms/Form/Form";
 import { Container, Menu, TopBar } from "./layout";
+import { PopUp } from "./PopUp/PopUp";
 import {
   Input,
   Select,
@@ -31,4 +32,5 @@ export {
   ShowHidePassword,
   Select,
   ModalForm,
+  PopUp,
 };

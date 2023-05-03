@@ -1,72 +1,118 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Query, QueryKey, useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import { Form, Password, Input, Button } from "../../../components";
 import { ROUTES_PATHS } from "../../../routes";
-import { ModalForm } from "../../../components";
+import { ModalForm, PopUp } from "../../../components";
+import { logIn } from "../../../api";
+import { UserProps, LogInUser } from "types";
+import { LogIn } from "../../../context";
 
 export const Login = () => {
+  const { changeUser } = useContext(LogIn) as LogInUser;
+  const location = useNavigate();
+
   const [email, setEmail] = useState("");
   const [errEmail, setErrEmail] = useState("");
 
   const [password, setPassword] = useState("");
   const [errPassword, setErrPassword] = useState("");
 
+  const [popUp, setPopUp] = useState<boolean | null>(null);
+
+  const [logInState, setLogInState] = useState(false);
+
+  const { data, isLoading } = useQuery<UserProps[]>(
+    ["logIn"],
+    () => logIn(email, password),
+    { enabled: logInState }
+  );
+
+  useEffect(() => {
+    console.log(data, isLoading);
+
+    if (data?.length === 0) {
+      setPopUp(true);
+      setEmail("");
+      setPassword("");
+      setTimeout(() => {
+        setPopUp(false);
+      }, 2000);
+    }
+
+    if (data?.length! > 0) {
+      const val = data?.[0];
+      const id = val!.id.toString();
+
+      localStorage.setItem("userId", id);
+      changeUser(val!);
+
+      location("/users");
+
+      setEmail("");
+      setPassword("");
+    }
+  }, [data]);
+
+  console.log(data);
+
   function logInUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (email === "" && password === "") {
-      setErrEmail("Introdu un email");
-      setErrPassword("Introdu o parola");
-      return;
-    }
+    setErrEmail(email === "" ? "Introdu un email" : "");
+    setErrPassword(password === "" ? "Introdu o parola" : "");
 
-    if (email === "") {
-      setErrEmail("Introdu un email");
-      setErrPassword("");
-      return;
-    }
+    if (email === "") return;
+    if (password === "") return;
+    if (email === "" && password === "") return;
 
-    if (password === "") {
-      setErrPassword("Introdu o parola");
-      setErrEmail("");
-      return;
-    }
+    setLogInState(true);
 
-    setErrEmail("");
-    setErrPassword("");
-
-    const logIn = {
-      email,
-      password,
-    };
+    // setEmail("");
+    // setPassword("");
   }
 
   return (
-    <ModalForm>
-      <Form onSendFn={logInUser} title="Log in">
-        <p className="exist_account">
-          Don't have an account yet?{" "}
-          <span>
-            <Link to={`${ROUTES_PATHS.register}`}>Sign Up</Link>
-          </span>
-        </p>
+    <>
+      {popUp && (
+        <PopUp type="danger">
+          <p>
+            Nu ai introdus corect datele, creazati un cont da nu ai deja unul
+          </p>
+        </PopUp>
+      )}
 
-        <Input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          errorMsj={errEmail}
-        />
+      <ModalForm>
+        <Form onSendFn={logInUser} title="Log in">
+          <p className="exist_account">
+            Don't have an account yet?{" "}
+            <span>
+              <Link to={`${ROUTES_PATHS.register}`}>Sign Up</Link>
+            </span>
+          </p>
 
-        <Password
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          errorMsj={errPassword}
-        />
+          <Input
+            value={email}
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            errorMsj={errEmail}
+          />
 
-        <Button>Log in</Button>
-      </Form>
-    </ModalForm>
+          <Password
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            errorMsj={errPassword}
+          />
+
+          <Button type="primary" dimension="full">
+            Log in
+          </Button>
+        </Form>
+      </ModalForm>
+    </>
   );
 };

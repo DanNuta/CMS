@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import {
   Form,
@@ -26,6 +26,10 @@ export const UserModalForm: React.FC<ModalProps> = ({
   const { mutate } = useMutation({
     mutationFn: postUsers,
   });
+
+  const queryClient = useQueryClient();
+
+  queryClient.invalidateQueries({ queryKey: ["users"] });
 
   // state
   const [name, setName] = useState("");
@@ -93,7 +97,6 @@ export const UserModalForm: React.FC<ModalProps> = ({
     setErrCheckBox(!checkbox ? `${errorInputs.checkboxErr}` : null);
 
     if (anyError) return;
-
     if (testName) return;
     if (testPrenume) return;
     if (testEmail) return;
@@ -119,8 +122,6 @@ export const UserModalForm: React.FC<ModalProps> = ({
 
     mutate(dataForm);
     onCancel();
-
-    console.log("click");
   }
 
   return (

@@ -9,8 +9,11 @@
 @forward "../features/users/components/Table/style.scss";
 @forward "../components/Modal/style.scss";
 @forward "../features/users/components/UserModalForm/style.scss";
+@forward "../components/layout/Menu/style.scss";
+@forward "../components/PopUp/style.scss";
 
 //pages
+
 @forward "../features/auth/Register/style.scss";
 @forward "../features/users/pages/Users/style.scss";
 

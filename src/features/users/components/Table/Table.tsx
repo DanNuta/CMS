@@ -10,9 +10,10 @@ import { deleteUser } from "../../../../api";
 interface UserPropsData {
   user: UserProps;
   onDelete: (id: number) => void;
+  onEdit: (id: number) => void;
 }
 
-export const Table: React.FC<UserPropsData> = ({ user, onDelete }) => {
+export const Table: React.FC<UserPropsData> = ({ user, onDelete, onEdit }) => {
   //const queryClient = new QueryClient();
 
   // const { data, mutate } = useMutation({
@@ -25,7 +26,7 @@ export const Table: React.FC<UserPropsData> = ({ user, onDelete }) => {
   //useEffect(() => {}, [data]);
 
   function editUser(id: number) {
-    console.log(id);
+    onEdit(id);
   }
 
   function deleteUserFn(id: number) {

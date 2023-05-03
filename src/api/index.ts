@@ -1,3 +1,3 @@
-import { postUsers, getsUsers, deleteUser } from "./users";
+import { postUsers, getsUsers, deleteUser, getUser, logIn } from "./users";
 
-export { postUsers, getsUsers, deleteUser };
+export { postUsers, getsUsers, deleteUser, getUser, logIn };

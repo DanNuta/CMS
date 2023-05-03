@@ -1,0 +1,53 @@
+@use "../../../styles/variables.scss" as variable;
+
+.desktop {
+  width: 260px;
+  padding-inline: 7px;
+}
+
+.mobile {
+  width: 80px;
+}
+
+.mobile-nav {
+  justify-content: center;
+}
+
+.desktop-nav {
+  padding-left: 27px;
+}
+
+.mobile-root {
+  justify-content: center;
+}
+
+.menu {
+  background-color: rgba(92, 92, 92, 0.301);
+  border-radius: variable.$radius;
+  height: 100vh;
+
+  .logo {
+    padding-block: 38px 42px;
+    text-align: center;
+  }
+
+  .root {
+    &__hover {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding-block: 7px;
+      border-radius: 5px;
+      background-color: red;
+    }
+
+    > *:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    &__hover:hover {
+      background-color: variable.$clr-blue;
+      color: variable.$clr-white;
+    }
+  }
+}
