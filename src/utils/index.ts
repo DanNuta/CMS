@@ -1,4 +1,3 @@
-import { changeStateRegister } from "./changeStateRegister";
-import { cleanDataFromState } from "./cleanDataFromState";
+import { errorInputs } from "./error";
 
-export { changeStateRegister, cleanDataFromState };
+export { errorInputs };

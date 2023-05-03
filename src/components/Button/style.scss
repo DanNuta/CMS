@@ -1,11 +1,20 @@
 @use "../../styles/mixin/button.mixin.scss" as mixin;
+@use "../../styles/variables.scss" as variable;
 
 .text {
-  @include mixin.btn(#0e8cc2);
+  @include mixin.btn();
 }
 
 .img {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.danger {
+  @include mixin.btnColor(variable.$clr-danger, variable.$clr-white);
+}
+
+.primary {
+  @include mixin.btnColor(variable.$clr-blue, variable.$clr-white);
 }

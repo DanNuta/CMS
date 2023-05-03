@@ -65,8 +65,10 @@ export const UserModalForm: React.FC<ModalProps> = ({
       />
 
       <div className="modal__btns">
-        <Button onClick={onCancel}>Cancel</Button>
-        <Button>Add</Button>
+        <Button type="danger" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button type="primary">Add</Button>
       </div>
     </Form>
   );

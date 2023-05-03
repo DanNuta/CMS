@@ -17,6 +17,7 @@ import { postUsers } from "../../../api";
 import { UserProps } from "types";
 
 import { patternRegEx } from "./pattern";
+import { errorInputs } from "../../../utils";
 
 export const Register: React.FC = () => {
   const [name, setName] = useState("");
@@ -39,39 +40,12 @@ export const Register: React.FC = () => {
     null
   );
 
-  const navigate = useNavigate();
-
   const [checkbox, setCheckBox] = useState(false);
   const [errCheckbox, setErrCheckBox] = useState<string | null>(null);
 
-  function changeName(data: React.ChangeEvent<HTMLInputElement>) {
-    const value = data.target.value;
-    setName(value);
-  }
+  const navigate = useNavigate();
 
-  function changeFirstName(data: React.ChangeEvent<HTMLInputElement>) {
-    const value = data.target.value;
-    setPrenume(value);
-  }
-
-  function changeEmail(data: React.ChangeEvent<HTMLInputElement>) {
-    const value = data.target.value;
-    setEmail(value);
-
-    if (!patternRegEx.email.test(value)) {
-      setErrEmail("Acesta nu este un email corect");
-      return;
-    } else {
-      setErrEmail(null);
-    }
-  }
-
-  function changeGender(data: React.ChangeEvent<HTMLSelectElement>) {
-    const value = data.target.value;
-    setGender(value);
-  }
-
-  const { error, data, mutate, status } = useMutation({
+  const { data, mutate, status } = useMutation({
     mutationFn: postUsers,
   });
 
@@ -79,38 +53,31 @@ export const Register: React.FC = () => {
     if (status === "success") {
       navigate("/users");
     }
-
-    console.log(data, status);
   }, [data, status]);
+
+  function changeEmail(data: React.ChangeEvent<HTMLInputElement>) {
+    const value = data.target.value;
+    const testEmail = !patternRegEx.email.test(value);
+
+    setEmail(value);
+    setErrEmail(testEmail ? `${errorInputs.emailErr}` : null);
+  }
 
   function blurPassword(data: React.FocusEvent<HTMLInputElement, Element>) {
     const value = data.target.value;
+    const testPassword = !patternRegEx.password.test(value);
 
     setPassword(value);
-
-    if (!patternRegEx.password.test(value)) {
-      setErrPassword("Acesta nu este o parola puternica");
-      return;
-    } else {
-      setErrPassword(null);
-    }
+    setErrPassword(testPassword ? `${errorInputs.weakPassword}` : null);
   }
 
   function verifyPasswordIfIsTheSame(
     data: React.FocusEvent<HTMLInputElement, Element>
   ) {
     const value = data.target.value;
-
-    if (password !== value) {
-      setErrVerifyPassword("Parolele nu coicid");
-    } else {
-      setErrVerifyPassword(null);
-    }
-  }
-
-  function checkPersonalData(data: React.ChangeEvent<HTMLInputElement>) {
-    const value = data.target.checked;
-    setCheckBox(value);
+    setErrVerifyPassword(
+      password !== value ? `${errorInputs.passwordIsNotTheSame}` : null
+    );
   }
 
   // send data
@@ -123,65 +90,28 @@ export const Register: React.FC = () => {
     const testEmail = !patternRegEx.email.test(email);
     const testPasswordTwe = !patternRegEx.password.test(password);
     const testGender = gender === "" ? true : false;
-
-    if (
+    const anyError =
       testName &&
       testPrenume &&
       testEmail &&
       testGender &&
       testPasswordTwe &&
-      !checkbox
-    ) {
-      setErrName("Acest nume nu este corect");
-      setErrPrenume("Acesta nu este un prenume corect");
-      setErrEmail("Acesta nu este un email corect");
-      setErrGender("Te rog selecteaza un sex");
-      setErrPassword("Trebuie sa introduci o parola");
-      setErrCheckBox("Trebuie sa ne permiti sa iti preluam datele");
-      return;
-    }
+      !checkbox;
 
-    if (testName) {
-      setErrName("Acest nume nu este corect");
-      return;
-    } else {
-      setErrName(null);
-    }
+    setErrName(testName ? `${errorInputs.nameErr}` : null);
+    setErrPrenume(testPrenume ? `${errorInputs.prenumeErr}` : null);
+    setErrEmail(testEmail ? `${errorInputs.emailErr}` : null);
+    setErrGender(testGender ? `${errorInputs.genderErr}` : null);
+    setErrPassword(testPasswordTwe ? `${errorInputs.passwordErr}` : null);
+    setErrCheckBox(!checkbox ? `${errorInputs.checkboxErr}` : null);
 
-    if (testPrenume) {
-      setErrPrenume("Acesta nu este un prenume corect");
-      return;
-    } else {
-      setErrPrenume(null);
-    }
+    if (anyError) return;
 
-    if (testEmail) {
-      setErrEmail("Acesta nu este un email corect");
-      return;
-    } else {
-      setErrEmail(null);
-    }
-
-    if (testGender) {
-      setErrGender("Te rog selecteaza un sex");
-      return;
-    } else {
-      setErrGender(null);
-    }
-
-    if (testPasswordTwe) {
-      setErrPassword("Trebuie sa introduci o parola");
-      return;
-    } else {
-      setErrPassword(null);
-    }
-
-    if (!checkbox) {
-      setErrCheckBox("Trebuie sa ne permiti sa iti preluam datele");
-      return;
-    } else {
-      setErrCheckBox(null);
-    }
+    if (testName) return;
+    if (testPrenume) return;
+    if (testEmail) return;
+    if (testPasswordTwe) return;
+    if (!checkbox) return;
 
     setName("");
     setPrenume("");
@@ -204,10 +134,6 @@ export const Register: React.FC = () => {
     mutate(dataForm);
   }
 
-  useEffect(() => {
-    console.log(data, error);
-  }, [data, error]);
-
   return (
     <ModalForm>
       <Form onSendFn={onSendData} title="Sign up">
@@ -223,7 +149,7 @@ export const Register: React.FC = () => {
           placeholder="Nume"
           value={name}
           errorMsj={errName}
-          onChange={changeName}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <Input
@@ -231,7 +157,7 @@ export const Register: React.FC = () => {
           placeholder="Prenume"
           value={prenume}
           errorMsj={errPrenume}
-          onChange={changeFirstName}
+          onChange={(e) => setPrenume(e.target.value)}
         />
 
         <Input
@@ -247,7 +173,7 @@ export const Register: React.FC = () => {
           options={["Masculin", "Femenin", "Ma abtin"]}
           value={gender}
           errorMsj={errGender}
-          onChange={changeGender}
+          onChange={(e) => setGender(e.target.value)}
         />
 
         <Password
@@ -268,7 +194,7 @@ export const Register: React.FC = () => {
 
         <Checkbox
           type="checkbox"
-          onChange={checkPersonalData}
+          onChange={(e) => setCheckBox(e.target.checked)}
           label="Sunt deacord cu prelucrarea datelor personale"
           id={"de-acord"}
           errorMsj={errCheckbox}

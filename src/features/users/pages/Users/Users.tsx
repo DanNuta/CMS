@@ -7,8 +7,6 @@ import { Button, Modal } from "../../../../components";
 import { Table, UserModalForm } from "../../components";
 import { UserProps } from "../../../../types";
 
-import "./style.scss";
-
 export const Users = () => {
   const [addUser, setAddUser] = useState(false);
 
@@ -49,7 +47,7 @@ export const Users = () => {
         <h1>Utilizatori</h1>
 
         <div>
-          <Button onClick={() => setAddUser((prev) => !prev)}>
+          <Button type="primary" onClick={() => setAddUser((prev) => !prev)}>
             Adauga utilizator
           </Button>
         </div>

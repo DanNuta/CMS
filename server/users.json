@@ -1,15 +1,6 @@
 {
   "users": [
     {
-      "name": "asd",
-      "prenume": "asdf",
-      "email": "asd@gmail.com",
-      "gender": "Femenin",
-      "password": "asd",
-      "rol": "moderator",
-      "id": 0.5984228164765264
-    },
-    {
       "name": "qwe",
       "prenume": "qwe",
       "email": "qwe@gmail.com",
@@ -35,6 +26,33 @@
       "password": "asd",
       "rol": "moderator",
       "id": 0.9370967532524417
+    },
+    {
+      "name": "hghfgh",
+      "prenume": "fghfgh",
+      "email": "fghfg@gmail.com",
+      "gender": "Femenin",
+      "password": "jhj",
+      "rol": "moderator",
+      "id": 0.8111887248380187
+    },
+    {
+      "name": "hfgfg",
+      "prenume": "ghfgh",
+      "email": "dan@gmail.com",
+      "gender": "Femenin",
+      "password": "ghg",
+      "rol": "moderator",
+      "id": 0.9214516971635032
+    },
+    {
+      "name": "jghjgh",
+      "prenume": "ghjgh",
+      "email": "jgghgh@gail.com",
+      "gender": "Ma abtin",
+      "password": "asd",
+      "rol": "moderator",
+      "id": 0.43581320086430697
     }
   ]
 }

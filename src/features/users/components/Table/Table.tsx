@@ -19,14 +19,12 @@ export const Table: React.FC<UserPropsData> = ({ user, onDelete }) => {
     mutationFn: deleteUser,
     onSuccess: (data) => {
       queryClient.setQueryData(["users"], data);
-      console.log(data);
     },
   });
 
   useEffect(() => {
     console.log(data);
   }, [data]);
-  console.log(data);
 
   function editUser(id: number) {
     console.log(id);
