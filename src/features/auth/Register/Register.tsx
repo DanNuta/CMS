@@ -7,11 +7,13 @@ import {
   Password,
   Select,
   Button,
+  ModalForm,
 } from "../../../components";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import { ROUTES_PATHS } from "../../../routes";
-import { postUsers } from "../../../api/index";
+import { postUsers } from "../../../api";
 import { UserProps } from "types";
 
 import { patternRegEx } from "./pattern";
@@ -36,6 +38,8 @@ export const Register: React.FC = () => {
   const [errVerifyPassword, setErrVerifyPassword] = useState<string | null>(
     null
   );
+
+  const navigate = useNavigate();
 
   const [checkbox, setCheckBox] = useState(false);
   const [errCheckbox, setErrCheckBox] = useState<string | null>(null);
@@ -67,9 +71,17 @@ export const Register: React.FC = () => {
     setGender(value);
   }
 
-  const { error, data, mutate } = useMutation({
+  const { error, data, mutate, status } = useMutation({
     mutationFn: postUsers,
   });
+
+  useEffect(() => {
+    if (status === "success") {
+      navigate("/users");
+    }
+
+    console.log(data, status);
+  }, [data, status]);
 
   function blurPassword(data: React.FocusEvent<HTMLInputElement, Element>) {
     const value = data.target.value;
@@ -197,71 +209,73 @@ export const Register: React.FC = () => {
   }, [data, error]);
 
   return (
-    <Form onSendFn={onSendData} title="Sign up">
-      <p className="exist_account">
-        Already have an account?{" "}
-        <span>
-          <Link to={`${ROUTES_PATHS.login}`}>Sign in</Link>
-        </span>
-      </p>
+    <ModalForm>
+      <Form onSendFn={onSendData} title="Sign up">
+        <p className="exist_account">
+          Already have an account?{" "}
+          <span>
+            <Link to={`${ROUTES_PATHS.login}`}>Sign in</Link>
+          </span>
+        </p>
 
-      <Input
-        type="text"
-        placeholder="Nume"
-        value={name}
-        errorMsj={errName}
-        onChange={changeName}
-      />
+        <Input
+          type="text"
+          placeholder="Nume"
+          value={name}
+          errorMsj={errName}
+          onChange={changeName}
+        />
 
-      <Input
-        type="text"
-        placeholder="Prenume"
-        value={prenume}
-        errorMsj={errPrenume}
-        onChange={changeFirstName}
-      />
+        <Input
+          type="text"
+          placeholder="Prenume"
+          value={prenume}
+          errorMsj={errPrenume}
+          onChange={changeFirstName}
+        />
 
-      <Input
-        type="email"
-        placeholder="Email"
-        value={email}
-        errorMsj={errEmail}
-        onChange={changeEmail}
-      />
+        <Input
+          type="email"
+          placeholder="Email"
+          value={email}
+          errorMsj={errEmail}
+          onChange={changeEmail}
+        />
 
-      <Select
-        name="sex"
-        options={["Masculin", "Femenin", "Ma abtin"]}
-        value={gender}
-        errorMsj={errGender}
-        onChange={changeGender}
-      />
+        <Select
+          name="sex"
+          options={["Masculin", "Femenin", "Ma abtin"]}
+          value={gender}
+          errorMsj={errGender}
+          onChange={changeGender}
+        />
 
-      <Password
-        value={password}
-        placeholder="Password"
-        errorMsj={errPassword}
-        onBlur={blurPassword}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <Password
+          value={password}
+          placeholder="Password"
+          errorMsj={errPassword}
+          onBlur={blurPassword}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <Password
-        value={verifyPassword}
-        placeholder="Verify Password"
-        errorMsj={errVerifyPassword}
-        onBlur={verifyPasswordIfIsTheSame}
-        onChange={(e) => setVerifyPassword(e.target.value)}
-      />
+        <Password
+          value={verifyPassword}
+          placeholder="Verify Password"
+          errorMsj={errVerifyPassword}
+          onBlur={verifyPasswordIfIsTheSame}
+          onChange={(e) => setVerifyPassword(e.target.value)}
+        />
 
-      <Checkbox
-        type="checkbox"
-        onChange={checkPersonalData}
-        label="Sunt deacord cu prelucrarea datelor personale"
-        id={"de-acord"}
-        errorMsj={errCheckbox}
-      />
+        <Checkbox
+          type="checkbox"
+          onChange={checkPersonalData}
+          label="Sunt deacord cu prelucrarea datelor personale"
+          id={"de-acord"}
+          errorMsj={errCheckbox}
+        />
 
-      <Button>Sign Up</Button>
-    </Form>
+        <Button>Sign Up</Button>
+      </Form>
+    </ModalForm>
   );
 };

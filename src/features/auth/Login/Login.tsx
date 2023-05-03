@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Form, Password, Input, Button } from "../../../components";
 import { ROUTES_PATHS } from "../../../routes";
+import { ModalForm } from "../../../components";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,28 +43,30 @@ export const Login = () => {
   }
 
   return (
-    <Form onSendFn={logInUser} title="Log in">
-      <p className="exist_account">
-        Don't have an account yet?{" "}
-        <span>
-          <Link to={`${ROUTES_PATHS.register}`}>Sign Up</Link>
-        </span>
-      </p>
+    <ModalForm>
+      <Form onSendFn={logInUser} title="Log in">
+        <p className="exist_account">
+          Don't have an account yet?{" "}
+          <span>
+            <Link to={`${ROUTES_PATHS.register}`}>Sign Up</Link>
+          </span>
+        </p>
 
-      <Input
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        errorMsj={errEmail}
-      />
+        <Input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          errorMsj={errEmail}
+        />
 
-      <Password
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-        errorMsj={errPassword}
-      />
+        <Password
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          errorMsj={errPassword}
+        />
 
-      <Button>Log in</Button>
-    </Form>
+        <Button>Log in</Button>
+      </Form>
+    </ModalForm>
   );
 };

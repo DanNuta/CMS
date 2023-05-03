@@ -1,8 +1,27 @@
+import React, { useState } from "react";
 import { Form, Input, Button, Select, Checkbox } from "../../../../components";
 
-export const UserModalForm = () => {
+interface ModalProps {
+  onCancel: () => void;
+  onAddUser: () => void;
+}
+
+export const UserModalForm: React.FC<ModalProps> = ({
+  onCancel,
+  onAddUser,
+}) => {
+  const [nume, setNume] = useState("");
+  const [errNume, setErrNume] = useState("");
+
+  const [prenume, setPrenume] = useState("");
+  const [errPrenume, setrrPrenume] = useState("");
+
+  function addNewUser(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
-    <Form onSendFn={() => console.log("fsdfsd")}>
+    <Form onSendFn={(e) => addNewUser(e)}>
       <Input
         type="text"
         placeholder="Nume"
@@ -44,6 +63,11 @@ export const UserModalForm = () => {
         id="user"
         errorMsj={null}
       />
+
+      <div className="modal__btns">
+        <Button onClick={onCancel}>Cancel</Button>
+        <Button>Add</Button>
+      </div>
     </Form>
   );
 };

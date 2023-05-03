@@ -19,8 +19,11 @@ export async function getsUsers<T>(): Promise<T> {
 }
 
 export async function deleteUser(id: number): Promise<any> {
-  const deleteUser = await axios.delete(`${urlUsers}/${id}`);
-  const res = await deleteUser.data;
-
-  return res;
+  try {
+    const deleteUser = await axios.delete(`${urlUsers}/${id}`);
+    const res = deleteUser;
+    return res;
+  } catch (e) {
+    throw new Error("Request-ul a esuat!");
+  }
 }

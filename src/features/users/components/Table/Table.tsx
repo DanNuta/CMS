@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 
 import { UserProps } from "types";
 import { Button } from "../../../../components";
@@ -9,22 +9,31 @@ import { deleteUser } from "../../../../api";
 
 interface UserPropsData {
   user: UserProps;
+  onDelete: (id: number) => void;
 }
 
-export const Table: React.FC<UserPropsData> = ({ user }) => {
-  const { data, mutate, error } = useMutation({
+export const Table: React.FC<UserPropsData> = ({ user, onDelete }) => {
+  const queryClient = new QueryClient();
+
+  const { data, mutate } = useMutation({
     mutationFn: deleteUser,
+    onSuccess: (data) => {
+      queryClient.setQueryData(["users"], data);
+      console.log(data);
+    },
   });
 
   useEffect(() => {
     console.log(data);
   }, [data]);
+  console.log(data);
 
   function editUser(id: number) {
     console.log(id);
   }
 
   function deleteUserFn(id: number) {
+    //onDelete(id);
     mutate(id);
   }
 

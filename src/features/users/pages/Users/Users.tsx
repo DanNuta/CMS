@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, QueryClient } from "@tanstack/react-query";
 import { createPortal } from "react-dom";
 
-import { getsUsers } from "../../../../api";
+import { getsUsers, deleteUser } from "../../../../api";
 import { Button, Modal } from "../../../../components";
 import { Table, UserModalForm } from "../../components";
 import { UserProps } from "../../../../types";
@@ -12,10 +12,23 @@ import "./style.scss";
 export const Users = () => {
   const [addUser, setAddUser] = useState(false);
 
+  //const queryClient = new QueryClient()
+
   const { data, isLoading } = useQuery<UserProps[]>({
     queryKey: ["users"],
     queryFn: getsUsers,
   });
+
+  // const deleteUserElement = useMutation({
+  //   mutationFn: deleteUser,
+  //   onSuccess: data => {
+  //     queryClient.setQueryData(["users"], data)
+  //   }
+  // });
+
+  function deleteUserFn(id: number) {
+    //deleteUserElement.mutate(id)
+  }
 
   return (
     <div className="users">
@@ -23,8 +36,11 @@ export const Users = () => {
 
       {addUser &&
         createPortal(
-          <Modal onCancel={() => setAddUser((prev) => !prev)}>
-            <UserModalForm />
+          <Modal>
+            <UserModalForm
+              onCancel={() => setAddUser((prev) => !prev)}
+              onAddUser={() => console.log("click")}
+            />
           </Modal>,
           document.body
         )}
@@ -51,7 +67,7 @@ export const Users = () => {
 
         {data &&
           data.map((item, i) => {
-            return <Table key={i} user={item} />;
+            return <Table key={i} user={item} onDelete={deleteUserFn} />;
           })}
       </div>
     </div>

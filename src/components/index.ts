@@ -1,13 +1,11 @@
 import { Button } from "./Button/Button";
-import { Modal } from "./Modal/Modal";
+import { Modal, ModalForm } from "./Modal/Modal";
 import { Card } from "./Card";
 import { Table } from "./Table";
 import { Chart } from "./Chart";
 import { ConfirmationModal } from "./ConfirmationModal";
 import { Form } from "./Forms/Form/Form";
 import { Container, Menu, TopBar } from "./layout";
-
-Password;
 import {
   Input,
   Select,
@@ -32,4 +30,5 @@ export {
   Form,
   ShowHidePassword,
   Select,
+  ModalForm,
 };
