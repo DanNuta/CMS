@@ -1,4 +1,12 @@
+@use "../../../../styles/variables.scss" as variable;
+
 .users {
+  background-color: variable.$clr-white;
+  flex: 1;
+  border-radius: variable.$radius;
+  padding-inline: 30px;
+  padding-block: 35px;
+
   &__header {
     display: flex;
     justify-content: space-between;

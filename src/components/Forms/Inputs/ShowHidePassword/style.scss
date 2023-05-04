@@ -1,3 +1,5 @@
+@use "../../../../styles/variables.scss" as variable;
+
 .show_passsword {
   position: absolute;
   top: 0;
@@ -6,4 +8,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  background-color: variable.$clr-white;
+  padding-inline: 10px;
 }

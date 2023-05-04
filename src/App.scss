@@ -1,3 +1,5 @@
+@use "./styles/variables.scss" as variable;
+
 /* Box sizing rules */
 *,
 *::before,
@@ -39,6 +41,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: variable.$clr-bg-primary;
 }
 
 /* A elements that don't have a class get default styles */
@@ -75,4 +78,9 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.app {
+  display: flex;
+  gap: 20px;
 }

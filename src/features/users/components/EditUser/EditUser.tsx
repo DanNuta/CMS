@@ -8,8 +8,7 @@ import {
   Checkbox,
   Password,
 } from "../../../../components";
-import { patternRegEx } from "../../../../regEx";
-import { errorInputs } from "../../../../utils";
+import { errorInputs, patternRegEx } from "../../../../utils";
 import { UserProps } from "types";
 import { UserModalForm } from "../UserModalForm/UserModalForm";
 
@@ -130,7 +129,7 @@ export const EditUser: React.FC<ModalProps> = ({
           <Button type="danger" onClick={onCancel}>
             Cancel
           </Button>
-          <Button type="primary">Add</Button>
+          <Button type="primary">Save</Button>
         </div>
       </Form>
     </UserModalForm>

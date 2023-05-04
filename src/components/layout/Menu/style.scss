@@ -22,7 +22,7 @@
 }
 
 .menu {
-  background-color: rgba(92, 92, 92, 0.301);
+  background-color: variable.$clr-white;
   border-radius: variable.$radius;
   height: 100vh;
 
@@ -32,13 +32,12 @@
   }
 
   .root {
-    &__hover {
+    a {
       display: flex;
       align-items: center;
       gap: 7px;
       padding-block: 7px;
       border-radius: 5px;
-      background-color: red;
     }
 
     > *:not(:last-child) {

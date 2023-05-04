@@ -15,9 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES_PATHS } from "../../../routes";
 import { postUsers } from "../../../api";
 import { UserProps } from "types";
-
-import { patternRegEx } from "../../../regEx";
-import { errorInputs } from "../../../utils";
+import { errorInputs, patternRegEx } from "../../../utils";
 
 export const Register: React.FC = () => {
   const [name, setName] = useState("");
@@ -29,7 +27,7 @@ export const Register: React.FC = () => {
   const [email, setEmail] = useState("");
   const [errEmail, setErrEmail] = useState<string | null>(null);
 
-  const [gender, setGender] = useState<string>("");
+  const [gender, setGender] = useState<string>("masculin");
   const [errGender, setErrGender] = useState<string | null>(null);
 
   const [password, setPassword] = useState<string>("");
@@ -121,6 +119,8 @@ export const Register: React.FC = () => {
     setCheckBox(false);
     setVerifyPassword("");
 
+    var uniq = new Date().getTime();
+
     const dataForm: UserProps = {
       name,
       prenume,
@@ -128,7 +128,7 @@ export const Register: React.FC = () => {
       gender,
       password,
       rol: "moderator",
-      id: Math.random(),
+      id: uniq,
     };
 
     mutate(dataForm);

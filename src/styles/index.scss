@@ -17,6 +17,7 @@
 //pages
 @forward "../features/auth/Register/style.scss";
 @forward "../features/users/pages/Users/style.scss";
+@forward "../App.scss";
 
 //mixin
 @forward "./mixin/button.mixin.scss";

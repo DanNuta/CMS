@@ -8,8 +8,7 @@ import {
   Checkbox,
   Password,
 } from "../../../../components";
-import { patternRegEx } from "../../../../regEx";
-import { errorInputs } from "../../../../utils";
+import { errorInputs, patternRegEx } from "../../../../utils";
 import { UserProps } from "types";
 import { UserModalForm } from "../UserModalForm/UserModalForm";
 
@@ -99,6 +98,7 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
     setPassword("");
     setCheckBox(false);
 
+    var uniq = new Date().getTime();
     const dataForm: UserProps = {
       name,
       prenume,
@@ -106,7 +106,7 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
       gender,
       password,
       rol,
-      id: Math.random(),
+      id: uniq,
     };
 
     onAddUser(dataForm);

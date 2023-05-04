@@ -1,14 +1,4 @@
-interface ErrorProps {
-  nameErr: string;
-  prenumeErr: string;
-  emailErr: string;
-  genderErr: string;
-  weakPassword: string;
-  passwordErr: string;
-  checkboxErr: string;
-  passwordIsNotTheSame: string;
-  rolErr: string;
-}
+import { ErrorProps } from "../types";
 
 export const errorInputs: ErrorProps = {
   nameErr: "Acest nume nu este corect",
