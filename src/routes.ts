@@ -1,5 +1,5 @@
 export const ROUTES_PATHS = {
-  users: "/users",
+  users: "/",
   posts: "/posts",
   postDetails: "/posts/:id",
   postCreate: "/posts/create",

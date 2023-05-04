@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Input,
@@ -14,10 +14,13 @@ import { useNavigate } from "react-router-dom";
 
 import { ROUTES_PATHS } from "../../../routes";
 import { postUsers } from "../../../api";
-import { UserProps } from "types";
+import { UserProps, LogInUser } from "types";
 import { errorInputs, patternRegEx } from "../../../utils";
+import { LogIn } from "../../../context";
 
 export const Register: React.FC = () => {
+  const { changeUser } = useContext(LogIn) as LogInUser;
+
   const [name, setName] = useState("");
   const [errName, setErrName] = useState<string | null>(null);
 
@@ -49,7 +52,8 @@ export const Register: React.FC = () => {
 
   useEffect(() => {
     if (status === "success") {
-      navigate("/users");
+      changeUser(data);
+      navigate(`${ROUTES_PATHS.users}`);
     }
   }, [data, status]);
 
@@ -130,6 +134,8 @@ export const Register: React.FC = () => {
       rol: "moderator",
       id: uniq,
     };
+
+    localStorage.setItem("userId", uniq.toString());
 
     mutate(dataForm);
   }

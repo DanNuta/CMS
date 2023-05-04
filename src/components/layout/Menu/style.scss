@@ -24,7 +24,7 @@
 .menu {
   background-color: variable.$clr-white;
   border-radius: variable.$radius;
-  height: 100vh;
+  height: calc(100vh - 25px);
 
   .logo {
     padding-block: 38px 42px;
@@ -33,15 +33,15 @@
 
   .root {
     a {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding-block: 7px;
-      border-radius: 5px;
-    }
-
-    > *:not(:last-child) {
-      margin-bottom: 15px;
+      color: variable.$clr-text-primary;
+      .root__hover {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding-block: 7px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
     }
 
     &__hover:hover {

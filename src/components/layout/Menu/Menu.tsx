@@ -12,8 +12,8 @@ export const Menu = () => {
 
   return (
     <div
-      onClick={() => setMobileMod((prev) => !prev)}
-      className={`${mobileMod ? "menu mobile" : "menu desktop"}`}
+      // onClick={() => setMobileMod((prev) => !prev)}
+      className={`menu ${mobileMod ? "mobile" : "desktop"}`}
     >
       <div className="logo">
         <h1>{mobileMod ? "Dsb" : "Dashboard"}</h1>

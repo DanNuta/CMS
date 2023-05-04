@@ -9,6 +9,7 @@ import { ModalForm, PopUp } from "../../../components";
 import { logIn } from "../../../api";
 import { UserProps, LogInUser } from "types";
 import { LogIn } from "../../../context";
+import { errorInputs } from "../../../utils";
 
 export const Login = () => {
   const { changeUser } = useContext(LogIn) as LogInUser;
@@ -24,14 +25,15 @@ export const Login = () => {
 
   const [logInState, setLogInState] = useState(false);
 
-  const { data, isLoading } = useQuery<UserProps[]>(
-    ["logIn"],
-    () => logIn(email, password),
-    { enabled: logInState }
-  );
+  const { data, isLoading } = useQuery<UserProps[]>({
+    queryKey: ["emailPAssword", email, password],
+    queryFn: () => logIn(email, password),
+    enabled: logInState,
+  });
 
   useEffect(() => {
     if (data?.length === 0) {
+      setLogInState(false);
       setPopUp(true);
       setEmail("");
       setPassword("");
@@ -41,13 +43,14 @@ export const Login = () => {
     }
 
     if (data?.length! > 0) {
+      setLogInState(true);
       const val = data?.[0];
       const id = val!.id!.toString();
 
       localStorage.setItem("userId", id);
-      changeUser(val!);
+      changeUser(val);
 
-      location("/users");
+      location(`${ROUTES_PATHS.users}`);
 
       setEmail("");
       setPassword("");
@@ -57,8 +60,8 @@ export const Login = () => {
   function logInUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setErrEmail(email === "" ? "Introdu un email" : "");
-    setErrPassword(password === "" ? "Introdu o parola" : "");
+    setErrEmail(email === "" ? `${errorInputs.emailErr}` : "");
+    setErrPassword(password === "" ? `${errorInputs.passwordErr}` : "");
 
     if (email === "") return;
     if (password === "") return;

@@ -1,0 +1,8 @@
+@use "../../../styles/variables.scss" as variable;
+
+.top-bar {
+  background-color: variable.$clr-white;
+  border-radius: variable.$radius;
+  padding-block: 25px;
+  padding-inline: 23px;
+}

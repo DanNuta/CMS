@@ -2,30 +2,75 @@
   "users": [
     {
       "name": "dan",
-      "prenume": "gdfgdfg",
-      "email": "fgdfg@gmail.com",
+      "prenume": "nuta",
+      "email": "dany@gmail.com",
       "gender": "masculin",
-      "password": "ghfghfgh",
+      "password": "dan",
       "rol": "moderator",
-      "id": 0.3521083233177751
+      "id": 1683226406575
     },
     {
-      "name": "fsdfd",
-      "prenume": "sdfsdf",
+      "name": "dan",
+      "prenume": "nutu",
+      "email": "nuta@gmail.com",
+      "gender": "masculin",
+      "password": "nutu",
+      "rol": "moderator",
+      "id": 1683226478855
+    },
+    {
+      "name": "ion",
+      "prenume": "erhan",
+      "email": "erhan@gmail.com",
+      "gender": "masculin",
+      "password": "erhan",
+      "rol": "moderator",
+      "id": 1683226808504
+    },
+    {
+      "name": "ana",
+      "prenume": "cara",
+      "email": "ana@gmail.com",
+      "gender": "Femenin",
+      "password": "ana",
+      "rol": "moderator",
+      "id": 1683227070718
+    },
+    {
+      "name": "andrei",
+      "prenume": "furman",
+      "email": "andrei@gmail.com",
+      "gender": "masculin",
+      "password": "andrei",
+      "rol": "moderator",
+      "id": 1683227163235
+    },
+    {
+      "name": "Ion",
+      "prenume": "frunza",
+      "email": "frunza@gmail.com",
+      "gender": "masculin",
+      "password": "frunza",
+      "rol": "moderator",
+      "id": 1683227508222
+    },
+    {
+      "name": "iulian",
+      "prenume": "nuta",
       "email": "dan@gmail.com",
       "gender": "masculin",
-      "password": "fsdfsdf",
+      "password": "iulian",
       "rol": "moderator",
-      "id": 0.2957500292922599
+      "id": 1683227588640
     },
     {
-      "name": "gfhfgh",
-      "prenume": "gfhfgh",
-      "email": "hfghfg@gmail.com",
-      "gender": "masculin",
-      "password": "ghfghfg",
+      "name": "valerie",
+      "prenume": "food",
+      "email": "varleri@gmail.com",
+      "gender": "Femenin",
+      "password": "valerie",
       "rol": "moderator",
-      "id": 1683200506286
+      "id": 1683230818511
     }
   ]
 }

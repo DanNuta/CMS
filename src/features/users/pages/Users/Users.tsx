@@ -8,7 +8,7 @@ import { Table, EditUser, AddNewUser } from "../../components";
 import { UserProps } from "../../../../types";
 
 export const Users = () => {
-  const [addUser, setAddUser] = useState(false);
+  const [addUserModalState, setAddUserModalState] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
   const [changeUser, setChangeUser] = useState<UserProps | undefined>();
 
@@ -49,7 +49,6 @@ export const Users = () => {
     const findUser = data?.find((item) => item.id === id);
 
     setChangeUser(findUser);
-    console.log(findUser);
   }
 
   function changeUserFn(data: UserProps) {
@@ -61,30 +60,29 @@ export const Users = () => {
     <div className="users">
       {isLoading && <h1>Loading...</h1>}
 
-      {addUser &&
-        createPortal(
-          <AddNewUser
-            onCancel={() => setAddUser((prev) => !prev)}
-            onAddUser={addNewUser}
-          />,
-          document.body
-        )}
+      <AddNewUser
+        onCancel={() => setAddUserModalState((prev) => !prev)}
+        onAddUser={addNewUser}
+        type="create"
+        modalOpen={addUserModalState}
+      />
 
-      {editUserState &&
-        createPortal(
-          <EditUser
-            onCancel={() => setEditUserState((prev) => !prev)}
-            onEditUser={changeUserFn}
-            user={changeUser}
-          />,
-          document.body
-        )}
+      <AddNewUser
+        onCancel={() => setEditUserState((prev) => !prev)}
+        onAddUser={changeUserFn}
+        type="edit"
+        modalOpen={editUserState}
+        userEdit={changeUser}
+      />
 
       <div className="users__header">
         <h1>Utilizatori</h1>
 
         <div>
-          <Button type="primary" onClick={() => setAddUser((prev) => !prev)}>
+          <Button
+            type="primary"
+            onClick={() => setAddUserModalState((prev) => !prev)}
+          >
             Adauga utilizator
           </Button>
         </div>

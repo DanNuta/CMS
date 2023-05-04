@@ -4,9 +4,9 @@ import { Card } from "./Card";
 import { Table } from "./Table";
 import { Chart } from "./Chart";
 import { Form } from "./Forms/Form/Form";
-import { Container, Menu, TopBar } from "./layout";
+import { Container, Menu, Topbar } from "./layout";
 import { PopUp } from "./PopUp/PopUp";
-import { ConfirmationModal } from "./ConfirmationModal/ConfirmationModal";
+
 import {
   Input,
   Select,
@@ -23,9 +23,8 @@ export {
   Table,
   Container,
   Menu,
-  TopBar,
+  Topbar,
   Chart,
-  ConfirmationModal,
   Checkbox,
   Password,
   Form,

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 
 interface FormProps {
-  onSendFn: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSendFn?: (e: React.FormEvent<HTMLFormElement>) => void;
   title?: string;
 }
 

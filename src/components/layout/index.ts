@@ -1,5 +1,5 @@
 import { Container } from "./Container";
 import { Menu } from "./Menu/Menu";
-import { TopBar } from "./TopBar";
+import { Topbar } from "./Topbar/Topbar";
 
-export { Container, Menu, TopBar };
+export { Container, Menu, Topbar };

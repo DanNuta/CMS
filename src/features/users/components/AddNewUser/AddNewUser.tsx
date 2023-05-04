@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Form,
@@ -10,33 +10,48 @@ import {
 } from "../../../../components";
 import { errorInputs, patternRegEx } from "../../../../utils";
 import { UserProps } from "types";
-import { UserModalForm } from "../UserModalForm/UserModalForm";
+import { Modal } from "../../../../components";
 
 interface AddNewUserProps {
   onCancel: () => void;
   onAddUser: (data: UserProps) => void;
+  type: "edit" | "create";
+  userEdit?: UserProps;
+  modalOpen: boolean;
 }
 
 export const AddNewUser: React.FC<AddNewUserProps> = ({
   onCancel,
   onAddUser,
+  userEdit,
+  type,
+  modalOpen,
 }) => {
+  const [data, setData] = useState<UserProps | undefined>();
+
+  useEffect(() => {
+    setData(userEdit);
+  }, [userEdit]);
+
+  console.log(userEdit);
   const [name, setName] = useState<string>("");
   const [errName, setErrName] = useState<string | null>(null);
 
-  const [prenume, setPrenume] = useState<string>("");
+  const [prenume, setPrenume] = useState<string>(userEdit?.prenume ?? "");
   const [errPrenume, setErrPrenume] = useState<string | null>(null);
 
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>(userEdit?.email ?? "");
   const [errEmail, setErrEmail] = useState<string | null>(null);
 
-  const [gender, setGender] = useState<string | undefined>("masculin");
+  const [gender, setGender] = useState<string | undefined>(
+    userEdit?.gender ?? "masculin"
+  );
   const [errGender, setErrGender] = useState<string | null>(null);
 
   const [rol, setRol] = useState<string>("moderator");
   const [errRol, setErrRol] = useState<string | null>(null);
 
-  const [password, setPassword] = useState<string>("");
+  const [password, setPassword] = useState<string>(userEdit?.password ?? "");
   const [errPassword, setErrPassword] = useState<string | null>(null);
 
   const [checkbox, setCheckBox] = useState(false);
@@ -84,7 +99,6 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
     setErrCheckBox(!checkbox ? `${errorInputs.checkboxErr}` : null);
 
     if (anyError) return;
-
     if (testName) return;
     if (testPrenume) return;
     if (testEmail) return;
@@ -114,8 +128,13 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
   }
 
   return (
-    <UserModalForm>
-      <Form onSendFn={(e) => addNewUser(e)}>
+    <Modal
+      typeBtn={type === "create" ? "Add a new user" : "Save"}
+      openModal={modalOpen}
+      onClose={onCancel}
+      onConfirm={(e) => addNewUser(e)}
+    >
+      <Form>
         <Input
           type="text"
           placeholder="Nume"
@@ -169,14 +188,7 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
           id={"de-acord"}
           errorMsj={errCheckbox}
         />
-
-        <div className="modal__btns">
-          <Button type="danger" onClick={onCancel}>
-            Cancel
-          </Button>
-          <Button type="primary">Add</Button>
-        </div>
       </Form>
-    </UserModalForm>
+    </Modal>
   );
 };
