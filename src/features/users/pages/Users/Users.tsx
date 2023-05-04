@@ -90,28 +90,9 @@ export const Users = () => {
         </div>
       </div>
 
-      <div className="list_users">
-        <div className="card_row">
-          <span>Nume</span>
-          <span>Prenume</span>
-          <span>Email</span>
-          <span>Gen</span>
-          <span>Rol</span>
-          <span>Action</span>
-        </div>
+      <Table users={data} onEdit={editUser} onDelete={deleteUserFn} />
 
-        {data &&
-          data.map((item, i) => {
-            return (
-              <Table
-                key={i}
-                user={item}
-                onEdit={editUser}
-                onDelete={deleteUserFn}
-              />
-            );
-          })}
-      </div>
+      <div className="list_users"></div>
     </div>
   );
 };
