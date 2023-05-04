@@ -43,3 +43,10 @@ export async function logIn<T>(email: string, password: string): Promise<T> {
 
   return res;
 }
+
+export async function updateUser(data: UserProps) {
+  const id = data.id;
+  const dataPut = await axios.put(`${urlUsers}/${id}`, data);
+
+  return await dataPut.data;
+}

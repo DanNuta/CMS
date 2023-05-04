@@ -1,4 +1,28 @@
-.modal__btns {
+@use "../../../../styles/variables.scss" as variable;
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: variable.$clr-modal;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+
+  &__children {
+    width: 500px;
+    background-color: variable.$clr-white;
+    text-align: center;
+    padding: 20px;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 20px;
+  }
 }

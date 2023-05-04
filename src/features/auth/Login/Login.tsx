@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Query, QueryKey, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { Form, Password, Input, Button } from "../../../components";
@@ -31,8 +31,6 @@ export const Login = () => {
   );
 
   useEffect(() => {
-    console.log(data, isLoading);
-
     if (data?.length === 0) {
       setPopUp(true);
       setEmail("");
@@ -44,7 +42,7 @@ export const Login = () => {
 
     if (data?.length! > 0) {
       const val = data?.[0];
-      const id = val!.id.toString();
+      const id = val!.id!.toString();
 
       localStorage.setItem("userId", id);
       changeUser(val!);
@@ -55,8 +53,6 @@ export const Login = () => {
       setPassword("");
     }
   }, [data]);
-
-  console.log(data);
 
   function logInUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -69,9 +65,6 @@ export const Login = () => {
     if (email === "" && password === "") return;
 
     setLogInState(true);
-
-    // setEmail("");
-    // setPassword("");
   }
 
   return (

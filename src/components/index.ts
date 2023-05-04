@@ -3,10 +3,10 @@ import { Modal, ModalForm } from "./Modal/Modal";
 import { Card } from "./Card";
 import { Table } from "./Table";
 import { Chart } from "./Chart";
-import { ConfirmationModal } from "./ConfirmationModal";
 import { Form } from "./Forms/Form/Form";
 import { Container, Menu, TopBar } from "./layout";
 import { PopUp } from "./PopUp/PopUp";
+import { ConfirmationModal } from "./ConfirmationModal/ConfirmationModal";
 import {
   Input,
   Select,

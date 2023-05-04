@@ -1,7 +1,5 @@
 import React, { PropsWithChildren } from "react";
 
-import { Button } from "../../components";
-
 export const Modal: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="modal">

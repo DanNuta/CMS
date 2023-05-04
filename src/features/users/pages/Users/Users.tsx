@@ -2,18 +2,17 @@ import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPortal } from "react-dom";
 
-import { getsUsers, deleteUser, getUser } from "../../../../api";
-import { Button, Modal } from "../../../../components";
-import { Table, UserModalForm } from "../../components";
+import { getsUsers, deleteUser, updateUser, postUsers } from "../../../../api";
+import { Button } from "../../../../components";
+import { Table, EditUser, AddNewUser } from "../../components";
 import { UserProps } from "../../../../types";
 
 export const Users = () => {
   const [addUser, setAddUser] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
-  const [userId, setUserId] = useState<number>(1);
+  const [changeUser, setChangeUser] = useState<UserProps | undefined>();
 
   const queryClient = useQueryClient();
-
   queryClient.invalidateQueries({ queryKey: ["users"] });
 
   const { data, isLoading } = useQuery<UserProps[]>({
@@ -21,17 +20,41 @@ export const Users = () => {
     queryFn: getsUsers,
   });
 
-  const { mutate } = useMutation({
+  const { mutate: mutateDeleteUser } = useMutation({
     mutationFn: deleteUser,
   });
 
-  function deleteUserFn(id: number) {
-    mutate(id);
+  const { mutate: mutatePostUser } = useMutation({
+    mutationFn: postUsers,
+  });
+
+  const { mutate: mutatePutUser } = useMutation({
+    mutationFn: updateUser,
+  });
+
+  function addNewUser(data: UserProps) {
+    mutatePostUser(data);
   }
+
+  // delete user
+
+  function deleteUserFn(id: number) {
+    mutateDeleteUser(id);
+  }
+
+  // edit user
 
   function editUser(id: number) {
     setEditUserState((prev) => !prev);
-    console.log(data);
+    const findUser = data?.find((item) => item.id === id);
+
+    setChangeUser(findUser);
+    console.log(findUser);
+  }
+
+  function changeUserFn(data: UserProps) {
+    const newData = { ...data, id: changeUser?.id };
+    mutatePutUser(newData);
   }
 
   return (
@@ -40,16 +63,22 @@ export const Users = () => {
 
       {addUser &&
         createPortal(
-          <Modal>
-            <UserModalForm
-              onCancel={() => setAddUser((prev) => !prev)}
-              onAddUser={() => console.log("click")}
-            />
-          </Modal>,
+          <AddNewUser
+            onCancel={() => setAddUser((prev) => !prev)}
+            onAddUser={addNewUser}
+          />,
           document.body
         )}
 
-      {editUserState && <h1>Edit</h1>}
+      {editUserState &&
+        createPortal(
+          <EditUser
+            onCancel={() => setEditUserState((prev) => !prev)}
+            onEditUser={changeUserFn}
+            user={changeUser}
+          />,
+          document.body
+        )}
 
       <div className="users__header">
         <h1>Utilizatori</h1>

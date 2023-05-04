@@ -11,9 +11,10 @@
 @forward "../features/users/components/UserModalForm/style.scss";
 @forward "../components/layout/Menu/style.scss";
 @forward "../components/PopUp/style.scss";
+@forward "../components/ConfirmationModal/style.scss";
+@forward "../features/users/components/EditUser/style.scss";
 
 //pages
-
 @forward "../features/auth/Register/style.scss";
 @forward "../features/users/pages/Users/style.scss";
 
