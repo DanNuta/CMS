@@ -81,7 +81,7 @@ export const Login = () => {
       )}
 
       <ModalForm>
-        <Form onSendFn={logInUser} title="Log in">
+        <Form dimension="custom-form" onSendFn={logInUser} title="Log in">
           <p className="exist_account">
             Don't have an account yet?{" "}
             <span>

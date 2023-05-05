@@ -123,7 +123,7 @@ export const Register: React.FC = () => {
     setCheckBox(false);
     setVerifyPassword("");
 
-    var uniq = new Date().getTime();
+    let uniq = new Date().getTime();
 
     const dataForm: UserProps = {
       name,
@@ -142,7 +142,7 @@ export const Register: React.FC = () => {
 
   return (
     <ModalForm>
-      <Form onSendFn={onSendData} title="Sign up">
+      <Form dimension="custom-form" onSendFn={onSendData} title="Sign up">
         <p className="exist_account">
           Already have an account?{" "}
           <span>

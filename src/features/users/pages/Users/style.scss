@@ -4,26 +4,11 @@
   background-color: variable.$clr-white;
   flex: 1;
   border-radius: variable.$radius;
-  padding-inline: 30px;
-  padding-block: 35px;
+  padding-inline: variable.$padding-content-inline;
+  padding-block: variable.$padding-content-block;
 
   &__header {
     display: flex;
     justify-content: space-between;
-  }
-
-  .card_row {
-    display: flex;
-    justify-content: space-between;
-
-    span {
-      width: calc(90% / 6);
-    }
-  }
-
-  .modal_form {
-    position: absolute;
-    background-color: red;
-    width: 100%;
   }
 }

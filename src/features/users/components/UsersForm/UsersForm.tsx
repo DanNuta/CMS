@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import {
   Form,
   Input,
-  Button,
   Select,
   Checkbox,
   Password,
@@ -20,7 +19,7 @@ interface AddNewUserProps {
   modalOpen: boolean;
 }
 
-export const AddNewUser: React.FC<AddNewUserProps> = ({
+export const UsersForm: React.FC<AddNewUserProps> = ({
   onCancel,
   onAddUser,
   userEdit,
@@ -33,7 +32,6 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
     setData(userEdit);
   }, [userEdit]);
 
-  console.log(userEdit);
   const [name, setName] = useState<string>("");
   const [errName, setErrName] = useState<string | null>(null);
 
@@ -49,7 +47,6 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
   const [errGender, setErrGender] = useState<string | null>(null);
 
   const [rol, setRol] = useState<string>("moderator");
-  const [errRol, setErrRol] = useState<string | null>(null);
 
   const [password, setPassword] = useState<string>(userEdit?.password ?? "");
   const [errPassword, setErrPassword] = useState<string | null>(null);
@@ -168,17 +165,15 @@ export const AddNewUser: React.FC<AddNewUserProps> = ({
         />
 
         <Select
-          errorMsj={errGender}
           name="gen"
           onChange={(e) => setGender(e.target.value)}
           options={["Masculin", "Femenin", "Ma abtin"]}
         />
 
         <Select
-          errorMsj={errRol}
           name="rol"
           onChange={(e) => setRol(e.target.value)}
-          options={["Moderator", "Aministrator"]}
+          options={["moderator", "administrator"]}
         />
 
         <Checkbox

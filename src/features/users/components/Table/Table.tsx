@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { createPortal } from "react-dom";
+import { useState, useContext } from "react";
 
-import { UserProps } from "types";
+import { UserProps, LogInUser } from "../../../../types";
 import { Button, Modal } from "../../../../components";
 import Delete from "../../../../icons/delete.svg";
 import Edit from "../../../../icons/edit.svg";
+import { LogIn } from "../../../../context";
 
 interface UserPropsData {
   users?: UserProps[];
@@ -13,6 +13,8 @@ interface UserPropsData {
 }
 
 export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
+  const { user: userContext } = useContext(LogIn) as LogInUser;
+
   const [modalOpen, setConfirmation] = useState(false);
   const [idDelete, setIdDelete] = useState<null | number>(null);
 
@@ -42,46 +44,47 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
         <h1>Sigur Doresti sa stergi acest user</h1>
       </Modal>
 
-      <div className="card_row">
-        <span>Nume</span>
-        <span>Prenume</span>
-        <span>Email</span>
-        <span>Gen</span>
-        <span>Rol</span>
-        <span>Action</span>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Prenume</td>
+            <td>Email</td>
+            <td>Gen</td>
+            <td>Rol</td>
+            {userContext?.rol === "administrator" && <td>Action</td>}
+          </tr>
+        </thead>
 
-      {users &&
-        users.map((user, i) => {
-          return (
-            <div key={i} className="card_row">
-              <div className="card_name card_col">
-                <h1>{user.name}</h1>
-              </div>
-              <div className="card_prenume card_col">
-                <p>{user.prenume}</p>
-              </div>
-              <div className="card_email card_col">
-                <p>{user.email}</p>
-              </div>
-              <div className="card_gender card_col">
-                <p>{user.gender}</p>
-              </div>
-              <div className="card_role card_col">
-                <p>{user.rol}</p>
-              </div>
+        <tbody>
+          {users &&
+            users.map((user, i) => {
+              return (
+                <tr key={i} className="card_name card_col">
+                  <td className="card_name card_col">{user.name}</td>
+                  <td className="card_prenume card_col">{user.prenume}</td>
+                  <td className="card_email card_col">{user.email}</td>
+                  <td className="card_gender card_col">{user.email}</td>
+                  <td className="card_role card_col">{user.rol}</td>
 
-              <div className="card_edit_delete card_col">
-                <Button onClick={() => deleteUser(user.id)}>
-                  <img src={Delete} />
-                </Button>
-                <Button onClick={() => editUser(user.id)}>
-                  <img src={Edit} />
-                </Button>
-              </div>
-            </div>
-          );
-        })}
+                  {userContext?.rol === "administrator" && (
+                    <td className="card_edit_delete card_col">
+                      <Button
+                        dimension="none"
+                        onClick={() => deleteUser(user.id)}
+                      >
+                        <img src={Delete} />
+                      </Button>
+                      <Button onClick={() => editUser(user.id)}>
+                        <img src={Edit} />
+                      </Button>
+                    </td>
+                  )}
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </>
   );
 };

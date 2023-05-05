@@ -41,9 +41,5 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
 };
 
 export const ModalForm: React.FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <div className="form">
-      <div className="form__modal">{children}</div>
-    </div>
-  );
+  return <div className="modal">{children}</div>;
 };

@@ -2,8 +2,12 @@
 
 form {
   @include mixin.formModel();
-
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.custom-form {
+  width: 400px;
+  padding: 32px;
 }

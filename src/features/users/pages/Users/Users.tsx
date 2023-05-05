@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { createPortal } from "react-dom";
 
 import { getsUsers, deleteUser, updateUser, postUsers } from "../../../../api";
 import { Button } from "../../../../components";
-import { Table, EditUser, AddNewUser } from "../../components";
+import { Table, UsersForm } from "../../components";
 import { UserProps } from "../../../../types";
+import { LogIn } from "../../../../context";
+import { LogInUser } from "../../../../types";
 
 export const Users = () => {
+  const { user } = useContext(LogIn) as LogInUser;
+
   const [addUserModalState, setAddUserModalState] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
   const [changeUser, setChangeUser] = useState<UserProps | undefined>();
@@ -60,14 +63,14 @@ export const Users = () => {
     <div className="users">
       {isLoading && <h1>Loading...</h1>}
 
-      <AddNewUser
+      <UsersForm
         onCancel={() => setAddUserModalState((prev) => !prev)}
         onAddUser={addNewUser}
         type="create"
         modalOpen={addUserModalState}
       />
 
-      <AddNewUser
+      <UsersForm
         onCancel={() => setEditUserState((prev) => !prev)}
         onAddUser={changeUserFn}
         type="edit"
@@ -79,12 +82,14 @@ export const Users = () => {
         <h1>Utilizatori</h1>
 
         <div>
-          <Button
-            type="primary"
-            onClick={() => setAddUserModalState((prev) => !prev)}
-          >
-            Adauga utilizator
-          </Button>
+          {user?.rol === "administrator" && (
+            <Button
+              type="primary"
+              onClick={() => setAddUserModalState((prev) => !prev)}
+            >
+              Adauga utilizator
+            </Button>
+          )}
         </div>
       </div>
 

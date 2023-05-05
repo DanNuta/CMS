@@ -16,10 +16,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Router>
           <App />
         </Router>
-
-        <ReactQueryDevtools initialIsOpen={true} />
       </LogInProvider>
-      {/* <Menu></Menu> */}
+      <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
   </React.StrictMode>
 );

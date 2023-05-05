@@ -3,7 +3,7 @@ import React from "react";
 interface SelectProps {
   name: string;
   options: string[];
-  errorMsj: string | null;
+  errorMsj?: string | null;
   value?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }

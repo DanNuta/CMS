@@ -5,18 +5,19 @@ import { Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import { ROUTES_PATHS, navigateToPost } from "./routes";
-import { Users, Register, Login } from "./features/auth";
+import { Register, Login } from "./features/auth";
 import { Menu, Topbar } from "./components";
 import { LogIn } from "./context";
 import { LogInUser } from "./types";
 import { getUser } from "./api";
+import { Users } from "./features/users/pages";
+import { Posts, Create, Edit } from "./features/posts/pages";
 
 function App() {
   const idLocalUser = Number(localStorage.getItem("userId"));
   const { user, changeUser } = useContext(LogIn) as LogInUser;
 
   if (idLocalUser) {
-    console.log("if");
     const { data } = useQuery({
       queryKey: ["userLogIn", idLocalUser],
       queryFn: () => getUser(idLocalUser),
@@ -55,6 +56,20 @@ function App() {
             path={`${ROUTES_PATHS.users}`}
             element={
               user ? <Users /> : <Navigate to={`${ROUTES_PATHS.login}`} />
+            }
+          />
+
+          <Route
+            path={`${ROUTES_PATHS.posts}`}
+            element={
+              user ? <Posts /> : <Navigate to={`${ROUTES_PATHS.login}`} />
+            }
+          />
+
+          <Route
+            path={`${ROUTES_PATHS.postCreate}`}
+            element={
+              user ? <Create /> : <Navigate to={`${ROUTES_PATHS.login}`} />
             }
           />
         </Routes>

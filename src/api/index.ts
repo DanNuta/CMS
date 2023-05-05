@@ -7,4 +7,14 @@ import {
   updateUser,
 } from "./users";
 
-export { postUsers, getsUsers, deleteUser, getUser, logIn, updateUser };
+import { postPOST } from "./posts";
+
+export {
+  postUsers,
+  getsUsers,
+  deleteUser,
+  getUser,
+  logIn,
+  updateUser,
+  postPOST,
+};

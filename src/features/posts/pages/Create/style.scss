@@ -1,0 +1,18 @@
+@use "../../../../styles/variables.scss" as variable;
+
+.postare {
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  background-color: variable.$clr-white;
+  border-radius: variable.$radius;
+  padding-inline: variable.$padding-content-inline;
+  padding-block: variable.$padding-content-block;
+
+  > *div {
+    display: flex;
+    width: 100%;
+    gap: 50px;
+  }
+}

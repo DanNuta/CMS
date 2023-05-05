@@ -19,10 +19,22 @@
   padding-inline: 25px;
 }
 
+.none {
+  padding: 0;
+}
+
 .danger {
   @include mixin.btnColor(variable.$clr-danger, variable.$clr-white);
 }
 
+.danger:hover {
+  background-color: variable.$clr-hover-red;
+}
+
 .primary {
   @include mixin.btnColor(variable.$clr-blue, variable.$clr-white);
+}
+
+.primary:hover {
+  background-color: variable.$clr-hover-blue;
 }

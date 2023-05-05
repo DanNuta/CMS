@@ -18,12 +18,16 @@ export const Topbar = () => {
 
   return (
     <div className="top-bar">
-      <h1>{user?.name}</h1>
-      <h1>{user?.prenume}</h1>
+      <div>
+        <Button onClick={logOut} type="danger">
+          Log out
+        </Button>
+      </div>
 
-      <Button onClick={logOut} type="danger">
-        Log out
-      </Button>
+      <div>
+        <h1>{user?.name}</h1>
+        <h1>{user?.prenume}</h1>
+      </div>
     </div>
   );
 };

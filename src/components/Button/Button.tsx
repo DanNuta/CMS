@@ -4,7 +4,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: "danger" | "primary";
-  dimension?: "full" | "custom";
+  dimension?: "full" | "custom" | "none";
 }
 
 export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({

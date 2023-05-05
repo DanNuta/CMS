@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface InputProps {
-  type: "text" | "email" | "password" | "checkbox";
+  type: "text" | "email" | "password" | "checkbox" | "textarea" | "date";
   placeholder?: string;
   id?: string;
   errorMsj: string | null;

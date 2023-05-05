@@ -8,10 +8,8 @@
 @forward "../components/Forms/Form/style.scss";
 @forward "../features/users/components/Table/style.scss";
 @forward "../components/Modal/style.scss";
-@forward "../features/users/components/UserModalForm/style.scss";
 @forward "../components/layout/Menu/style.scss";
 @forward "../components/PopUp/style.scss";
-@forward "../features/users/components/EditUser/style.scss";
 @forward "../components/layout/Topbar/style.scss";
 
 //pages
@@ -20,6 +18,7 @@
 @forward "../App.scss";
 @forward "../features/posts/pages/Edit/style.scss";
 @forward "../features/posts/pages/Create/style.scss";
+@forward "../features/posts/pages/Post/style.scss";
 
 //mixin
 @forward "./mixin/button.mixin.scss";
