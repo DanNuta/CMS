@@ -1,12 +1,18 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 interface PopUpProps {
-  type: "danger" | "primary";
+  type: "fail" | "succes";
 }
 
 export const PopUp: React.FC<PropsWithChildren<PopUpProps>> = ({
   children,
   type,
 }) => {
-  return <div className={`${type} pop-up`}>{children}</div>;
+  const [openPopUp, setOpenPopUp] = useState(true);
+
+  setTimeout(() => {
+    setOpenPopUp(false);
+  }, 3000);
+
+  return <>{openPopUp && <div className={`${type} pop-up`}>{children}</div>}</>;
 };

@@ -1,8 +1,8 @@
 import { Button } from "./Button/Button";
 import { Modal, ModalForm } from "./Modal/Modal";
-import { Card } from "./Card";
 import { Table } from "./Table";
 import { Chart } from "./Chart";
+import { Card } from "./Card/Card";
 import { Form } from "./Forms/Form/Form";
 import { Container, Menu, Topbar } from "./layout";
 import { PopUp } from "./PopUp/PopUp";

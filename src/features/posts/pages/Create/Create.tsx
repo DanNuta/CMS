@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
-import { Form, Button, Input } from "../../../../components";
+import { Form, Button, Input, PopUp } from "../../../../components";
 import { LogIn } from "../../../../context";
 import { LogInUser, PostProps } from "../../../../types";
 import { postPOST } from "../../../../api";
 import { errorBlog } from "../../../../utils";
+import { ROUTES_PATHS } from "../../../../routes";
 
 export const Create = () => {
+  const location = useNavigate();
   const { user } = useContext(LogIn) as LogInUser;
+
+  const [sendSucesModal, setSendSuccesModal] = useState(false);
+  const [sendErrorModal, setSendErrorModal] = useState(false);
 
   const [title, setTitle] = useState("");
   const [errTitle, setErrTitle] = useState<string | null>(null);
@@ -22,9 +28,19 @@ export const Create = () => {
   const [date, setData] = useState("");
   const [errData, setErrData] = useState<string | null>(null);
 
-  const { data, mutate, error, isError, isSuccess } = useMutation({
+  const { data, mutate, error, isError, isSuccess, isLoading } = useMutation({
     mutationFn: postPOST,
   });
+
+  useEffect(() => {
+    if (isSuccess) {
+      setSendSuccesModal(true);
+    }
+
+    if (isError) {
+      setSendErrorModal(true);
+    }
+  }, [isError, isSuccess]);
 
   function sendPost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -61,14 +77,20 @@ export const Create = () => {
     setLinkImage("");
     setData("");
 
-    console.log(postObj);
+    location(`${ROUTES_PATHS.posts}`);
   }
 
   return (
     <div className="postare">
       <h1>Creaza o postare</h1>
-      {isError && <h1>{error.message}</h1>}
-      {isSuccess && <h1>Datele adaugate cu suuces</h1>}
+
+      {isLoading && <h1>loading...</h1>}
+
+      {isError && (
+        <PopUp type="fail">
+          <p>{error.message}</p>
+        </PopUp>
+      )}
 
       <Form onSendFn={sendPost}>
         <div>

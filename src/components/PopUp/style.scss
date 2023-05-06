@@ -8,12 +8,16 @@
   left: 50%;
   transform: translateX(-50%);
   border-radius: variable.$radius;
+  z-index: 999;
+  top: 20px;
 }
 
-.danger {
+.fail {
   background-color: variable.$clr-danger;
+  color: variable.$clr-white;
 }
 
-.primary {
-  background-color: variable.$clr-blue;
+.succes {
+  background-color: variable.$clr-succes;
+  color: variable.$clr-white;
 }

@@ -21,11 +21,11 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [errPassword, setErrPassword] = useState("");
 
-  const [popUp, setPopUp] = useState<boolean | null>(null);
+  const [popUpSucces, setPopUpSucces] = useState(false);
 
   const [logInState, setLogInState] = useState(false);
 
-  const { data, isLoading } = useQuery<UserProps[]>({
+  const { data } = useQuery<UserProps[]>({
     queryKey: ["emailPAssword", email, password],
     queryFn: () => logIn(email, password),
     enabled: logInState,
@@ -34,12 +34,11 @@ export const Login = () => {
   useEffect(() => {
     if (data?.length === 0) {
       setLogInState(false);
-      setPopUp(true);
+
+      setPopUpSucces(true);
+
       setEmail("");
       setPassword("");
-      setTimeout(() => {
-        setPopUp(false);
-      }, 2000);
     }
 
     if (data?.length! > 0) {
@@ -72,8 +71,8 @@ export const Login = () => {
 
   return (
     <>
-      {popUp && (
-        <PopUp type="danger">
+      {popUpSucces && (
+        <PopUp type="fail">
           <p>
             Nu ai introdus corect datele, creazati un cont da nu ai deja unul
           </p>
@@ -89,6 +88,7 @@ export const Login = () => {
             </span>
           </p>
 
+          {data && <h1>gghfghfg</h1>}
           <Input
             value={email}
             type="email"

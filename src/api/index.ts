@@ -7,7 +7,7 @@ import {
   updateUser,
 } from "./users";
 
-import { postPOST } from "./posts";
+import { postPOST, getPosts } from "./posts";
 
 export {
   postUsers,
@@ -17,4 +17,5 @@ export {
   logIn,
   updateUser,
   postPOST,
+  getPosts,
 };
