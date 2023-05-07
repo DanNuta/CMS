@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import { ROUTES_PATHS, navigateToPost } from "./routes";
+import { ROUTES_PATHS } from "./routes";
 import { Register, Login } from "./features/auth";
 import { Menu, Topbar } from "./components";
 import { LogIn } from "./context";
@@ -12,6 +12,7 @@ import { LogInUser } from "./types";
 import { getUser } from "./api";
 import { Users } from "./features/users/pages";
 import { Posts, Create, Edit } from "./features/posts/pages";
+import { Dashboard } from "./features/dashboard/pages";
 
 function App() {
   const idLocalUser = Number(localStorage.getItem("userId"));
@@ -70,6 +71,20 @@ function App() {
             path={`${ROUTES_PATHS.postCreate}`}
             element={
               user ? <Create /> : <Navigate to={`${ROUTES_PATHS.login}`} />
+            }
+          />
+
+          <Route
+            path={`${ROUTES_PATHS.postIdEdit}`}
+            element={
+              user ? <Edit /> : <Navigate to={`${ROUTES_PATHS.login}`} />
+            }
+          />
+
+          <Route
+            path={`${ROUTES_PATHS.dashboard}`}
+            element={
+              user ? <Dashboard /> : <Navigate to={`${ROUTES_PATHS.login}`} />
             }
           />
         </Routes>

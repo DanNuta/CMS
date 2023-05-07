@@ -1,8 +1,13 @@
 @use "../../../../styles/mixin/input.mixin.scss" as mixin;
+@use "../../../../styles/variables.scss" as variable;
 
 .container_input {
   margin-bottom: 30px;
   position: relative;
+
+  .label {
+    font-weight: variable.$fw-600;
+  }
 
   .input {
     @include mixin.input();

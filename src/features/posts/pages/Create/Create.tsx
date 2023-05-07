@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import React, { useContext, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { Form, Button, Input, PopUp } from "../../../../components";
@@ -13,8 +13,10 @@ export const Create = () => {
   const location = useNavigate();
   const { user } = useContext(LogIn) as LogInUser;
 
-  const [sendSucesModal, setSendSuccesModal] = useState(false);
-  const [sendErrorModal, setSendErrorModal] = useState(false);
+  const queryClient = useQueryClient();
+
+  //  const [sendSucesModal, setSendSuccesModal] = useState(false);
+  // const [sendErrorModal, setSendErrorModal] = useState(false);
 
   const [title, setTitle] = useState("");
   const [errTitle, setErrTitle] = useState<string | null>(null);
@@ -28,19 +30,23 @@ export const Create = () => {
   const [date, setData] = useState("");
   const [errData, setErrData] = useState<string | null>(null);
 
-  const { data, mutate, error, isError, isSuccess, isLoading } = useMutation({
+  const { data, mutate, error, isError, isLoading } = useMutation({
     mutationFn: postPOST,
+    onSuccess: (data) => {
+      queryClient.setQueryData(["posts"], data);
+      location(`${ROUTES_PATHS.posts}`);
+    },
   });
 
-  useEffect(() => {
-    if (isSuccess) {
-      setSendSuccesModal(true);
-    }
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     setSendSuccesModal(true);
+  //   }
 
-    if (isError) {
-      setSendErrorModal(true);
-    }
-  }, [isError, isSuccess]);
+  //   if (isError) {
+  //     setSendErrorModal(true);
+  //   }
+  // }, [isError, isSuccess]);
 
   function sendPost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -76,8 +82,6 @@ export const Create = () => {
     setDescription("");
     setLinkImage("");
     setData("");
-
-    location(`${ROUTES_PATHS.posts}`);
   }
 
   return (

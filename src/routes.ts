@@ -9,8 +9,9 @@ export const ROUTES_PATHS = {
   register: "/register",
 };
 
-export const navigateToPost = () => {
-  gotoPostDetails: (id: string) =>
-    `${ROUTES_PATHS.postIdEdit.replace("id", id)}`;
-  gotoPostEdit: (id: string) => `${ROUTES_PATHS.postIdEdit.replace(":id", id)}`;
+export const navigateToPost = {
+  gotoPostDetails: (id: number) =>
+    `${ROUTES_PATHS.postIdEdit.replace("id", id.toString())}`,
+  gotoPostEdit: (id: number) =>
+    `${ROUTES_PATHS.postIdEdit.replace(":id", id.toString())}`,
 };

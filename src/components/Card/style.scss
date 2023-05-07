@@ -3,12 +3,7 @@
 .card {
   background-color: variable.$clr-white;
   border-radius: variable.$radius;
-  //grid-row: span 1;
   padding: 25px;
-
-  &:nth-child(6) {
-    background-color: red;
-  }
 
   .title-edit {
     display: flex;

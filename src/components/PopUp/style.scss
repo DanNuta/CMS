@@ -1,7 +1,7 @@
 @use "../../styles/variables.scss" as variable;
 
 .pop-up {
-  position: absolute;
+  position: sticky;
   width: 300px;
   padding: 20px;
   text-align: center;

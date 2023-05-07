@@ -1,24 +1,30 @@
+import { Link } from "react-router-dom";
+
 import { PostProps } from "../../types";
 import Delete from "../../icons/delete.svg";
 import Edit from "../../icons/edit.svg";
 import { Button } from "../../components/Button/Button";
+import { navigateToPost } from "../../routes";
 
 interface CardProps {
   data: PostProps;
+  onDeletePost: (id: number) => void;
 }
 
-export const Card: React.FC<CardProps> = ({ data }) => {
+export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
   return (
     <div className="card">
       <div>
         <div className="title-edit">
           <h1>{data.title}</h1>
           <div className="btn">
-            <Button dimension="none">
+            <Button onClick={() => onDeletePost(data.id)} dimension="none">
               <img src={Delete} alt="" />
             </Button>
             <Button dimension="none">
-              <img src={Edit} alt="" />
+              <Link to={navigateToPost.gotoPostEdit(data.id)}>
+                <img src={Edit} alt="" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -28,6 +34,21 @@ export const Card: React.FC<CardProps> = ({ data }) => {
 
       <div className="description">
         <p>{data.description}</p>
+      </div>
+
+      <div>
+        <img src={data.linkImage} />
+      </div>
+
+      <div>
+        <p>
+          Link catre poza:{" "}
+          <span>
+            <a href={data.linkImage!} target="_blank">
+              img
+            </a>
+          </span>
+        </p>
       </div>
 
       <div>
