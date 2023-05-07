@@ -11,7 +11,7 @@ import { LogIn } from "./context";
 import { LogInUser } from "./types";
 import { getUser } from "./api";
 import { Users } from "./features/users/pages";
-import { Posts, Create, Edit } from "./features/posts/pages";
+import { Posts, Create, Edit, Details } from "./features/posts/pages";
 import { Dashboard } from "./features/dashboard/pages";
 
 function App() {
@@ -85,6 +85,13 @@ function App() {
             path={`${ROUTES_PATHS.dashboard}`}
             element={
               user ? <Dashboard /> : <Navigate to={`${ROUTES_PATHS.login}`} />
+            }
+          />
+
+          <Route
+            path={`${ROUTES_PATHS.postDetails}`}
+            element={
+              user ? <Details /> : <Navigate to={`${ROUTES_PATHS.login}`} />
             }
           />
         </Routes>

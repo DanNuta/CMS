@@ -1,6 +1,10 @@
 @use "../../../../styles/variables.scss" as variable;
 
 .postare {
+  background-color: variable.$clr-white;
+  border-radius: variable.$radius;
+  padding-block: variable.$padding-content-block;
+  padding-inline: variable.$padding-content-inline;
   h1 {
     margin-bottom: 24px;
   }

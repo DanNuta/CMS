@@ -1,19 +1,32 @@
-import { Bar } from "recharts";
+import { useQueries } from "@tanstack/react-query";
 
-export const Dashboard = () => {
-  const el = {
-    labels: ["Red", "Blue", "Yellow"],
-    dataset: [
-      {
-        label: "My First Dataset",
-        data: [300, 50, 100],
-      },
-    ],
-  };
+import { ChartLine, ChartPie } from "../../../../components";
+import { getData } from "../../../../api";
+
+const urls = ["http://localhost:3001/posts", "http://localhost:3000/users"];
+
+export const Dashboard: React.FC = () => {
+  const queries = useQueries({
+    queries: urls.map((item) => {
+      return {
+        queryKey: ["data", item],
+        queryFn: () => getData(item),
+      };
+    }),
+  });
+
+  const posts = queries[0].data;
+  const users = queries[1].data;
 
   return (
     <div>
-      <Bar data={el} />
+      <div>
+        <ChartPie data={users} />
+      </div>
+
+      <div>
+        <ChartLine data={posts} />
+      </div>
     </div>
   );
 };

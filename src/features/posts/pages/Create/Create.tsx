@@ -84,6 +84,24 @@ export const Create = () => {
     setData("");
   }
 
+  function onBlurElement(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    const date = new Date(value);
+    const dayOfTheWeek = date.getDay();
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const selectedDayOfWeek = days[dayOfTheWeek];
+    const data = `${value} ${selectedDayOfWeek}`;
+    setData(data);
+  }
+
   return (
     <div className="postare">
       <h1>Creaza o postare</h1>
@@ -125,11 +143,7 @@ export const Create = () => {
             onChange={(e) => setLinkImage(e.target.value)}
           />
 
-          <Input
-            type="date"
-            errorMsj={errData}
-            onBlur={(e) => setData(e.target.value)}
-          />
+          <Input type="date" errorMsj={errData} onBlur={onBlurElement} />
         </div>
 
         <Button type="primary">Add post</Button>

@@ -4,6 +4,7 @@ import { PostProps } from "../../types";
 import Delete from "../../icons/delete.svg";
 import Edit from "../../icons/edit.svg";
 import { Button } from "../../components/Button/Button";
+
 import { navigateToPost } from "../../routes";
 
 interface CardProps {
@@ -32,13 +33,15 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
         <p>{data.date}</p>
       </div>
 
-      <div className="description">
-        <p>{data.description}</p>
-      </div>
+      <Link to={navigateToPost.gotoPostDetails(data.id)}>
+        <div className="description">
+          <p>{data.description}</p>
+        </div>
 
-      <div>
-        <img src={data.linkImage} />
-      </div>
+        <div>
+          <img src={data.linkImage} />
+        </div>
+      </Link>
 
       <div>
         <p>

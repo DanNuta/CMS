@@ -13,6 +13,7 @@ import {
   deletePost,
   getPost,
   updatePostPUT,
+  getData,
 } from "./posts";
 
 export {
@@ -27,4 +28,5 @@ export {
   deletePost,
   getPost,
   updatePostPUT,
+  getData,
 };

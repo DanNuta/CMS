@@ -28,3 +28,10 @@ export async function deletePost(id: number | null) {
 export function updatePostPUT(updateData: PostProps): any {
   axios.put(`${url}/${updateData.id}`, updateData).then((res) => res.data);
 }
+
+export async function getData(urls: string) {
+  const data = await axios.get(`${urls}`);
+  const res = await data.data;
+
+  return res;
+}

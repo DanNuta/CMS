@@ -6,7 +6,7 @@ import { Card, Modal, PopUp, Button } from "../../../../components";
 import { ROUTES_PATHS } from "../../../../routes";
 import { getPosts, deletePost } from "../../../../api";
 
-export const Posts = () => {
+export const Posts: React.FC = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
@@ -33,7 +33,7 @@ export const Posts = () => {
   }
 
   return (
-    <div>
+    <div className="posts">
       {isSuccess && (
         <PopUp type="succes">
           <p>Postarea a fost stearsa cu succes !!!</p>
@@ -49,11 +49,13 @@ export const Posts = () => {
         <h3> Sunteti siguri ca doriti sa stergeti postare?</h3>
       </Modal>
 
-      <h1>Posts</h1>
+      <div className="title-posts">
+        <h1>Posts</h1>
 
-      <Button type="primary">
-        <Link to={`${ROUTES_PATHS.postCreate}`}>Add new post</Link>
-      </Button>
+        <Button type="primary">
+          <Link to={`${ROUTES_PATHS.postCreate}`}>Add new post</Link>
+        </Button>
+      </div>
 
       <div className="card-parent">
         {data &&
