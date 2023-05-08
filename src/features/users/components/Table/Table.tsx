@@ -64,7 +64,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                   <td className="card_name card_col">{user.name}</td>
                   <td className="card_prenume card_col">{user.prenume}</td>
                   <td className="card_email card_col">{user.email}</td>
-                  <td className="card_gender card_col">{user.email}</td>
+                  <td className="card_gender card_col">{user.gender}</td>
                   <td className="card_role card_col">{user.rol}</td>
 
                   {userContext?.rol === "administrator" && (

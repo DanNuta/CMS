@@ -26,25 +26,18 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
   type,
   modalOpen,
 }) => {
-  const [data, setData] = useState<UserProps | undefined>();
-
-  useEffect(() => {
-    setData(userEdit);
-  }, [userEdit]);
-
   const [name, setName] = useState<string>("");
   const [errName, setErrName] = useState<string | null>(null);
 
   const [prenume, setPrenume] = useState<string>(userEdit?.prenume ?? "");
   const [errPrenume, setErrPrenume] = useState<string | null>(null);
 
-  const [email, setEmail] = useState<string>(userEdit?.email ?? "");
+  const [email, setEmail] = useState<string>("");
   const [errEmail, setErrEmail] = useState<string | null>(null);
 
   const [gender, setGender] = useState<string | undefined>(
     userEdit?.gender ?? "masculin"
   );
-  const [errGender, setErrGender] = useState<string | null>(null);
 
   const [rol, setRol] = useState<string>("moderator");
 
@@ -53,6 +46,13 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
 
   const [checkbox, setCheckBox] = useState(false);
   const [errCheckbox, setErrCheckBox] = useState<string | null>(null);
+
+  useEffect(() => {
+    setName(userEdit?.name ?? "");
+    setPrenume(userEdit?.prenume ?? "");
+    setPassword(userEdit?.password ?? "");
+    setEmail(userEdit?.email ?? "");
+  }, [userEdit]);
 
   function changeEmail(data: React.ChangeEvent<HTMLInputElement>) {
     const value = data.target.value;
@@ -91,7 +91,6 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
     setErrName(testName ? `${errorInputs.nameErr}` : null);
     setErrPrenume(testPrenume ? `${errorInputs.prenumeErr}` : null);
     setErrEmail(testEmail ? `${errorInputs.emailErr}` : null);
-    setErrGender(testGender ? `${errorInputs.genderErr}` : null);
     setErrPassword(testPasswordTwe ? `${errorInputs.passwordErr}` : null);
     setErrCheckBox(!checkbox ? `${errorInputs.checkboxErr}` : null);
 
@@ -100,7 +99,10 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
     if (testPrenume) return;
     if (testEmail) return;
     if (testPasswordTwe) return;
-    if (!checkbox) return;
+
+    if (!userEdit) {
+      if (!checkbox) return;
+    }
 
     setName("");
     setPrenume("");
@@ -176,13 +178,15 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
           options={["moderator", "administrator"]}
         />
 
-        <Checkbox
-          type="checkbox"
-          onChange={(e) => setCheckBox(e.target.checked)}
-          label="Sunt deacord cu prelucrarea datelor personale"
-          id={"de-acord"}
-          errorMsj={errCheckbox}
-        />
+        {!userEdit && (
+          <Checkbox
+            type="checkbox"
+            onChange={(e) => setCheckBox(e.target.checked)}
+            label="Sunt deacord cu prelucrarea datelor personale"
+            id={"de-acord"}
+            errorMsj={errCheckbox}
+          />
+        )}
       </Form>
     </Modal>
   );

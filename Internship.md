@@ -28,7 +28,7 @@ Utilizatorul trebuie sa se poata inregistra in aplicatie. Vor fi folosite urmato
 - Parola(input[type="password"]) - parola utilizatorului
 - Confirmare parola(input[type="password"]) - confirmarea parolei
 - Checkbox(input[type="checkbox"]) - Sunt deacord cu prelucrarea datelor personale
-- utoBn(button) - Buton de inregistrare
+- ButtoBn(button) - Buton de inregistrare
 
 Dupa ce utilizatorul completeaza datele, se face un request cu datele din forma de mai sus. POST - /users
 

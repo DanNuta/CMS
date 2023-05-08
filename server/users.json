@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "name": "dan",
+      "name": "Daniel",
       "prenume": "nutu",
       "email": "nuta@gmail.com",
       "gender": "masculin",
@@ -13,7 +13,7 @@
       "name": "ana",
       "prenume": "cara",
       "email": "ana@gmail.com",
-      "gender": "Femenin",
+      "gender": "masculin",
       "password": "ana",
       "rol": "moderator",
       "id": 1683227070718
@@ -22,7 +22,7 @@
       "name": "andrei",
       "prenume": "furman",
       "email": "andrei@gmail.com",
-      "gender": "masculin",
+      "gender": "Ma abtin",
       "password": "andrei",
       "rol": "moderator",
       "id": 1683227163235
@@ -87,8 +87,26 @@
       "email": "danu@gmail.com",
       "gender": "masculin",
       "password": "gfdgfdg",
-      "rol": "administrator",
+      "rol": "moderator",
       "id": 1683537222487
+    },
+    {
+      "name": "Ionel",
+      "prenume": "Frunza",
+      "email": "fghfghfg@gmail.com",
+      "gender": "masculin",
+      "password": "wer",
+      "rol": "moderator",
+      "id": 1683549061756
+    },
+    {
+      "name": "gghgfh",
+      "prenume": "fghfg",
+      "email": "ghfgh@gmail.com",
+      "gender": "masculin",
+      "password": "1234658d",
+      "rol": "moderator",
+      "id": 1683550366145
     }
   ]
 }
