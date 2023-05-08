@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { Form, Button, Input, PopUp } from "../../../../components";
+import { Form, Button, Input, PopUp, Textarea } from "../../../../components";
 import { LogIn } from "../../../../context";
 import { LogInUser, PostProps } from "../../../../types";
 import { postPOST } from "../../../../api";
@@ -84,6 +84,8 @@ export const Create = () => {
     setData("");
   }
 
+  const errorMsj = error as any;
+
   function onBlurElement(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     const date = new Date(value);
@@ -110,30 +112,32 @@ export const Create = () => {
 
       {isError && (
         <PopUp type="fail">
-          <p>{error.message}</p>
+          <p>{errorMsj.message}</p>
         </PopUp>
       )}
 
       <Form onSendFn={sendPost}>
-        <div>
+        <div className="postare__form-edit">
           <Input
             type="text"
             value={title}
             placeholder="Titlul postarii"
             onChange={(e) => setTitle(e.target.value)}
             errorMsj={errTitle}
+            label="Title"
+            id="title"
           />
 
-          <Input
-            type="textarea"
+          <Textarea
             value={description}
-            placeholder="Descrierea postarii"
             errorMsj={errDescription}
             onChange={(e) => setDescription(e.target.value)}
+            id="desc"
+            label="Description"
           />
         </div>
 
-        <div>
+        <div className="postare__form-edit">
           <Input
             type="text"
             value={linkImage}
@@ -141,9 +145,17 @@ export const Create = () => {
             errorMsj={errLinkimage}
             onBlur={(e) => setLinkImage(e.target.value)}
             onChange={(e) => setLinkImage(e.target.value)}
+            label="Link catre imagine"
+            id="img"
           />
 
-          <Input type="date" errorMsj={errData} onBlur={onBlurElement} />
+          <Input
+            type="date"
+            errorMsj={errData}
+            onBlur={onBlurElement}
+            label="Date"
+            id="date"
+          />
         </div>
 
         <Button type="primary">Add post</Button>

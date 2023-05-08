@@ -19,12 +19,14 @@ export const Dashboard: React.FC = () => {
   const users = queries[1].data;
 
   return (
-    <div>
-      <div>
+    <div className="chart">
+      <div className="pie-chart">
+        {users && <h1>Numarul de utilizator: {users.length}</h1>}
         <ChartPie data={users} />
       </div>
 
-      <div>
+      <div className="line-chart">
+        {posts && <h1>Numarul de postari: {posts.length}</h1>}
         <ChartLine data={posts} />
       </div>
     </div>

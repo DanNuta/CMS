@@ -13,10 +13,12 @@
 
 .full {
   width: 100%;
+  padding-block: 15px;
 }
 
 .custom {
   padding-inline: 25px;
+  padding-block: 15px;
 }
 
 .none {
@@ -37,4 +39,12 @@
 
 .primary:hover {
   background-color: variable.$clr-hover-blue;
+}
+
+.href {
+  a {
+    padding-block: 15px;
+    padding-inline: 25px;
+    color: variable.$clr-white;
+  }
 }

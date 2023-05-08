@@ -4,7 +4,7 @@ import { PostProps } from "../types";
 
 const url = "http://localhost:3001/posts";
 
-export function postPOST<PostProps>(blog: PostProps): any {
+export function postPOST(blog: PostProps): any {
   axios.post(`${url}`, { ...blog }).then((data) => data.data);
 }
 

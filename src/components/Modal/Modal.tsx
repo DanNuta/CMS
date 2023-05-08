@@ -16,11 +16,18 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   onConfirm,
   typeBtn,
 }) => {
+  function closeModal(e: React.MouseEvent<HTMLDivElement>) {
+    const value = e.target as HTMLDivElement;
+
+    if (value.matches(".modal")) {
+      onClose();
+    }
+  }
   return (
     <>
       {openModal &&
         createPortal(
-          <div className="modal">
+          <div onClick={closeModal} className="modal">
             <div className="modal__children">
               {children}
 

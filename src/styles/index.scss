@@ -12,6 +12,7 @@
 @forward "../components/PopUp/style.scss";
 @forward "../components/layout/Topbar/style.scss";
 @forward "../components/Card/style.scss";
+@forward "../components/Forms/Inputs/Textarea/style.scss";
 
 //pages
 @forward "../features/auth/Register/style.scss";
@@ -21,6 +22,8 @@
 @forward "../features/posts/pages/Create/style.scss";
 @forward "../features/posts/pages/Post/style.scss";
 @forward "../features/posts/pages/Details/style.scss";
+@forward "../features/dashboard/pages/Dashboard/style.scss";
+@forward "../features/posts/pages/Edit/style.scss";
 
 //mixin
 @forward "./mixin/button.mixin.scss";

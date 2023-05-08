@@ -2,30 +2,12 @@
   "users": [
     {
       "name": "dan",
-      "prenume": "nuta",
-      "email": "dany@gmail.com",
-      "gender": "masculin",
-      "password": "dan",
-      "rol": "moderator",
-      "id": 1683226406575
-    },
-    {
-      "name": "dan",
       "prenume": "nutu",
       "email": "nuta@gmail.com",
       "gender": "masculin",
       "password": "nutu",
       "rol": "moderator",
       "id": 1683226478855
-    },
-    {
-      "name": "ion",
-      "prenume": "erhan",
-      "email": "erhan@gmail.com",
-      "gender": "masculin",
-      "password": "erhan",
-      "rol": "moderator",
-      "id": 1683226808504
     },
     {
       "name": "ana",
@@ -89,6 +71,24 @@
       "password": "lilian",
       "rol": "administrator",
       "id": 1683269268120
+    },
+    {
+      "name": "Dan",
+      "prenume": "NUTA",
+      "email": "DANY@gmail.com",
+      "gender": "masculin",
+      "password": "dan",
+      "rol": "moderator",
+      "id": 1683537179591
+    },
+    {
+      "name": "daniel",
+      "prenume": "NUTA",
+      "email": "danu@gmail.com",
+      "gender": "masculin",
+      "password": "gfdgfdg",
+      "rol": "administrator",
+      "id": 1683537222487
     }
   ]
 }

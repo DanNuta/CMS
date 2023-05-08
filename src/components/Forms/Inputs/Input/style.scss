@@ -4,6 +4,8 @@
 .container_input {
   margin-bottom: 30px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   .label {
     font-weight: variable.$fw-600;

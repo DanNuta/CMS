@@ -52,7 +52,7 @@ export const Posts: React.FC = () => {
       <div className="title-posts">
         <h1>Posts</h1>
 
-        <Button type="primary">
+        <Button element="href" type="primary" dimension="none">
           <Link to={`${ROUTES_PATHS.postCreate}`}>Add new post</Link>
         </Button>
       </div>

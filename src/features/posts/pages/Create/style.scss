@@ -14,9 +14,14 @@
   padding-inline: variable.$padding-content-inline;
   padding-block: variable.$padding-content-block;
 
-  > *div {
-    display: flex;
+  &__form-edit {
     width: 100%;
-    gap: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .container_input {
+    width: 100%;
   }
 }

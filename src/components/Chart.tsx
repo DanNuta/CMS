@@ -7,6 +7,8 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  Legend,
+  Cell,
 } from "recharts";
 
 import { PostProps, UserProps } from "../types";
@@ -32,13 +34,13 @@ export const ChartPie: React.FC<PieChartProps> = ({ data }) => {
     },
   ];
 
+  const colors = ["#FF6384", "rgba(0,210,255,1)"];
+
   data?.forEach((d) => {
     currentData.forEach((c) => {
       d.rol === c.name ? (c.value = c.value + 1) : c.value + 1;
     });
   });
-
-  console.log(currentData);
 
   return (
     <PieChart width={400} height={400}>
@@ -48,10 +50,17 @@ export const ChartPie: React.FC<PieChartProps> = ({ data }) => {
         fill="red"
         cx={200}
         cy={200}
-        innerRadius={20}
+        innerRadius={40}
         label
-      />
-      <Tooltip></Tooltip>
+      >
+        {currentData.map((item, index) => {
+          return (
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          );
+        })}
+      </Pie>
+      <Tooltip />
+      <Legend />
     </PieChart>
   );
 };
@@ -100,11 +109,16 @@ export const ChartLine: React.FC<LineChartProps> = ({ data }) => {
 
   return (
     <LineChart width={700} height={300} data={days}>
-      <Line type="monotone" dataKey="react" stroke="red" strokeWidth={3}></Line>
-      <CartesianGrid stroke="#ccc"></CartesianGrid>
+      <Line
+        type="monotone"
+        dataKey="react"
+        stroke="rgba(0,210,255,1)"
+        strokeWidth={3}
+      ></Line>
+      <CartesianGrid stroke="#DDD"></CartesianGrid>
       <XAxis dataKey="name"></XAxis>
       <YAxis></YAxis>
-      <Tooltip />
+      <Tooltip></Tooltip>
     </LineChart>
   );
 };

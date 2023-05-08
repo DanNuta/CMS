@@ -96,7 +96,7 @@ La accesare delete se face doar un DELETE cu un modal de confirmare(ex. Sunteti 
 
 #### Dashboard
 
-Va contine un chart cu numarul de postari si users. Folositi rechart.js pentru a genera graficul.
+Va contine un chart cu numarul de postari si users. Folositi rechart.js pentru a genera graficul.Posts
 
 #### Logout
 

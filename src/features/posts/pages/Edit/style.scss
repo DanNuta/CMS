@@ -1,0 +1,8 @@
+@use "../../../../styles/variables.scss" as variable;
+
+.edit-post {
+  padding-inline: variable.$padding-content-inline;
+  padding-block: variable.$padding-content-block;
+  background-color: variable.$clr-white;
+  border-radius: variable.$radius;
+}

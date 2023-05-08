@@ -11,19 +11,24 @@ export const Details = () => {
     queryFn: () => getPost(id),
   });
 
-  console.log(data);
-
   return (
     <div className="details">
       {isLoading && <h1>Loading...</h1>}
 
-      <div>
-        <h1>{data?.title}</h1>
-        <p>{data?.description}</p>
-        <p>{data?.date}</p>
-        <p>
-          <span>{data?.author.name}</span> <span>{data?.author.prenume}</span>
-        </p>
+      <div className="details__blog">
+        <div className="author">
+          <p>
+            Author: <span>{data?.author.name}</span>{" "}
+            <span>{data?.author.prenume}</span>
+          </p>
+        </div>
+
+        <div className="title-date">
+          <h1>{data?.title}</h1>
+          <p className="date-post">{data?.date}</p>
+        </div>
+
+        <p className="descrition">{data?.description}</p>
         <img src={data?.linkImage} alt="" />
       </div>
     </div>

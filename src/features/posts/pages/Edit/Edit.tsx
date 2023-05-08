@@ -4,9 +4,10 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { getPost, updatePostPUT } from "../../../../api";
-import { Form, Input, Button } from "../../../../components";
+import { Form, Input, Button, Textarea } from "../../../../components";
 import { PostProps } from "../../../../types";
 import { ROUTES_PATHS } from "../../../../routes";
+import { errorBlog } from "../../../../utils";
 
 export const Edit = () => {
   const { id } = useParams();
@@ -34,6 +35,11 @@ export const Edit = () => {
   const [date, setDate] = useState<string | undefined>();
   const [idPost, setIdPost] = useState<number | undefined>();
 
+  const [errorTitle, setErrorTitle] = useState<string | null>(null);
+  const [errorDescription, setErrorDescription] = useState<string | null>(null);
+  const [errorLinkImage, setErrorLinkImage] = useState<string | null>(null);
+  const [errorData, setErrorData] = useState<string | null>(null);
+
   useEffect(() => {
     setTitle(data?.title);
     setDescription(data?.description);
@@ -42,8 +48,31 @@ export const Edit = () => {
     setIdPost(data?.id);
   }, [data]);
 
+  function getDataWithDay(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    const date = new Date(value);
+    const dayOfTheWeek = date.getDay();
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const selectedDayOfWeek = days[dayOfTheWeek];
+    const data = `${value} ${selectedDayOfWeek}`;
+    setDate(data);
+  }
+
   function sendSaveData(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    setErrorData(date ? "" : `${errorBlog.data}`);
+    setErrorDescription(description ? "" : `${errorBlog.description}`);
+    setErrorTitle(title ? "" : `${errorBlog.title}`);
+    setErrorLinkImage(linkImage ? "" : `${errorBlog.link}`);
 
     if (!title && !description && !date && !linkImage) return;
     if (!title) return;
@@ -67,7 +96,7 @@ export const Edit = () => {
   }
 
   return (
-    <div>
+    <div className="edit-post">
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
@@ -75,16 +104,15 @@ export const Edit = () => {
           <Input
             type="text"
             value={title || ""}
-            errorMsj={null}
+            errorMsj={errorTitle}
             onChange={(e) => setTitle(e.target.value)}
             label="Title"
             id="title"
           />
 
-          <Input
-            type="text"
+          <Textarea
             value={description || ""}
-            errorMsj={null}
+            errorMsj={errorDescription}
             onChange={(e) => setDescription(e.target.value)}
             label="Description"
             id="descriere"
@@ -92,9 +120,8 @@ export const Edit = () => {
 
           <Input
             type="date"
-            value={date || ""}
-            errorMsj={null}
-            onChange={(e) => setDate(e.target.value)}
+            errorMsj={errorData}
+            onChange={getDataWithDay}
             label="Date"
             id="data"
           />
@@ -102,7 +129,7 @@ export const Edit = () => {
           <Input
             type="text"
             value={linkImage || ""}
-            errorMsj={null}
+            errorMsj={errorLinkImage}
             onChange={(e) => setLinkImage(e.target.value)}
             label="Link la imagine"
             id="image"

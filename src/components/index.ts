@@ -1,6 +1,5 @@
 import { Button } from "./Button/Button";
 import { Modal, ModalForm } from "./Modal/Modal";
-import { Table } from "./Table";
 import { ChartPie, ChartLine } from "./Chart";
 import { Card } from "./Card/Card";
 import { Form } from "./Forms/Form/Form";
@@ -13,6 +12,7 @@ import {
   Checkbox,
   ShowHidePassword,
   Password,
+  Textarea,
 } from "./Forms/Inputs";
 
 export {
@@ -20,7 +20,6 @@ export {
   Input,
   Modal,
   Card,
-  Table,
   Container,
   Menu,
   Topbar,
@@ -33,4 +32,5 @@ export {
   ModalForm,
   PopUp,
   ChartLine,
+  Textarea,
 };

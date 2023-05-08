@@ -46,7 +46,6 @@ function App() {
             }
           />
           <Route
-            index
             path={`${ROUTES_PATHS.register}`}
             element={
               user ? <Navigate to={`${ROUTES_PATHS.users}`} /> : <Register />
