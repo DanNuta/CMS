@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 import { Form, Password, Input, Button } from "../../../components";
 import { ROUTES_PATHS } from "../../../routes";
@@ -21,64 +22,117 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [errPassword, setErrPassword] = useState("");
 
+  const [dataIsSubmites, setDataIsSubmited] = useState(false);
+
+  const emailTest = useRef("");
+  const passwordTest = useRef("");
+
   const [popUpSucces, setPopUpSucces] = useState(false);
 
-  const [logInState, setLogInState] = useState(false);
+  //const [logInState, setLogInState] = useState(false);
 
-  const { data } = useQuery<UserProps[]>({
-    queryKey: ["emailPAssword", email, password],
-    queryFn: () => logIn(email, password),
-    enabled: logInState,
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: ["login"],
+    queryFn: () => logIn(emailTest.current, passwordTest.current),
+    enabled: dataIsSubmites,
+
+    onSuccess: (data) => {
+      if (data.length) {
+        const val = data[0];
+        const id = val.id.toString();
+        localStorage.setItem("userId", id);
+        changeUser(val);
+        location(`${ROUTES_PATHS.users}`);
+      }
+    },
   });
 
-  useEffect(() => {
-    if (data?.length === 0) {
-      setLogInState(false);
+  setTimeout(() => {
+    setDataIsSubmited(false);
+  }, 100);
 
-      setPopUpSucces(true);
+  // useEffect(() => {
+  //   if (data?.length === 0) {
+  //     setLogInState(false);
 
-      setEmail("");
-      setPassword("");
-    }
+  //     setPopUpSucces(true);
 
-    if (data?.length! > 0) {
-      setLogInState(true);
-      const val = data?.[0];
-      const id = val!.id!.toString();
+  //     setEmail("");
+  //     setPassword("");
+  //   }
 
-      localStorage.setItem("userId", id);
-      changeUser(val);
+  //   if (data?.length! > 0) {
+  //     setLogInState(true);
+  //     const val = data?.[0];
+  //     const id = val!.id!.toString();
 
-      location(`${ROUTES_PATHS.users}`);
+  //     localStorage.setItem("userId", id);
+  //     changeUser(val);
 
-      setEmail("");
-      setPassword("");
-    }
-  }, [data]);
+  //     location(`${ROUTES_PATHS.users}`);
+
+  //     setEmail("");
+  //     setPassword("");
+  //   }
+  // }, [data]);
+
+  // useEffect(() => {
+  //   if (data?.length) {
+  //     const val = data[0];
+  //     const id = val.id.toString();
+  //     changeUser(val);
+  //     location(`${ROUTES_PATHS.users}`);
+  //   } else {
+  //     //setPopUpSucces(true);
+  //   }
+
+  //   console.log(data);
+  // }, [data, isFetching, isLoading]);
+
+  function updateEmail(e: React.ChangeEvent<HTMLInputElement>) {
+    emailTest.current = e.target.value;
+    //setEmail(e.target.value);
+  }
+
+  function updatePassword(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    passwordTest.current = value;
+
+    logIn(emailTest.current, passwordTest.current);
+
+    //setPassword(e.target.value)
+  }
+
+  console.log(dataIsSubmites);
 
   function logInUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setErrEmail(email === "" ? `${errorInputs.emailErr}` : "");
-    setErrPassword(password === "" ? `${errorInputs.passwordErr}` : "");
+    setErrEmail(emailTest.current === "" ? `${errorInputs.emailErr}` : "");
+    setErrPassword(
+      passwordTest.current === "" ? `${errorInputs.passwordErr}` : ""
+    );
 
-    if (email === "") return;
-    if (password === "") return;
-    if (email === "" && password === "") return;
+    if (emailTest.current === "") return;
+    if (passwordTest.current === "") return;
+    if (emailTest.current === "" && passwordTest.current === "") return;
 
-    setLogInState(true);
+    setDataIsSubmited(true);
   }
 
   return (
     <>
-      {popUpSucces && (
+      {/* {popUpSucces && (
         <PopUp type="fail">
           <p>
             Nu ai introdus corect datele, creazati un cont da nu ai deja unul
           </p>
         </PopUp>
-      )}
+      )} */}
 
+      {isFetching && <h1>Loading...</h1>}
+
+      {isLoading && <h1>Load....</h1>}
       <ModalForm>
         <Form dimension="custom-form" onSendFn={logInUser} title="Log in">
           <p className="exist_account">
@@ -88,24 +142,23 @@ export const Login = () => {
             </span>
           </p>
 
-          {data && <h1>gghfghfg</h1>}
           <Input
-            value={email}
+            // value={passwordTest.current}
             type="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={updateEmail}
             errorMsj={errEmail}
           />
 
           <Password
-            value={password}
+            // value={password}
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={updatePassword}
             errorMsj={errPassword}
           />
 
           <Button type="primary" dimension="full">
-            Log in
+            {isLoading ? "Loading..." : "Log in "}
           </Button>
         </Form>
       </ModalForm>

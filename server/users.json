@@ -107,6 +107,33 @@
       "password": "1234658d",
       "rol": "moderator",
       "id": 1683550366145
+    },
+    {
+      "name": "fgdfg",
+      "prenume": "dfgdfgdf",
+      "email": "danr@gmail.com",
+      "gender": "masculin",
+      "password": "1234567890f",
+      "rol": "moderator",
+      "id": 1683552390139
+    },
+    {
+      "name": "hghjghj",
+      "prenume": "ghjghjghj",
+      "email": "ghjgh@gmail.com",
+      "gender": "masculin",
+      "password": "1234567890o",
+      "rol": "moderator",
+      "id": 1683552457653
+    },
+    {
+      "name": "hghfg",
+      "prenume": "hfghfg",
+      "email": "hfghf@gmail.com",
+      "gender": "masculin",
+      "password": "1234567890p",
+      "rol": "moderator",
+      "id": 1683552711508
     }
   ]
 }

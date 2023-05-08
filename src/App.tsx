@@ -22,9 +22,11 @@ function App() {
     const { data } = useQuery({
       queryKey: ["userLogIn", idLocalUser],
       queryFn: () => getUser(idLocalUser),
-    });
 
-    changeUser(data);
+      onSuccess: (data) => {
+        changeUser(data);
+      },
+    });
   }
 
   return (

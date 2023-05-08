@@ -35,7 +35,7 @@ export async function getUser(id: number): Promise<any> {
   return res;
 }
 
-export async function logIn<T>(email: string, password: string): Promise<T> {
+export async function logIn(email: string, password: string) {
   const data = await axios.get(
     `${urlUsers}?email=${email}&password=${password}`
   );

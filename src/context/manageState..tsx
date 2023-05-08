@@ -1,4 +1,9 @@
-import React, { createContext, useState, PropsWithChildren } from "react";
+import React, {
+  createContext,
+  useState,
+  PropsWithChildren,
+  useEffect,
+} from "react";
 
 import { UserProps, LogInUser } from "../types";
 
