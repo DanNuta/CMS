@@ -29,7 +29,7 @@ export function updatePostPUT(updateData: PostProps): any {
   axios.put(`${url}/${updateData.id}`, updateData).then((res) => res.data);
 }
 
-export async function getData(urls: string) {
+export async function getData(urls: string): Promise<PostProps[]> {
   const data = await axios.get(`${urls}`);
   const res = await data.data;
 

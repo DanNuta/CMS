@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { getsUsers, deleteUser, updateUser, postUsers } from "../../../../api";
-import { Button } from "../../../../components";
+import { Button, Modal } from "../../../../components";
 import { Table, UsersForm } from "../../components";
 import { UserProps } from "../../../../types";
 import { LogIn } from "../../../../context";
@@ -13,7 +13,10 @@ export const Users = () => {
 
   const [addUserModalState, setAddUserModalState] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
+  const [deleteUserState, setDeleteUserState] = useState(false);
+
   const [changeUser, setChangeUser] = useState<UserProps | undefined>();
+  const [idDelete, setIdDelete] = useState<UserProps | undefined>();
 
   const queryClient = useQueryClient();
   queryClient.invalidateQueries({ queryKey: ["users"] });
@@ -23,8 +26,8 @@ export const Users = () => {
     queryFn: getsUsers,
   });
 
-  const { mutate: mutateDeleteUser } = useMutation({
-    mutationFn: deleteUser,
+  const { mutate: mutateDeleteUser } = useMutation<UserProps[]>({
+    mutationFn: () => deleteUser(idDelete?.id),
   });
 
   const { mutate: mutatePostUser } = useMutation({
@@ -35,28 +38,34 @@ export const Users = () => {
     mutationFn: updateUser,
   });
 
+  // ---------------- useQuery -------------------------------------------
+
   function addNewUser(data: UserProps) {
     mutatePostUser(data);
+    setAddUserModalState(false);
   }
 
   // delete user
+  function deleteUserFn(data: UserProps) {
+    setDeleteUserState(true);
+    setIdDelete(data);
+  }
 
-  function deleteUserFn(id: number) {
-    mutateDeleteUser(id);
+  function confirmDeleteUser() {
+    setDeleteUserState(false);
+    mutateDeleteUser();
   }
 
   // edit user
-
-  function editUser(id: number) {
-    setEditUserState((prev) => !prev);
-    const findUser = data?.find((item) => item.id === id);
-
+  function editUser(editUser: UserProps) {
+    const findUser = data?.find((item) => item.id === editUser.id);
+    setEditUserState(true);
     setChangeUser(findUser);
   }
 
-  function changeUserFn(data: UserProps) {
-    const newData = { ...data, id: changeUser?.id };
-    mutatePutUser(newData);
+  function editUserOnServer(data: UserProps) {
+    setEditUserState(false);
+    mutatePutUser(data);
   }
 
   return (
@@ -70,9 +79,22 @@ export const Users = () => {
         modalOpen={addUserModalState}
       />
 
+      {/* delete user */}
+
+      <Modal
+        typeBtn="Confirm"
+        openModal={deleteUserState}
+        onClose={() => setDeleteUserState(false)}
+        onConfirm={confirmDeleteUser}
+      >
+        <h1>Sigur Doresti sa stergi acest user</h1>
+      </Modal>
+
+      {/* edit user */}
+
       <UsersForm
-        onCancel={() => setEditUserState((prev) => !prev)}
-        onAddUser={changeUserFn}
+        onCancel={() => setEditUserState(false)}
+        onAddUser={editUserOnServer}
         type="edit"
         modalOpen={editUserState}
         userEdit={changeUser}
@@ -83,10 +105,7 @@ export const Users = () => {
 
         <div>
           {user?.rol === "administrator" && (
-            <Button
-              type="primary"
-              onClick={() => setAddUserModalState((prev) => !prev)}
-            >
+            <Button type="primary" onClick={() => setAddUserModalState(true)}>
               Adauga utilizator
             </Button>
           )}

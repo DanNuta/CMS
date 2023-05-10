@@ -1,139 +1,22 @@
 {
   "users": [
     {
-      "name": "Daniel",
-      "prenume": "nutu",
-      "email": "nuta@gmail.com",
-      "gender": "masculin",
-      "password": "nutu",
-      "rol": "moderator",
-      "id": 1683226478855
-    },
-    {
-      "name": "ana",
-      "prenume": "cara",
-      "email": "ana@gmail.com",
-      "gender": "masculin",
-      "password": "ana",
-      "rol": "moderator",
-      "id": 1683227070718
-    },
-    {
-      "name": "andrei",
-      "prenume": "furman",
-      "email": "andrei@gmail.com",
-      "gender": "Ma abtin",
-      "password": "andrei",
-      "rol": "moderator",
-      "id": 1683227163235
-    },
-    {
       "name": "Ion",
-      "prenume": "frunza",
-      "email": "frunza@gmail.com",
+      "prenume": "Nuta",
+      "email": "dany@gmail.com",
       "gender": "masculin",
-      "password": "frunza",
-      "rol": "moderator",
-      "id": 1683227508222
-    },
-    {
-      "name": "iulian",
-      "prenume": "nuta",
-      "email": "dan@gmail.com",
-      "gender": "masculin",
-      "password": "iulian",
-      "rol": "moderator",
-      "id": 1683227588640
-    },
-    {
-      "name": "valerie",
-      "prenume": "food",
-      "email": "varleri@gmail.com",
-      "gender": "Femenin",
-      "password": "valerie",
-      "rol": "moderator",
-      "id": 1683230818511
-    },
-    {
-      "name": "Ionel",
-      "prenume": "Carp",
-      "email": "carp@gmail.com",
-      "gender": "masculin",
-      "password": "carp",
-      "rol": "moderator",
-      "id": 1683268913857
-    },
-    {
-      "name": "Lilian",
-      "prenume": "Demenciuc",
-      "email": "lilian@gmail.com",
-      "gender": "masculin",
-      "password": "lilian",
       "rol": "administrator",
-      "id": 1683269268120
+      "password": "1234567890d",
+      "id": 1683719710780
     },
     {
-      "name": "Dan",
-      "prenume": "NUTA",
-      "email": "DANY@gmail.com",
-      "gender": "masculin",
-      "password": "dan",
-      "rol": "moderator",
-      "id": 1683537179591
-    },
-    {
-      "name": "daniel",
-      "prenume": "NUTA",
-      "email": "danu@gmail.com",
-      "gender": "masculin",
-      "password": "gfdgfdg",
-      "rol": "moderator",
-      "id": 1683537222487
-    },
-    {
-      "name": "Ionel",
-      "prenume": "Frunza",
-      "email": "fghfghfg@gmail.com",
-      "gender": "masculin",
-      "password": "wer",
-      "rol": "moderator",
-      "id": 1683549061756
-    },
-    {
-      "name": "gghgfh",
-      "prenume": "fghfg",
+      "name": "ghfghgf",
+      "prenume": "gfhfgh",
       "email": "ghfgh@gmail.com",
       "gender": "masculin",
-      "password": "1234658d",
       "rol": "moderator",
-      "id": 1683550366145
-    },
-    {
-      "name": "fgdfg",
-      "prenume": "dfgdfgdf",
-      "email": "danr@gmail.com",
-      "gender": "masculin",
-      "password": "1234567890f",
-      "rol": "moderator",
-      "id": 1683552390139
-    },
-    {
-      "name": "hghjghj",
-      "prenume": "ghjghjghj",
-      "email": "ghjgh@gmail.com",
-      "gender": "masculin",
-      "password": "1234567890o",
-      "rol": "moderator",
-      "id": 1683552457653
-    },
-    {
-      "name": "hghfg",
-      "prenume": "hfghfg",
-      "email": "hfghf@gmail.com",
-      "gender": "masculin",
-      "password": "1234567890p",
-      "rol": "moderator",
-      "id": 1683552711508
+      "password": "fghfgh454",
+      "id": 1683721084751
     }
   ]
 }

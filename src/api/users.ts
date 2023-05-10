@@ -18,28 +18,28 @@ export async function getsUsers<T>(): Promise<T> {
   return res;
 }
 
-export async function deleteUser(id: number): Promise<any> {
-  try {
-    const deleteUser = await axios.delete(`${urlUsers}/${id}`);
-    const res = deleteUser;
-    return res;
-  } catch (e) {
-    throw new Error("Request-ul a esuat!");
-  }
+export async function deleteUser<T>(id: undefined | number): Promise<T> {
+  const deleteUser = await axios.delete(`${urlUsers}/${id}`);
+  const res = await deleteUser.data;
+  return res;
 }
 
-export async function getUser(id: number): Promise<any> {
+export async function getUser<T>(id: number): Promise<T> {
   const data = await axios.get(`${urlUsers}/${id}`);
   const res = await data.data;
 
   return res;
 }
 
-export async function logIn(email: string, password: string) {
+export async function logIn<T>(email: string, password: string): Promise<T> {
   const data = await axios.get(
     `${urlUsers}?email=${email}&password=${password}`
   );
   const res = await data.data;
+
+  if (!res.length) {
+    throw new Error("Acest utilizator nu exista");
+  }
 
   return res;
 }

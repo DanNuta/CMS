@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext, useMemo } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
@@ -8,7 +8,7 @@ import { Form, Password, Input, Button } from "../../../components";
 import { ROUTES_PATHS } from "../../../routes";
 import { ModalForm, PopUp } from "../../../components";
 import { logIn } from "../../../api";
-import { UserProps, LogInUser } from "types";
+import { LogInUser, UserProps } from "types";
 import { LogIn } from "../../../context";
 import { errorInputs } from "../../../utils";
 
@@ -16,94 +16,40 @@ export const Login = () => {
   const { changeUser } = useContext(LogIn) as LogInUser;
   const location = useNavigate();
 
-  const [email, setEmail] = useState("");
   const [errEmail, setErrEmail] = useState("");
-
-  const [password, setPassword] = useState("");
   const [errPassword, setErrPassword] = useState("");
-
-  const [dataIsSubmites, setDataIsSubmited] = useState(false);
 
   const emailTest = useRef("");
   const passwordTest = useRef("");
 
-  const [popUpSucces, setPopUpSucces] = useState(false);
+  const [errorMsj, setErrorMsj] = useState<string | null>(null);
 
-  //const [logInState, setLogInState] = useState(false);
-
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["login"],
-    queryFn: () => logIn(emailTest.current, passwordTest.current),
-    enabled: dataIsSubmites,
+  const { status, mutate } = useMutation<UserProps[]>({
+    mutationFn: () => logIn(emailTest.current, passwordTest.current),
 
     onSuccess: (data) => {
-      if (data.length) {
-        const val = data[0];
-        const id = val.id.toString();
-        localStorage.setItem("userId", id);
-        changeUser(val);
-        location(`${ROUTES_PATHS.users}`);
+      const val = data[0];
+      const id = val.id!.toString();
+      localStorage.setItem("userId", id);
+      changeUser(val);
+      location(`${ROUTES_PATHS.users}`);
+    },
+
+    onError: (error) => {
+      if (typeof error === "object" && error !== null) {
+        setErrorMsj(error.toString());
       }
     },
   });
 
-  setTimeout(() => {
-    setDataIsSubmited(false);
-  }, 100);
-
-  // useEffect(() => {
-  //   if (data?.length === 0) {
-  //     setLogInState(false);
-
-  //     setPopUpSucces(true);
-
-  //     setEmail("");
-  //     setPassword("");
-  //   }
-
-  //   if (data?.length! > 0) {
-  //     setLogInState(true);
-  //     const val = data?.[0];
-  //     const id = val!.id!.toString();
-
-  //     localStorage.setItem("userId", id);
-  //     changeUser(val);
-
-  //     location(`${ROUTES_PATHS.users}`);
-
-  //     setEmail("");
-  //     setPassword("");
-  //   }
-  // }, [data]);
-
-  // useEffect(() => {
-  //   if (data?.length) {
-  //     const val = data[0];
-  //     const id = val.id.toString();
-  //     changeUser(val);
-  //     location(`${ROUTES_PATHS.users}`);
-  //   } else {
-  //     //setPopUpSucces(true);
-  //   }
-
-  //   console.log(data);
-  // }, [data, isFetching, isLoading]);
-
   function updateEmail(e: React.ChangeEvent<HTMLInputElement>) {
     emailTest.current = e.target.value;
-    //setEmail(e.target.value);
   }
 
   function updatePassword(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     passwordTest.current = value;
-
-    logIn(emailTest.current, passwordTest.current);
-
-    //setPassword(e.target.value)
   }
-
-  console.log(dataIsSubmites);
 
   function logInUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -117,22 +63,17 @@ export const Login = () => {
     if (passwordTest.current === "") return;
     if (emailTest.current === "" && passwordTest.current === "") return;
 
-    setDataIsSubmited(true);
+    mutate();
   }
 
   return (
     <>
-      {/* {popUpSucces && (
+      {status === "error" && (
         <PopUp type="fail">
-          <p>
-            Nu ai introdus corect datele, creazati un cont da nu ai deja unul
-          </p>
+          <p>{errorMsj}</p>
         </PopUp>
-      )} */}
+      )}
 
-      {isFetching && <h1>Loading...</h1>}
-
-      {isLoading && <h1>Load....</h1>}
       <ModalForm>
         <Form dimension="custom-form" onSendFn={logInUser} title="Log in">
           <p className="exist_account">
@@ -158,7 +99,7 @@ export const Login = () => {
           />
 
           <Button type="primary" dimension="full">
-            {isLoading ? "Loading..." : "Log in "}
+            Log In
           </Button>
         </Form>
       </ModalForm>

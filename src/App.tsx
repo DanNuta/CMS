@@ -8,7 +8,7 @@ import { ROUTES_PATHS } from "./routes";
 import { Register, Login } from "./features/auth";
 import { Menu, Topbar } from "./components";
 import { LogIn } from "./context";
-import { LogInUser } from "./types";
+import { LogInUser, UserProps } from "./types";
 import { getUser } from "./api";
 import { Users } from "./features/users/pages";
 import { Posts, Create, Edit, Details } from "./features/posts/pages";
@@ -18,16 +18,15 @@ function App() {
   const idLocalUser = Number(localStorage.getItem("userId"));
   const { user, changeUser } = useContext(LogIn) as LogInUser;
 
-  if (idLocalUser) {
-    const { data } = useQuery({
-      queryKey: ["userLogIn", idLocalUser],
-      queryFn: () => getUser(idLocalUser),
+  useQuery<UserProps>({
+    queryKey: ["userLogIn", idLocalUser],
+    queryFn: () => getUser(idLocalUser),
+    enabled: !!idLocalUser,
 
-      onSuccess: (data) => {
-        changeUser(data);
-      },
-    });
-  }
+    onSuccess: (data) => {
+      changeUser(data);
+    },
+  });
 
   return (
     <div className="app">

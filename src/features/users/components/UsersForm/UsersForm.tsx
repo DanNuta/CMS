@@ -29,19 +29,17 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
   const [name, setName] = useState<string>("");
   const [errName, setErrName] = useState<string | null>(null);
 
-  const [prenume, setPrenume] = useState<string>(userEdit?.prenume ?? "");
+  const [prenume, setPrenume] = useState<string>("");
   const [errPrenume, setErrPrenume] = useState<string | null>(null);
 
   const [email, setEmail] = useState<string>("");
   const [errEmail, setErrEmail] = useState<string | null>(null);
 
-  const [gender, setGender] = useState<string | undefined>(
-    userEdit?.gender ?? "masculin"
-  );
+  const [gender, setGender] = useState<string>("");
 
-  const [rol, setRol] = useState<string>("moderator");
+  const [rol, setRol] = useState<string>("");
 
-  const [password, setPassword] = useState<string>(userEdit?.password ?? "");
+  const [password, setPassword] = useState<string>("");
   const [errPassword, setErrPassword] = useState<string | null>(null);
 
   const [checkbox, setCheckBox] = useState(false);
@@ -50,6 +48,8 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
   useEffect(() => {
     setName(userEdit?.name ?? "");
     setPrenume(userEdit?.prenume ?? "");
+    setRol(userEdit?.rol ?? "moderator");
+    setGender(userEdit?.gender ?? "masculin");
     setPassword(userEdit?.password ?? "");
     setEmail(userEdit?.email ?? "");
   }, [userEdit]);
@@ -70,8 +70,23 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
     setErrPassword(testPassword ? `${errorInputs.weakPassword}` : null);
   }
 
-  // send data to server
+  function cancelModal() {
+    setName("");
+    setPrenume("");
+    setEmail("");
+    setPassword("");
+    setCheckBox(false);
 
+    setErrName(null);
+    setErrPrenume(null);
+    setErrCheckBox(null);
+    setErrEmail(null);
+    setErrPassword(null);
+
+    onCancel();
+  }
+
+  // send data to server
   function addNewUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -102,38 +117,49 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
 
     if (!userEdit) {
       if (!checkbox) return;
+
+      var uniq = new Date().getTime();
+      const dataForm: UserProps = {
+        name,
+        prenume,
+        email,
+        gender,
+        password,
+        rol,
+        id: uniq,
+      };
+
+      onAddUser(dataForm);
+
+      return;
     }
-
-    setName("");
-    setPrenume("");
-    setEmail("");
-    setGender("");
-    setPassword("");
-    setCheckBox(false);
-
-    var uniq = new Date().getTime();
-    const dataForm: UserProps = {
+    const editUser: UserProps = {
       name,
       prenume,
       email,
       gender,
-      password,
       rol,
-      id: uniq,
+      password,
+      id: userEdit.id,
     };
+    onAddUser(editUser);
 
-    onAddUser(dataForm);
-    onCancel();
+    setName(userEdit?.name ?? "");
+    setPrenume(userEdit?.prenume ?? "");
+    setGender(userEdit?.gender ?? "");
+    setRol(userEdit?.rol ?? "");
+    setPassword(userEdit?.password ?? "");
+    setEmail(userEdit?.email ?? "");
   }
 
   return (
     <Modal
       typeBtn={type === "create" ? "Add a new user" : "Save"}
       openModal={modalOpen}
-      onClose={onCancel}
-      onConfirm={(e) => addNewUser(e)}
+      onClose={cancelModal}
+      onConfirm={addNewUser}
     >
-      <Form>
+      <Form onSendFn={addNewUser}>
         <Input
           type="text"
           placeholder="Nume"

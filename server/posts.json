@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "title": "Milan VS Inter",
+      "title": "Real",
       "description": "In international competiton, the club has won three European Cup/Champions League titles (1964, 1965, and 2010), two Intercontinental Club Cup titles (beating Independiente of Argentina in 1964 and 1965), and three Union of European Football Associations (UEFA) Cups (now UEFA Europa League; 1991, 1994, and 1998).",
       "date": "2023-05-31 Wednesday",
       "linkImage": "https://library.sportingnews.com/styles/crop_style_16_9_mobile_2x/s3/2023-04/nba-canada--51dfe626-83c3-441f-9628-4504d49d2ed1.jpeg?h=920929c4&itok=BkGYQHFJ",
@@ -21,17 +21,6 @@
         "name": "Lilian",
         "prenume": "Demenciuc"
       }
-    },
-    {
-      "title": "Juventus VS Sevilla",
-      "description": "What is Juventus' biggest ever Champions League defeat in history? Juventus heaviest loss in the Champions League - since it was reformed in 1992-93 - is a 4-0 thumping by Chelsea in the group stage at Stamford Bridge in 2021-22",
-      "linkImage": "https://cdn.vox-cdn.com/thumbor/H53M0_f1rfw887AfIp8FqjUl6iY=/58x0:2837x1853/1200x800/filters:focal(58x0:2837x1853)/cdn.vox-cdn.com/uploads/chorus_image/image/47835875/GettyImages-500449182.0.0.jpg",
-      "date": "2023-05-11 Thursday",
-      "author": {
-        "name": "Lilian",
-        "prenume": "Demenciuc"
-      },
-      "id": 1683532453780
     },
     {
       "title": "Roma VS Bayer",
@@ -56,17 +45,6 @@
       "id": 1683532725684
     },
     {
-      "title": "Fiorentina VS Basel",
-      "description": "Our analysis of all available data, including recent performances and player stats, suggests the most likely outcome of this match is a Fiorentina win with a probability of 62.99%. A draw has a probability of 19.9% and a win for Basel has a probability of 17.06%.",
-      "linkImage": "https://editorial.uefa.com//resources/0280-17d3400f9148-be7fe52c2cc8-1000/format/wide1/ogc_nice_v_fc_basel_quarterfinal_second_leg_-_uefa_europa_conference_league.jpeg",
-      "date": "2023-05-11 Thursday",
-      "author": {
-        "name": "Lilian",
-        "prenume": "Demenciuc"
-      },
-      "id": 1683532831193
-    },
-    {
       "title": "Chelsea vs Nottingham forest",
       "description": "What is Chelsea's biggest ever away defeat in history? Chelsea's biggest away defeat is by six goals. It's happened three times in history - an 8-1 loss to Wolverhampton Wanderers during the 1953/1954 season, and 7-0 defeats to Leeds United (1967/68) and Nottingham Forest (1990/91).",
       "linkImage": "https://e0.365dm.com/23/01/2048x1152/skysports-serge-aurier-nottingham-forest_6011170.jpg",
@@ -76,17 +54,6 @@
         "prenume": "Demenciuc"
       },
       "id": 1683532984317
-    },
-    {
-      "title": "Real Madrid VS Man City Vs Chelsea",
-      "description": "TV Channels. Real Madrid is going head to head with Manchester City starting on 9 May 2023 at 19:00 UTC at Santiago Bernabéu stadium, Madrid city, Spain. The match is a part of the UEFA Champions League. On Sofascore livescore you can find all previous Real Madrid vs Manchester City results sorted by their H2H matches.",
-      "date": "2023-05-31 Wednesday",
-      "linkImage": "https://phantom-marca.unidadeditorial.es/c5301823df3ccb2c5eb1d1ee51f8a1c3/crop/0x0/2044x1150/resize/1320/f/jpg/assets/multimedia/imagenes/2022/05/02/16514829977339.jpg",
-      "id": 1683550684195,
-      "author": {
-        "name": "gghgfh",
-        "prenume": "fghfg"
-      }
     }
   ]
 }

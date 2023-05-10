@@ -23,6 +23,7 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
       onClose();
     }
   }
+
   return (
     <>
       {openModal &&
