@@ -71,11 +71,12 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
   }
 
   function cancelModal() {
-    setName("");
-    setPrenume("");
-    setEmail("");
-    setPassword("");
-    setCheckBox(false);
+    setName(userEdit?.name ?? "");
+    setPrenume(userEdit?.prenume ?? "");
+    setGender(userEdit?.gender ?? "");
+    setRol(userEdit?.rol ?? "");
+    setPassword(userEdit?.password ?? "");
+    setEmail(userEdit?.email ?? "");
 
     setErrName(null);
     setErrPrenume(null);
@@ -132,24 +133,18 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
       onAddUser(dataForm);
 
       return;
+    } else {
+      const editUser: UserProps = {
+        name,
+        prenume,
+        email,
+        gender,
+        rol,
+        password,
+        id: userEdit.id,
+      };
+      onAddUser(editUser);
     }
-    const editUser: UserProps = {
-      name,
-      prenume,
-      email,
-      gender,
-      rol,
-      password,
-      id: userEdit.id,
-    };
-    onAddUser(editUser);
-
-    setName(userEdit?.name ?? "");
-    setPrenume(userEdit?.prenume ?? "");
-    setGender(userEdit?.gender ?? "");
-    setRol(userEdit?.rol ?? "");
-    setPassword(userEdit?.password ?? "");
-    setEmail(userEdit?.email ?? "");
   }
 
   return (

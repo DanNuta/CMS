@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { getsUsers, deleteUser, updateUser, postUsers } from "../../../../api";
-import { Button, Modal } from "../../../../components";
+import { Button, Modal, PopUp } from "../../../../components";
 import { Table, UsersForm } from "../../components";
 import { UserProps } from "../../../../types";
 import { LogIn } from "../../../../context";
@@ -19,23 +19,35 @@ export const Users = () => {
   const [idDelete, setIdDelete] = useState<UserProps | undefined>();
 
   const queryClient = useQueryClient();
-  queryClient.invalidateQueries({ queryKey: ["users"] });
-
   const { data, isLoading } = useQuery<UserProps[]>({
     queryKey: ["users"],
     queryFn: getsUsers,
   });
 
-  const { mutate: mutateDeleteUser } = useMutation<UserProps[]>({
+  const { mutate: mutateDeleteUser, status: statusDelete } = useMutation<
+    UserProps[]
+  >({
     mutationFn: () => deleteUser(idDelete?.id),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries(["users"]);
+    },
   });
 
-  const { mutate: mutatePostUser } = useMutation({
+  const { mutate: mutatePostUser, status: statusPostUser } = useMutation({
     mutationFn: postUsers,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries(["users"]);
+    },
   });
 
-  const { mutate: mutatePutUser } = useMutation({
+  const { mutate: mutatePutUser, status: statusEdit } = useMutation({
     mutationFn: updateUser,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries(["users"]);
+    },
   });
 
   // ---------------- useQuery -------------------------------------------
@@ -70,8 +82,6 @@ export const Users = () => {
 
   return (
     <div className="users">
-      {isLoading && <h1>Loading...</h1>}
-
       <UsersForm
         onCancel={() => setAddUserModalState((prev) => !prev)}
         onAddUser={addNewUser}
@@ -100,6 +110,18 @@ export const Users = () => {
         userEdit={changeUser}
       />
 
+      {statusDelete === "success" && (
+        <PopUp type="succes">utilizatorul a fost sters cu succes</PopUp>
+      )}
+
+      {statusPostUser === "success" && (
+        <PopUp type="succes">Utilizatorul sa adaugat cu succes</PopUp>
+      )}
+
+      {statusEdit === "success" && (
+        <PopUp type="succes">Modificare de succes</PopUp>
+      )}
+
       <div className="users__header">
         <h1>Utilizatori</h1>
 
@@ -112,7 +134,11 @@ export const Users = () => {
         </div>
       </div>
 
-      <Table users={data} onEdit={editUser} onDelete={deleteUserFn} />
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Table users={data} onEdit={editUser} onDelete={deleteUserFn} />
+      )}
 
       <div className="list_users"></div>
     </div>

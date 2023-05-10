@@ -1,7 +1,7 @@
 @use "../../styles/variables.scss" as variable;
 
 .pop-up {
-  position: sticky;
+  position: fixed;
   width: 300px;
   padding: 20px;
   text-align: center;
@@ -9,7 +9,7 @@
   transform: translateX(-50%);
   border-radius: variable.$radius;
   z-index: 999;
-  top: 20px;
+  top: 10px;
 }
 
 .fail {

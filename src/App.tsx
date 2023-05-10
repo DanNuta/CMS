@@ -19,7 +19,7 @@ function App() {
   const { user, changeUser } = useContext(LogIn) as LogInUser;
 
   useQuery<UserProps>({
-    queryKey: ["userLogIn", idLocalUser],
+    queryKey: [idLocalUser],
     queryFn: () => getUser(idLocalUser),
     enabled: !!idLocalUser,
 

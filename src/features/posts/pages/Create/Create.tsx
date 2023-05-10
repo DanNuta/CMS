@@ -15,9 +15,6 @@ export const Create = () => {
 
   const queryClient = useQueryClient();
 
-  //  const [sendSucesModal, setSendSuccesModal] = useState(false);
-  // const [sendErrorModal, setSendErrorModal] = useState(false);
-
   const [title, setTitle] = useState("");
   const [errTitle, setErrTitle] = useState<string | null>(null);
 
@@ -32,21 +29,12 @@ export const Create = () => {
 
   const { data, mutate, error, isError, isLoading } = useMutation({
     mutationFn: postPOST,
+
     onSuccess: (data) => {
       queryClient.setQueryData(["posts"], data);
       location(`${ROUTES_PATHS.posts}`);
     },
   });
-
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setSendSuccesModal(true);
-  //   }
-
-  //   if (isError) {
-  //     setSendErrorModal(true);
-  //   }
-  // }, [isError, isSuccess]);
 
   function sendPost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

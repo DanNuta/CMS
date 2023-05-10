@@ -11,15 +11,19 @@ export const Posts: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const queryClient = useQueryClient();
-  queryClient.invalidateQueries({ queryKey: ["posts"] });
+  // queryClient.invalidateQueries({ queryKey: ["posts"] });
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
   });
 
   const { mutate, isSuccess } = useMutation({
     mutationFn: deletePost,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
   });
 
   function openDeleteModalFn(id: number) {
@@ -58,12 +62,15 @@ export const Posts: React.FC = () => {
       </div>
 
       <div className="card-parent">
-        {data &&
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
           data?.map((item, i) => {
             return (
               <Card onDeletePost={openDeleteModalFn} data={item} key={i} />
             );
-          })}
+          })
+        )}
       </div>
     </div>
   );

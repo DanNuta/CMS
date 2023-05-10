@@ -7,9 +7,9 @@ const urls = ["http://localhost:3001/posts", "http://localhost:3000/users"];
 
 export const Dashboard: React.FC = () => {
   const queries = useQueries({
-    queries: urls.map((item) => {
+    queries: urls.map((item, i) => {
       return {
-        queryKey: ["data", item],
+        queryKey: ["data", i],
         queryFn: () => getData(item),
       };
     }),

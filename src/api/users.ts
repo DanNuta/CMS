@@ -21,6 +21,8 @@ export async function getsUsers<T>(): Promise<T> {
 export async function deleteUser<T>(id: undefined | number): Promise<T> {
   const deleteUser = await axios.delete(`${urlUsers}/${id}`);
   const res = await deleteUser.data;
+
+  console.log("dastastdasd");
   return res;
 }
 
@@ -48,5 +50,7 @@ export async function updateUser(data: UserProps) {
   const id = data.id;
   const dataPut = await axios.put(`${urlUsers}/${id}`, data);
 
-  return await dataPut.data;
+  // return await dataPut.data;
+
+  // return [];
 }
