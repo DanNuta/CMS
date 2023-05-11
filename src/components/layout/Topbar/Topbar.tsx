@@ -38,7 +38,7 @@ export const Topbar = () => {
         <h1>{user?.prenume}</h1>
 
         <div className="btn-arrow">
-          <Button>
+          <Button onClick={() => setShowLogOut((prev) => !prev)}>
             <img src={arrow}></img>
           </Button>
         </div>

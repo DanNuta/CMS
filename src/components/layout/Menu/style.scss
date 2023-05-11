@@ -1,5 +1,9 @@
 @use "../../../styles/variables.scss" as variable;
 
+.active {
+  background-color: red;
+}
+
 .desktop {
   width: 260px;
   padding-inline: 7px;
