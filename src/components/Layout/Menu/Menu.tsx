@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import posts from "../../../icons/posts.svg";
-import dashboard from "../../../icons/dashboard.svg";
-import users from "../../../icons/users.svg";
-
-import { ROUTES_PATHS } from "../../../routes";
+import posts from "@/icons/posts.svg";
+import dashboard from "@/icons/dashboard.svg";
+import users from "@/icons/users.svg";
+import { ROUTES_PATHS } from "@/routes";
 
 export const Menu = () => {
   const [mobileMod] = useState(false);

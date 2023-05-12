@@ -1,8 +1,8 @@
 import { useQueries } from "@tanstack/react-query";
 
 import { ChartLine, ChartPie, Chart } from "../../../components";
-import { getData } from "../../../api";
-import { UserProps, PostProps } from "types";
+import { getData } from "@/api";
+import { UserProps, PostProps } from "@/types";
 
 const urls = ["http://localhost:3001/posts", "http://localhost:3000/users"];
 

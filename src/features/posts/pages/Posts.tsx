@@ -9,10 +9,10 @@ import {
   Button,
   PageCard,
   Loading,
-} from "../../../components";
-import { ROUTES_PATHS } from "../../../routes";
-import { getPosts, deletePost } from "../../../api";
-import { succesMsj, confirmMjs } from "../../../utils";
+} from "@/components";
+import { ROUTES_PATHS } from "@/routes";
+import { getPosts, deletePost } from "@/api";
+import { succesMsj, confirmMjs } from "@/utils";
 
 export const Posts: React.FC = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);

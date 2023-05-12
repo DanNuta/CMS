@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { InputProps } from "types/input";
+import { InputProps } from "@/types/input";
 
 import { Input, ShowHidePassword } from "../";
 

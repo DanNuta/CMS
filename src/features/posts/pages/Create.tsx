@@ -2,17 +2,13 @@ import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { UserContext } from "../../../context";
-import {
-  UserContextType,
-  PostProps,
-  EditCreatePropsTypes,
-} from "../../../types";
-import { postPOST } from "../../../api";
-import { ROUTES_PATHS } from "../../../routes";
-import { PageCard, PopUp, Loading } from "../../../components";
+import { UserContext } from "@/context";
+import { UserContextType, PostProps, EditCreatePropsTypes } from "@/types";
+import { postPOST } from "@/api";
+import { ROUTES_PATHS } from "@/routes";
+import { PageCard, PopUp, Loading } from "@/components";
 
-import { EditPost } from "../../../components/EditCreate";
+import { EditPost } from "@/components";
 
 export const Create = () => {
   const location = useNavigate();
@@ -34,8 +30,7 @@ export const Create = () => {
   });
 
   function mutateElement(data: EditCreatePropsTypes) {
-
-    if(user === null) return
+    if (user === null) return;
     const uniq = new Date().getTime();
     const postBlog: PostProps = {
       ...data,

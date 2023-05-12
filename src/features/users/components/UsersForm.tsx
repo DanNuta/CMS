@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Input, Select, Checkbox, Password } from "../../../components";
-import { errorInputs, patternRegEx } from "../../../utils";
-import { UserProps } from "types";
-import { Modal } from "../../../components";
+import { Form, Input, Select, Checkbox, Password, Modal } from "@/components";
+import { errorInputs, patternRegEx } from "@/utils";
+import { UserProps } from "@/types";
 
 interface AddNewUserProps {
   onCancel: () => void;

@@ -1,6 +1,6 @@
 import React, { createContext, useState, PropsWithChildren } from "react";
 
-import { UserProps, UserContextType } from "../types";
+import { UserProps, UserContextType } from "@/types";
 
 export const UserContext = createContext<UserContextType | null>(null);
 

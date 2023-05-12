@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { Input, Form, Textarea, Button } from ".";
-import { errorBlog } from "../utils";
-import { PostProps, EditCreatePropsTypes } from "../types";
+import { Input, Form, Textarea, Button } from "@/components";
+import { errorBlog } from "@/utils";
+import { PostProps, EditCreatePropsTypes } from "@/types";
 
 interface EditCreateProps {
   posts?: PostProps;

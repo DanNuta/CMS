@@ -1,4 +1,2 @@
-import { Table } from "./Table/Table";
-import { UsersForm } from "./UsersForm";
-
-export { Table, UsersForm };
+export * from "./Table/Table";
+export * from "./UsersForm";

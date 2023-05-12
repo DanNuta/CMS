@@ -1,13 +1,12 @@
-import "./styles/index.scss";
-import { Navigate, Route, Routes } from "react-router-dom";
 import { useContext } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import { ROUTES_PATHS } from "./routes";
-import { AppLayout, BlogDetails } from "./components";
-import { UserContext } from "./context";
-import { UserContextType, UserProps } from "./types";
-import { getUser } from "./api";
+import { ROUTES_PATHS } from "@/routes";
+import { AppLayout, BlogDetails } from "@/components";
+import { UserContext } from "@/context";
+import { UserContextType, UserProps } from "@/types";
+import { getUser } from "@/api";
 import {
   Posts,
   Create,
@@ -16,7 +15,9 @@ import {
   Dashboard,
   Register,
   Login,
-} from "./features";
+} from "@/features";
+
+import "./styles/index.scss";
 
 function AppRouter() {
   const idLocalUser = Number(localStorage.getItem("userId"));

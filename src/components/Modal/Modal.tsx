@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { createPortal } from "react-dom";
-import { Button } from "../Button/Button";
+
+import { Button } from "@/components/Button";
 
 interface ModalProps {
   onClose: () => void;

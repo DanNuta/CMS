@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import { UserProps, UserContextType } from "../../../../types";
-import { Button } from "../../../../components";
-import Delete from "../../../../icons/delete.svg";
-import Edit from "../../../../icons/edit.svg";
-import { UserContext } from "../../../../context";
+import { UserProps, UserContextType } from "@/types";
+import { Button } from "@/components";
+import Delete from "@/icons/delete.svg";
+import Edit from "@/icons/edit.svg";
+import { UserContext } from "@/context";
 
 interface UserPropsData {
   users?: UserProps[];

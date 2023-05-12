@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-
-import { UserContextType } from "types";
-import { UserContext } from "../../../context";
-import { Button } from "../../Button/Button";
 import { useNavigate } from "react-router-dom";
-import { ROUTES_PATHS } from "../../../routes";
-import arrow from "../../../icons/arrowDown.svg";
+
+import { UserContextType } from "@/types";
+import { UserContext } from "@/context";
+import { ROUTES_PATHS } from "@/routes";
+import arrow from "@/icons/arrowDown.svg";
+import { Button } from "@/components/Button";
 
 export const Topbar = () => {
   const { user, setUserState } = useContext(UserContext) as UserContextType;

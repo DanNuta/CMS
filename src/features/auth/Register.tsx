@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+
 import {
   Input,
   Checkbox,
@@ -9,15 +11,12 @@ import {
   Button,
   ModalForm,
   PopUp,
-} from "../../../components";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-
-import { ROUTES_PATHS } from "../../../routes";
-import { postUsers } from "../../../api";
-import { UserProps, UserContextType } from "types";
-import { errorInputs, patternRegEx } from "../../../utils";
-import { UserContext } from "../../../context";
+} from "@/components";
+import { ROUTES_PATHS } from "@/routes";
+import { postUsers } from "@/api";
+import { UserProps, UserContextType } from "@/types";
+import { errorInputs, patternRegEx } from "@/utils";
+import { UserContext } from "@/context";
 
 export const Register: React.FC = () => {
   const { setUserState } = useContext(UserContext) as UserContextType;

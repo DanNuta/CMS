@@ -2,12 +2,11 @@ import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { getPost, updatePostPUT } from "../../../api";
-import { PostProps, EditCreatePropsTypes } from "../../../types";
-import { ROUTES_PATHS } from "../../../routes";
-
-import { EditPost } from "../../../components/EditCreate";
-import { PageCard, Loading } from "../../../components";
+import { getPost, updatePostPUT } from "@/api";
+import { PostProps, EditCreatePropsTypes } from "@/types";
+import { ROUTES_PATHS } from "@/routes";
+import { EditPost } from "@/components";
+import { PageCard, Loading } from "@/components";
 
 export const Edit = () => {
   const { id } = useParams();

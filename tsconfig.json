@@ -19,12 +19,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "src"
-    // "paths": {
-    //   "@/components/*": ["./components/*"],
-    //   "src/*": ["./src/*"],
-    //   "@/api/*": ["src/api/*"]
-    // }
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@types/*": ["./src/types/*"]
+    }
   },
   "include": ["src/"],
   "references": [{ "path": "./tsconfig.node.json" }]

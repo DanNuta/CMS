@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
-import { getPost } from "../../api";
-import { PageCard, Loading } from "../../components";
+import { getPost } from "@/api";
+import { PageCard, Loading } from "@/components";
 
 export const BlogDetails = () => {
   const { id } = useParams();

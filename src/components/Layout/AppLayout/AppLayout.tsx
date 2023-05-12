@@ -1,9 +1,8 @@
 import { PropsWithChildren, useContext } from "react";
 
-import { Menu } from "../Menu/Menu";
-import { Topbar } from "../Topbar/Topbar";
-import { UserContext } from "../../../context";
-import { UserContextType } from "types";
+import { Topbar, Menu } from "@/components/Layout";
+import { UserContext } from "@/context";
+import { UserContextType } from "@/types";
 
 export const AppLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const { user } = useContext(UserContext) as UserContextType;

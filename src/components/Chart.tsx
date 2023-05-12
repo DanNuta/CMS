@@ -11,7 +11,7 @@ import {
   Cell,
 } from "recharts";
 
-import { PostProps, UserProps } from "../types";
+import { PostProps, UserProps } from "@/types";
 
 interface LineChartProps {
   data?: PostProps[];

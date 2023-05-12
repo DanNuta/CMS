@@ -1,4 +1,4 @@
-import { InputProps } from "types";
+import { InputProps } from "@/types";
 
 export const Input: React.FC<InputProps> = ({ errorMsj, label, ...props }) => {
   return (
