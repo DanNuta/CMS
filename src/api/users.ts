@@ -4,36 +4,29 @@ import { UserProps } from "../types";
 
 const urlUsers = import.meta.env.VITE_ENDPOINT_USERS;
 
-export async function postUsers(data: UserProps) {
-  const req = await axios.post(`${urlUsers}`, data);
-  const response = await req.data;
-
-  return response;
+export async function postUsers(data: UserProps): Promise<UserProps> {
+  return await axios.post(`${urlUsers}`, data);
 }
 
-export async function getsUsers<T>(): Promise<T> {
-  const data = await axios.get(`${urlUsers}`);
-  const res = await data.data;
-
-  return res;
+export async function getsUsers(): Promise<UserProps[]> {
+  const data = await axios.get<UserProps[]>(`${urlUsers}`);
+  return data.data;
 }
 
-export async function deleteUser<T>(id: undefined | number): Promise<T> {
-  const deleteUser = await axios.delete(`${urlUsers}/${id}`);
-  const res = await deleteUser.data;
-
-  console.log("dastastdasd");
-  return res;
+export async function deleteUser(id: number): Promise<void> {
+  await axios.delete(`${urlUsers}/${id}`);
 }
 
-export async function getUser<T>(id: number): Promise<T> {
+export async function getUser(id: number): Promise<UserProps> {
   const data = await axios.get(`${urlUsers}/${id}`);
-  const res = await data.data;
 
-  return res;
+  return data.data;
 }
 
-export async function logIn<T>(email: string, password: string): Promise<T> {
+export async function logIn(
+  email: string,
+  password: string
+): Promise<UserProps[]> {
   const data = await axios.get(
     `${urlUsers}?email=${email}&password=${password}`
   );
@@ -48,9 +41,5 @@ export async function logIn<T>(email: string, password: string): Promise<T> {
 
 export async function updateUser(data: UserProps) {
   const id = data.id;
-  const dataPut = await axios.put(`${urlUsers}/${id}`, data);
-
-  // return await dataPut.data;
-
-  // return [];
+  await axios.put(`${urlUsers}/${id}`, data);
 }

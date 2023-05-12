@@ -21,7 +21,6 @@ interface PieChartProps {
   data?: UserProps[];
 }
 
-// pie
 export const ChartPie: React.FC<PieChartProps> = ({ data }) => {
   const currentData = [
     {
@@ -55,7 +54,10 @@ export const ChartPie: React.FC<PieChartProps> = ({ data }) => {
       >
         {currentData.map((item, index) => {
           return (
-            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+            <Cell
+              key={`cell-${item.name}`}
+              fill={colors[index % colors.length]}
+            />
           );
         })}
       </Pie>
@@ -65,7 +67,6 @@ export const ChartPie: React.FC<PieChartProps> = ({ data }) => {
   );
 };
 
-// line chart
 export const ChartLine: React.FC<LineChartProps> = ({ data }) => {
   const days = [
     {

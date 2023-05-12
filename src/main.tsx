@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import App from "./App";
-import { LogInProvider } from "./context";
+import { UserContextProvider } from "./context";
+import AppRouter from "./AppRouter";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -18,11 +18,11 @@ const client = new QueryClient({
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
-      <LogInProvider>
+      <UserContextProvider>
         <Router>
-          <App />
+          <AppRouter />
         </Router>
-      </LogInProvider>
+      </UserContextProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
   </React.StrictMode>

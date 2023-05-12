@@ -1,0 +1,10 @@
+.card-parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dashboard {
+  display: flex;
+  gap: 20px;
+}

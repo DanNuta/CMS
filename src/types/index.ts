@@ -1,15 +1,15 @@
 import { InputProps } from "./input";
-import { StateProps } from "./stateRegister";
 import { UserProps } from "./user";
-import { LogInUser } from "./userLogIn";
+import { UserContextType } from "./userProvider";
 import { ErrorProps } from "./errorType";
 import { PostProps } from "./post";
+import { EditCreatePropsTypes } from "./editCreate";
 
 export type {
   InputProps,
   ErrorProps,
-  StateProps,
+  EditCreatePropsTypes,
   UserProps,
-  LogInUser,
+  UserContextType,
   PostProps,
 };

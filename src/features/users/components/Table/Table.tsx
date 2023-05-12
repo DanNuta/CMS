@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import { UserProps, LogInUser } from "../../../../types";
+import { UserProps, UserContextType } from "../../../../types";
 import { Button } from "../../../../components";
 import Delete from "../../../../icons/delete.svg";
 import Edit from "../../../../icons/edit.svg";
-import { LogIn } from "../../../../context";
+import { UserContext } from "../../../../context";
 
 interface UserPropsData {
   users?: UserProps[];
@@ -13,7 +13,7 @@ interface UserPropsData {
 }
 
 export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
-  const { user: userContext } = useContext(LogIn) as LogInUser;
+  const { user: userContext } = useContext(UserContext) as UserContextType;
 
   return (
     <table>

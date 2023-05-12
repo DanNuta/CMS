@@ -8,12 +8,12 @@ import { Form, Password, Input, Button } from "../../../components";
 import { ROUTES_PATHS } from "../../../routes";
 import { ModalForm, PopUp } from "../../../components";
 import { logIn } from "../../../api";
-import { LogInUser, UserProps } from "types";
-import { LogIn } from "../../../context";
+import { UserContextType, UserProps } from "types";
+import { UserContext } from "../../../context";
 import { errorInputs } from "../../../utils";
 
 export const Login = () => {
-  const { changeUser } = useContext(LogIn) as LogInUser;
+  const { setUserState } = useContext(UserContext) as UserContextType;
   const location = useNavigate();
 
   const [errEmail, setErrEmail] = useState("");
@@ -29,9 +29,9 @@ export const Login = () => {
 
     onSuccess: (data) => {
       const val = data[0];
-      const id = val.id!.toString();
-      localStorage.setItem("userId", id);
-      changeUser(val);
+      const id = val.id;
+      localStorage.setItem("userId", id.toString());
+      setUserState(val);
       location(`${ROUTES_PATHS.users}`);
     },
 
@@ -59,9 +59,12 @@ export const Login = () => {
       passwordTest.current === "" ? `${errorInputs.passwordErr}` : ""
     );
 
-    if (emailTest.current === "") return;
-    if (passwordTest.current === "") return;
-    if (emailTest.current === "" && passwordTest.current === "") return;
+    const inputError =
+      emailTest.current === "" ||
+      passwordTest.current === "" ||
+      (emailTest.current === "" && passwordTest.current === "");
+
+    if (inputError) return;
 
     mutate();
   }

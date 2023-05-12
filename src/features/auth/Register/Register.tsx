@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Input,
@@ -8,18 +8,19 @@ import {
   Select,
   Button,
   ModalForm,
+  PopUp,
 } from "../../../components";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { ROUTES_PATHS } from "../../../routes";
 import { postUsers } from "../../../api";
-import { UserProps, LogInUser } from "types";
+import { UserProps, UserContextType } from "types";
 import { errorInputs, patternRegEx } from "../../../utils";
-import { LogIn } from "../../../context";
+import { UserContext } from "../../../context";
 
 export const Register: React.FC = () => {
-  const { changeUser } = useContext(LogIn) as LogInUser;
+  const { setUserState } = useContext(UserContext) as UserContextType;
 
   const [name, setName] = useState("");
   const [errName, setErrName] = useState<string | null>(null);
@@ -44,18 +45,23 @@ export const Register: React.FC = () => {
   const [checkbox, setCheckBox] = useState(false);
   const [errCheckbox, setErrCheckBox] = useState<string | null>(null);
 
+  const [serverError, setServerError] = useState<string | null>(null);
+
   const navigate = useNavigate();
 
-  const { data, mutate, status } = useMutation({
+  const { mutate, status } = useMutation({
     mutationFn: postUsers,
-  });
 
-  useEffect(() => {
-    if (status === "success") {
-      changeUser(data);
+    onSuccess: (newData: UserProps) => {
+      console.log(newData);
+      setUserState(newData);
       navigate(`${ROUTES_PATHS.users}`);
-    }
-  }, [data, status]);
+    },
+
+    onError: (e: Error) => {
+      setServerError(e.message);
+    },
+  });
 
   function changeEmail(data: React.ChangeEvent<HTMLInputElement>) {
     const value = data.target.value;
@@ -84,7 +90,7 @@ export const Register: React.FC = () => {
 
   // send data
 
-  async function onSendData(e: React.FormEvent<HTMLFormElement>) {
+  function onSendData(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const testName = !patternRegEx.nume.test(name);
@@ -92,13 +98,8 @@ export const Register: React.FC = () => {
     const testEmail = !patternRegEx.email.test(email);
     const testPasswordTwe = !patternRegEx.password.test(password);
     const testGender = gender === "" ? true : false;
-    const anyError =
-      testName &&
-      testPrenume &&
-      testEmail &&
-      testGender &&
-      testPasswordTwe &&
-      !checkbox;
+    const error =
+      testName || testPrenume || testEmail || testPasswordTwe || !checkbox;
 
     setErrName(testName ? `${errorInputs.nameErr}` : null);
     setErrPrenume(testPrenume ? `${errorInputs.prenumeErr}` : null);
@@ -107,13 +108,7 @@ export const Register: React.FC = () => {
     setErrPassword(testPasswordTwe ? `${errorInputs.passwordErr}` : null);
     setErrCheckBox(!checkbox ? `${errorInputs.checkboxErr}` : null);
 
-    if (anyError) return;
-
-    if (testName) return;
-    if (testPrenume) return;
-    if (testEmail) return;
-    if (testPasswordTwe) return;
-    if (!checkbox) return;
+    if (error) return;
 
     setName("");
     setPrenume("");
@@ -123,7 +118,7 @@ export const Register: React.FC = () => {
     setCheckBox(false);
     setVerifyPassword("");
 
-    let uniq = new Date().getTime();
+    const uniq = new Date().getTime();
 
     const dataForm: UserProps = {
       name,
@@ -149,6 +144,12 @@ export const Register: React.FC = () => {
             <Link to={`${ROUTES_PATHS.login}`}>Sign in</Link>
           </span>
         </p>
+
+        {status === "error" && (
+          <PopUp type="fail">
+            <p>{serverError}</p>
+          </PopUp>
+        )}
 
         <Input
           type="text"

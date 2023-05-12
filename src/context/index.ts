@@ -1,3 +1,3 @@
-import { LogIn, LogInProvider } from "./manageState.";
+import { UserContext, UserContextProvider } from "./UserProvider";
 
-export { LogIn, LogInProvider };
+export { UserContext, UserContextProvider };

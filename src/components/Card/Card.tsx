@@ -4,7 +4,6 @@ import { PostProps } from "../../types";
 import Delete from "../../icons/delete.svg";
 import Edit from "../../icons/edit.svg";
 import { Button } from "../../components/Button/Button";
-
 import { navigateToPost } from "../../routes";
 
 interface CardProps {
@@ -13,7 +12,7 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
-  const lengthDescription = data?.description?.length! > 100 ? "..." : "";
+  const lengthDescription = data.description?.length === 100 ? "" : "...";
 
   return (
     <div className="card">

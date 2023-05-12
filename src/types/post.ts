@@ -1,11 +1,11 @@
 export interface PostProps {
-  title: string | undefined;
-  description: string | undefined;
-  linkImage: string | undefined;
-  date: string | undefined;
+  title: string;
+  description: string;
+  linkImage: string;
+  date: string;
   author: {
-    name: string | undefined;
-    prenume: string | undefined;
+    name: string;
+    prenume: string;
   };
   id: number;
 }

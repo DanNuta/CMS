@@ -111,7 +111,7 @@ Lista de componente necesare:
 - Button - de 2 tipuri, danger(cancel) si primary(pentru confirmare)
 - Inputs - pentru formulare
 - Card - pentru postari
-- Table - pentru utilizatori si postari
+- Table - pentru utilizatori
 - Chart - pentru dashboard
 - Layout - pentru menu, topbar si container
 - Alte componente necesare pentru a functiona aplicatia

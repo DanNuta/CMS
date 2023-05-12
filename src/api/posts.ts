@@ -2,36 +2,31 @@ import axios from "axios";
 
 import { PostProps } from "../types";
 
-const url = "http://localhost:3001/posts";
+const url = import.meta.env.VITE_ENDPOINT_POSTS;
 
-export function postPOST(blog: PostProps): any {
-  axios.post(`${url}`, { ...blog }).then((data) => data.data);
+export async function postPOST(blog: PostProps) {
+  await axios.post(`${url}`, blog);
 }
 
 export async function getPosts(): Promise<PostProps[]> {
   const posts = await axios.get(`${url}`);
-
-  return await posts.data;
+  return posts.data;
 }
 
-export async function getPost(id?: number | string): Promise<PostProps> {
+export async function getPost(id: number): Promise<PostProps> {
   const posts = await axios.get(`${url}/${id}`);
-
-  return await posts.data;
+  return posts.data;
 }
 
-export async function deletePost(id: number | null) {
-  const postDelete = await axios.delete(`${url}/${id}`);
-  return await postDelete.data;
+export async function deletePost(id: number) {
+  await axios.delete(`${url}/${id}`);
 }
 
-export function updatePostPUT(updateData: PostProps): any {
-  axios.put(`${url}/${updateData.id}`, updateData).then((res) => res.data);
+export async function updatePostPUT(updateData: PostProps): Promise<void> {
+  await axios.put(`${url}/${updateData.id}`, updateData);
 }
 
-export async function getData(urls: string): Promise<PostProps[]> {
+export async function getData<T>(urls: string): Promise<T> {
   const data = await axios.get(`${urls}`);
-  const res = await data.data;
-
-  return res;
+  return data.data;
 }

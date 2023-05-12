@@ -1,8 +1,6 @@
-import { Checkbox } from "./Checkbox/Checkbox";
-import { Select } from "./Select/Select";
-import { Input } from "./Input/Inputs";
-import { ShowHidePassword } from "./ShowHidePassword/ShowHidePassword";
-import { Password } from "./Password/Password";
-import { Textarea } from "./Textarea/Textarea";
-
-export { Input, Textarea, Select, Checkbox, ShowHidePassword, Password };
+export * from "./Checkbox/Checkbox";
+export * from "./Select/Select";
+export * from "./Input/Inputs";
+export * from "./ShowHidePassword/ShowHidePassword";
+export * from "./Password/Password";
+export * from "./Textarea/Textarea";

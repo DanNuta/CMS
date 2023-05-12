@@ -1,5 +1,4 @@
 import { ChangeEvent } from "react";
-import { InputProps } from "types";
 
 interface TextAreaProps {
   label: string;

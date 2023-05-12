@@ -1,31 +1,13 @@
 //componets
-@forward "../components/Button/style.scss";
-@forward "../components/Forms//Inputs/Input/style.scss";
-@forward "../components/Forms/Inputs/Checkbox/style.scss";
-@forward "../components/Forms/Inputs/Password/style.scss";
-@forward "../components/Forms/Inputs/Select/style.scss";
-@forward "../components/Forms/Inputs/ShowHidePassword/style.scss";
-@forward "../components/Forms/Form/style.scss";
-@forward "../features/users/components/Table/style.scss";
-@forward "../components/Modal/style.scss";
-@forward "../components/layout/Menu/style.scss";
-@forward "../components/PopUp/style.scss";
-@forward "../components/layout/Topbar/style.scss";
-@forward "../components/Card/style.scss";
-@forward "../components/Forms/Inputs/Textarea/style.scss";
+@forward "../components";
 
 //pages
-@forward "../features/auth/Register/style.scss";
-@forward "../features/users/pages/Users/style.scss";
-@forward "../App.scss";
-@forward "../features/posts/pages/Edit/style.scss";
-@forward "../features/posts/pages/Create/style.scss";
-@forward "../features/posts/pages/Post/style.scss";
-@forward "../features/posts/pages/Details/style.scss";
-@forward "../features/dashboard/pages/Dashboard/style.scss";
-@forward "../features/posts/pages/Edit/style.scss";
-
+@forward "../features";
 //mixin
 @forward "./mixin/button.mixin.scss";
 @forward "./mixin/form.mixin.scss";
 @forward "./mixin/input.mixin.scss";
+
+@forward "./healperClass.scss";
+
+@forward "./reset.scss";

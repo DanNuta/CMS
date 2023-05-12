@@ -1,0 +1,39 @@
+@use "../../styles/variables.scss" as variable;
+
+@mixin font() {
+  font-weight: variable.$fw-400;
+  font-size: variable.$fs-12;
+  color: variable.$clr-primary;
+}
+
+.details__blog {
+  .author {
+    p {
+      font-weight: bold;
+      font-size: variable.$fs-12;
+      color: variable.$clr-primary;
+
+      span {
+        font-weight: variable.$fw-400;
+        font-size: variable.$fs-12;
+        color: variable.$clr-primary;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .date-post {
+    @include font();
+  }
+
+  .title-date {
+    margin-block: 15px;
+  }
+
+  .descrition {
+    margin-bottom: 15px;
+  }
+}
