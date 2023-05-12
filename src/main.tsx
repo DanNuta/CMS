@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { UserContextProvider } from "./context";
-import AppRouter from "./AppRouter";
+import { UserContextProvider } from "@/context";
+import AppRouter from "@/AppRouter";
 
 const client = new QueryClient({
   defaultOptions: {
