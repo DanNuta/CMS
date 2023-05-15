@@ -2,8 +2,7 @@ import { useContext } from "react";
 
 import { UserProps, UserContextType } from "@/types";
 import { Button } from "@/components";
-import Delete from "@/icons/delete.svg";
-import Edit from "@/icons/edit.svg";
+import { DeleteImage, EditImage } from "@/icons";
 import { UserContext } from "@/context";
 
 interface UserPropsData {
@@ -42,10 +41,10 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                 {userContext?.rol === "administrator" && (
                   <td className="card_edit_delete card_col">
                     <Button dimension="none" onClick={() => onDelete(user)}>
-                      <img src={Delete} />
+                      <DeleteImage />
                     </Button>
                     <Button onClick={() => onEdit(user)}>
-                      <img src={Edit} />
+                      <EditImage />
                     </Button>
                   </td>
                 )}

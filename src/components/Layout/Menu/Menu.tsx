@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import posts from "@/icons/posts.svg";
-import dashboard from "@/icons/dashboard.svg";
-import users from "@/icons/users.svg";
+import dashboard_click from "@/icons/dashboard_click.svg";
+import { UserImage, PostImage, DasnboardImage } from "@/icons";
 import { ROUTES_PATHS } from "@/routes";
 
 const commonClassName = "root__hover desktop-nav";
@@ -28,7 +27,7 @@ export const Menu = () => {
                   isActive ? ` active ${commonClassName}` : `${commonClassName}`
                 }
               >
-                <img src={users} alt="" />
+                <UserImage />
                 {!mobileMod && <h4>Users</h4>}
               </div>
             );
@@ -47,8 +46,7 @@ export const Menu = () => {
                 isActive ? ` active ${commonClassName}` : `${commonClassName}`
               }
             >
-              <img src={posts} alt="" />
-
+              <PostImage />
               {!mobileMod && <h4>Posts</h4>}
             </div>
           )}
@@ -62,7 +60,7 @@ export const Menu = () => {
                   isActive ? ` active ${commonClassName}` : `${commonClassName}`
                 }
               >
-                <img src={dashboard} alt="" />
+                <DasnboardImage />
                 {!mobileMod && <h4>Dashboard</h4>}
               </div>
             );

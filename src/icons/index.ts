@@ -1,4 +1,6 @@
-import Delete from "./delete.svg";
-import Edit from "./edit.svg";
-
-export { Delete, Edit };
+export * from "./delete";
+export * from "./edit";
+export * from "./posts";
+export * from "./users";
+export * from "./dashboard";
+export * from "./arrowDown";

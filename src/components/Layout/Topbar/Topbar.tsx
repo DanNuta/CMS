@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContextType } from "@/types";
 import { UserContext } from "@/context";
 import { ROUTES_PATHS } from "@/routes";
-import arrow from "@/icons/arrowDown.svg";
+import { ArrowDown } from "@/icons";
 import { Button } from "@/components/Button";
 
 export const Topbar = () => {
@@ -38,7 +38,7 @@ export const Topbar = () => {
 
         <div className="btn-arrow">
           <Button onClick={() => setShowLogOut((prev) => !prev)}>
-            <img src={arrow}></img>
+            <ArrowDown />
           </Button>
         </div>
 

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { PostProps } from "@/types";
-import Delete from "@/icons/delete.svg";
-import Edit from "@/icons/edit.svg";
+import { DeleteImage, EditImage } from "@/icons";
 import { Button } from "@/components/Button/Button";
 import { navigateToPost } from "@/routes";
 
@@ -21,11 +20,11 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
 
         <div className="btn">
           <Button onClick={() => onDeletePost(data.id)} dimension="none">
-            <img src={Delete} alt="" />
+            <DeleteImage />
           </Button>
           <Button dimension="none">
             <Link to={navigateToPost.gotoPostEdit(data.id)}>
-              <img src={Edit} alt="" />
+              <EditImage />
             </Link>
           </Button>
         </div>
