@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import posts from "@/icons/posts.svg";
 import dashboard from "@/icons/dashboard.svg";
 import users from "@/icons/users.svg";
 import { ROUTES_PATHS } from "@/routes";
+
+const commonClassName = "root__hover desktop-nav";
 
 export const Menu = () => {
   const [mobileMod] = useState(false);
@@ -12,45 +14,60 @@ export const Menu = () => {
   return (
     <div className={`menu ${mobileMod ? "mobile" : "desktop"}`}>
       <div className="logo">
-        <Link to={`/`}>
+        <NavLink to={`${ROUTES_PATHS.users}`}>
           <h1>{mobileMod ? "Dsb" : "Dashboard"}</h1>
-        </Link>
+        </NavLink>
       </div>
 
       <div className={mobileMod ? "root mobile-root" : "root desktop-root"}>
-        <Link to={`${ROUTES_PATHS.users}`}>
-          <div
-            className={
-              mobileMod ? "mobile-nav root__hover" : "desktop-nav root__hover"
-            }
-          >
-            <img src={users} alt="" />
-            {!mobileMod && <h4>Users</h4>}
-          </div>
-        </Link>
+        <NavLink to={`${ROUTES_PATHS.users}`}>
+          {({ isActive }) => {
+            return (
+              <div
+                className={
+                  isActive ? ` active ${commonClassName}` : `${commonClassName}`
+                }
+              >
+                <img src={users} alt="" />
+                {!mobileMod && <h4>Users</h4>}
+              </div>
+            );
+          }}
+        </NavLink>
 
-        <Link to={`${ROUTES_PATHS.posts}`}>
-          <div
-            className={
-              mobileMod ? "mobile-nav root__hover" : "desktop-nav root__hover"
-            }
-          >
-            <img src={posts} alt="" />
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? `active` : "";
+          }}
+          to={`${ROUTES_PATHS.posts}`}
+        >
+          {({ isActive }) => (
+            <div
+              className={
+                isActive ? ` active ${commonClassName}` : `${commonClassName}`
+              }
+            >
+              <img src={posts} alt="" />
 
-            {!mobileMod && <h4>Posts</h4>}
-          </div>
-        </Link>
+              {!mobileMod && <h4>Posts</h4>}
+            </div>
+          )}
+        </NavLink>
 
-        <Link to={`${ROUTES_PATHS.dashboard}`}>
-          <div
-            className={
-              mobileMod ? "mobile-nav root__hover" : "desktop-nav root__hover"
-            }
-          >
-            <img src={dashboard} alt="" />
-            {!mobileMod && <h4>Dashboard</h4>}
-          </div>
-        </Link>
+        <NavLink to={`${ROUTES_PATHS.dashboard}`}>
+          {({ isActive }) => {
+            return (
+              <div
+                className={
+                  isActive ? ` active ${commonClassName}` : `${commonClassName}`
+                }
+              >
+                <img src={dashboard} alt="" />
+                {!mobileMod && <h4>Dashboard</h4>}
+              </div>
+            );
+          }}
+        </NavLink>
       </div>
     </div>
   );

@@ -17,32 +17,47 @@ import { postUsers } from "@/api";
 import { UserProps, UserContextType } from "@/types";
 import { errorInputs, patternRegEx } from "@/utils";
 import { UserContext } from "@/context";
+import { useStateGlobal } from "@/hooks";
 
 export const Register: React.FC = () => {
   const { setUserState } = useContext(UserContext) as UserContextType;
 
-  const [name, setName] = useState("");
-  const [errName, setErrName] = useState<string | null>(null);
+  const {
+    name,
+    prenume,
+    email,
+    gender,
+    password,
+    verifyPassword,
+    checkbox,
 
-  const [prenume, setPrenume] = useState("");
-  const [errPrenume, setErrPrenume] = useState<string | null>(null);
+    errName,
+    errEmail,
+    errPrenume,
+    errGender,
+    errPassword,
+    errVerifyPassword,
+    errCheckbox,
 
-  const [email, setEmail] = useState("");
-  const [errEmail, setErrEmail] = useState<string | null>(null);
+    setName,
+    setPrenume,
+    setEmail,
+    setGender,
+    setPassword,
+    setVerifyPassword,
+    setCheckBox,
 
-  const [gender, setGender] = useState<string>("masculin");
-  const [errGender, setErrGender] = useState<string | null>(null);
+    setErrName,
+    setErrPrenume,
+    setErrEmail,
+    setErrGender,
+    setErrPassword,
+    setErrCheckBox,
 
-  const [password, setPassword] = useState<string>("");
-  const [errPassword, setErrPassword] = useState<string | null>(null);
-
-  const [verifyPassword, setVerifyPassword] = useState<string>("");
-  const [errVerifyPassword, setErrVerifyPassword] = useState<string | null>(
-    null
-  );
-
-  const [checkbox, setCheckBox] = useState(false);
-  const [errCheckbox, setErrCheckBox] = useState<string | null>(null);
+    changeEmail,
+    blurPassword,
+    verifyPasswordIfIsTheSame,
+  } = useStateGlobal();
 
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -52,7 +67,6 @@ export const Register: React.FC = () => {
     mutationFn: postUsers,
 
     onSuccess: (newData: UserProps) => {
-      console.log(newData);
       setUserState(newData);
       navigate(`${ROUTES_PATHS.users}`);
     },
@@ -61,33 +75,6 @@ export const Register: React.FC = () => {
       setServerError(e.message);
     },
   });
-
-  function changeEmail(data: React.ChangeEvent<HTMLInputElement>) {
-    const value = data.target.value;
-    const testEmail = !patternRegEx.email.test(value);
-
-    setEmail(value);
-    setErrEmail(testEmail ? `${errorInputs.emailErr}` : null);
-  }
-
-  function blurPassword(data: React.FocusEvent<HTMLInputElement, Element>) {
-    const value = data.target.value;
-    const testPassword = !patternRegEx.password.test(value);
-
-    setPassword(value);
-    setErrPassword(testPassword ? `${errorInputs.weakPassword}` : null);
-  }
-
-  function verifyPasswordIfIsTheSame(
-    data: React.FocusEvent<HTMLInputElement, Element>
-  ) {
-    const value = data.target.value;
-    setErrVerifyPassword(
-      password !== value ? `${errorInputs.passwordIsNotTheSame}` : null
-    );
-  }
-
-  // send data
 
   function onSendData(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

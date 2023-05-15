@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter as Router } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { UserContextProvider } from "@/context";
 import AppRouter from "@/AppRouter";
+
+import "./styles/index.scss";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -19,9 +20,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
       <UserContextProvider>
-        <Router>
-          <AppRouter />
-        </Router>
+        <AppRouter />
       </UserContextProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>

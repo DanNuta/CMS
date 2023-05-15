@@ -1,17 +1,16 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { getsUsers, deleteUser, updateUser, postUsers } from "../../../api";
-import { Button, Modal, PopUp, PageCard, Loading } from "../../../components";
-import { Table, UsersForm } from "../components";
-import { UserProps } from "../../../types";
-import { UserContext } from "../../../context";
-import { UserContextType } from "../../../types";
+import { getsUsers, deleteUser, updateUser, postUsers } from "@/api";
+import { Button, Modal, PopUp, PageCard, Loading } from "@/components";
+import { Table, UsersForm } from "@/features/users/components";
+import { UserProps } from "@/types";
+import { useAuth } from "@/context";
 
-import { succesMsj, confirmMjs } from "../../../utils";
+import { succesMsj, confirmMjs } from "@/utils";
 
 export const Users = () => {
-  const { user } = useContext(UserContext) as UserContextType;
+  const auth = useAuth();
 
   const [addUserModalState, setAddUserModalState] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
@@ -78,7 +77,7 @@ export const Users = () => {
     mutatePutUser(data);
   }
 
-  const btnAdmin = user?.rol === "administrator" && (
+  const btnAdmin = auth?.user?.rol === "administrator" && (
     <Button type="primary" onClick={() => setAddUserModalState(true)}>
       Adauga utilizator
     </Button>

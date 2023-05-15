@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { Input, Form, Textarea, Button } from "@/components";
-import { errorBlog } from "@/utils";
+import { errorBlog, patternRegEx } from "@/utils";
 import { PostProps, EditCreatePropsTypes } from "@/types";
 
 interface EditCreateProps {
@@ -12,7 +12,7 @@ interface EditCreateProps {
 export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
   const [title, setTitle] = useState<string | undefined>();
   const [description, setDescription] = useState<string | undefined>();
-  const [linkImage, setLinkImage] = useState<string | undefined>();
+  const [linkImage, setLinkImage] = useState<string>("");
   const [date, setDate] = useState<string | undefined>();
 
   const [errorTitle, setErrorTitle] = useState<string | null>(null);
@@ -49,12 +49,14 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
   function sendPost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const testLinkImages = patternRegEx.validateLinkImages.test(linkImage);
+
     setErrorTitle(!title ? `${errorBlog.title}` : null);
     setErrorDescription(!description ? `${errorBlog.description}` : null);
-    setErrorLinkImage(!linkImage ? `${errorBlog.link}` : null);
+    setErrorLinkImage(!testLinkImages ? `${errorBlog.link}` : null);
     setErrorData(!date ? `${errorBlog.data}` : null);
 
-    const errorInput = !title || !description || !linkImage || !date;
+    const errorInput = !title || !description || !testLinkImages || !date;
 
     if (errorInput) return;
 

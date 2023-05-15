@@ -8,13 +8,14 @@ import { logIn } from "@/api";
 import { UserContextType, UserProps } from "@/types";
 import { UserContext } from "@/context";
 import { errorInputs } from "@/utils";
+import { useStateGlobal } from "@/hooks";
 
 export const Login = () => {
   const { setUserState } = useContext(UserContext) as UserContextType;
-  const location = useNavigate();
+  const { errEmail, setErrEmail, setErrPassword, errPassword } =
+    useStateGlobal();
 
-  const [errEmail, setErrEmail] = useState("");
-  const [errPassword, setErrPassword] = useState("");
+  const location = useNavigate();
 
   const emailTest = useRef("");
   const passwordTest = useRef("");

@@ -1,4 +1,9 @@
-import React, { createContext, useState, PropsWithChildren } from "react";
+import React, {
+  createContext,
+  useState,
+  PropsWithChildren,
+  useContext,
+} from "react";
 
 import { UserProps, UserContextType } from "@/types";
 
@@ -14,4 +19,8 @@ export const UserContextProvider: React.FC<PropsWithChildren> = ({
       {children}
     </UserContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  return useContext(UserContext);
 };

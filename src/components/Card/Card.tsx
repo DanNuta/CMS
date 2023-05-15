@@ -33,7 +33,7 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
 
       <Link to={navigateToPost.gotoPostDetails(data.id)}>
         <div className="card__body">
-          <div className="title">
+          <div className="card-title">
             <div className="title-edit">
               <h1>{data.title}</h1>
             </div>
