@@ -4,10 +4,8 @@
 //pages
 @forward "../features";
 //mixin
-@forward "./mixin/button.mixin.scss";
-@forward "./mixin/form.mixin.scss";
-@forward "./mixin/input.mixin.scss";
+@forward "./mixin/";
 
-@forward "./healperClass.scss";
+@forward "./healper-class.scss";
 
 @forward "./reset.scss";

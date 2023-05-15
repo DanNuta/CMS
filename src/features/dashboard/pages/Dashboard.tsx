@@ -1,6 +1,10 @@
 import { useQueries } from "@tanstack/react-query";
 
-import { ChartLine, ChartPie, Chart } from "../../../components";
+import {
+  ChartLine,
+  ChartPie,
+  ChartParent,
+} from "@/features/dashboard/components";
 import { getData } from "@/api";
 import { UserProps, PostProps } from "@/types";
 
@@ -21,13 +25,13 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <Chart dataLength={users?.length} title="Numarul de utilizator">
+      <ChartParent dataLength={users?.length} title="Numarul de utilizator">
         <ChartPie data={users} />
-      </Chart>
+      </ChartParent>
 
-      <Chart dataLength={posts?.length} title="Numarul de postari">
+      <ChartParent dataLength={posts?.length} title="Numarul de postari">
         <ChartLine data={posts} />
-      </Chart>
+      </ChartParent>
     </div>
   );
 };

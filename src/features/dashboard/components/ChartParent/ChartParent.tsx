@@ -5,7 +5,7 @@ interface ChartProps {
   title: string;
 }
 
-export const Chart: React.FC<PropsWithChildren<ChartProps>> = ({
+export const ChartParent: React.FC<PropsWithChildren<ChartProps>> = ({
   children,
   dataLength,
   title,

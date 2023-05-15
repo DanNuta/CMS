@@ -1,4 +1,4 @@
-export const DasnboardImage = () => {
+export const DashboardImage = () => {
   return (
     <svg
       width="30"

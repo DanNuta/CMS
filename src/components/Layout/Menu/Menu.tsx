@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { UserImage, PostImage, DasnboardImage } from "@/icons";
+import { UserImage, PostImage, DashboardImage } from "@/icons";
 import { ROUTES_PATHS } from "@/routes";
 
 const commonClassName = "root__hover desktop-nav";
@@ -59,7 +59,7 @@ export const Menu = () => {
                   isActive ? ` active ${commonClassName}` : `${commonClassName}`
                 }
               >
-                <DasnboardImage />
+                <DashboardImage />
                 {!mobileMod && <h4>Dashboard</h4>}
               </div>
             );
