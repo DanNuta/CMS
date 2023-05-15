@@ -12,7 +12,7 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
-  const lengthDescription = data.description?.length === 100 ? "" : "...";
+  const lengthDescription = data.description?.length > 100 ? "..." : "";
 
   return (
     <div className="card">

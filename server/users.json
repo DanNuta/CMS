@@ -278,6 +278,15 @@
       "password": "gfgdfgdfgdfg34",
       "rol": "moderator",
       "id": 1684150903847
+    },
+    {
+      "name": "Andrei",
+      "prenume": "Frunza",
+      "email": "dan@gmail.com",
+      "gender": "masculin",
+      "rol": "moderator",
+      "password": "dannuta1234567890",
+      "id": 1684155758232
     }
   ]
 }
