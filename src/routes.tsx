@@ -4,7 +4,6 @@ import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-  redirect,
 } from "react-router-dom";
 
 import {
@@ -101,17 +100,7 @@ const authRoutes = [
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route
-        loader={() => {
-          const localStorege = localStorage.getItem("userId");
-
-          if (localStorege === null) {
-            throw redirect(`${ROUTES_PATHS.login}`);
-          }
-          return 0;
-        }}
-        element={<AppLayout />}
-      >
+      <Route element={<AppLayout />}>
         {appRouters.map((router, i) => {
           return <Route key={i} {...router} />;
         })}

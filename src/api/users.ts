@@ -5,11 +5,11 @@ import { UserProps } from "../types";
 const urlUsers = import.meta.env.VITE_ENDPOINT_USERS;
 
 export async function postUsers(data: UserProps): Promise<UserProps> {
-  return await axios.post(`${urlUsers}`, data);
+  return await axios.post(urlUsers, data);
 }
 
 export async function getsUsers(): Promise<UserProps[]> {
-  const data = await axios.get<UserProps[]>(`${urlUsers}`);
+  const data = await axios.get<UserProps[]>(urlUsers);
   return data.data;
 }
 

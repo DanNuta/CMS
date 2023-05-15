@@ -5,11 +5,11 @@ import { PostProps } from "../types";
 const url = import.meta.env.VITE_ENDPOINT_POSTS;
 
 export async function postPOST(blog: PostProps) {
-  await axios.post(`${url}`, blog);
+  await axios.post(url, blog);
 }
 
 export async function getPosts(): Promise<PostProps[]> {
-  const posts = await axios.get(`${url}`);
+  const posts = await axios.get(url);
   return posts.data;
 }
 
@@ -27,6 +27,6 @@ export async function updatePostPUT(updateData: PostProps): Promise<void> {
 }
 
 export async function getData<T>(urls: string): Promise<T> {
-  const data = await axios.get(`${urls}`);
+  const data = await axios.get(urls);
   return data.data;
 }
