@@ -1,10 +1,9 @@
 //componets
 @forward "../components";
-
 //pages
 @forward "../features";
 //mixin
-@forward "./mixin/";
+@forward "./mixins";
 
 @forward "./healper-class.scss";
 

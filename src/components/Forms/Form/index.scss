@@ -1,4 +1,4 @@
-@use "../../../styles/mixin/form.mixin.scss" as mixin;
+@use "../../../styles/mixins" as mixin;
 
 form {
   @include mixin.formModel();
