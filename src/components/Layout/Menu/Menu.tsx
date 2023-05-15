@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import dashboard_click from "@/icons/dashboard_click.svg";
 import { UserImage, PostImage, DasnboardImage } from "@/icons";
 import { ROUTES_PATHS } from "@/routes";
 
