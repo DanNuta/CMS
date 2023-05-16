@@ -19,10 +19,10 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
       <thead>
         <tr>
           <td>Name</td>
-          <td>Prenume</td>
+          <td>First name</td>
           <td>Email</td>
-          <td>Gen</td>
-          <td>Rol</td>
+          <td>Gender</td>
+          <td>Role</td>
           {userContext?.rol === "administrator" && <td>Action</td>}
         </tr>
       </thead>

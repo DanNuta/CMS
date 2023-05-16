@@ -4,9 +4,9 @@ import { ROUTES_PATHS } from "@/routes";
 
 export const Logo = () => {
   return (
-    <div className="menu__logo">
-      <NavLink className="menu__logo--link" to={`${ROUTES_PATHS.users}`}>
-        <h1>Dashboard</h1>
+    <div className="logo">
+      <NavLink className="logo__link" to={`${ROUTES_PATHS.users}`}>
+        <h1 className="logo__title">Dashboard</h1>
       </NavLink>
     </div>
   );

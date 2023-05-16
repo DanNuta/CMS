@@ -1,11 +1,11 @@
 .app-layout {
   display: flex;
   gap: 20px;
+  flex-direction: column;
   padding: 25px;
 
   &__content {
     display: flex;
-    flex-direction: column;
     flex: 1;
     gap: 20px;
   }

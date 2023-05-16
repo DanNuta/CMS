@@ -22,4 +22,9 @@
   &__items {
     margin-top: 50px;
   }
+
+  &__toggle-nav {
+    display: flex;
+    justify-content: center;
+  }
 }

@@ -59,6 +59,8 @@
   .body {
     padding-inline: 24px;
     padding-bottom: 25px;
+    height: 200px;
+    display: grid;
 
     &__title {
       margin-bottom: 15px;
@@ -70,7 +72,7 @@
       color: variable.$clr-text-primary;
     }
 
-    &__date {
+    &__date-post {
       font-weight: variable.$fw-400;
       font-size: variable.$fs-12;
       color: variable.$clr-primary;
@@ -78,21 +80,26 @@
 
     &__description {
       margin-bottom: 15px;
+      height: 100%;
     }
 
-    &__description--title {
+    &__description-title {
       font-weight: variable.$fw-400;
       font-size: variable.$fs-15;
-      color: variable.$clr-black;
+      color: variable.$clr-primary;
     }
 
-    &__author--label {
+    &__author {
+      align-self: flex-end;
+    }
+
+    &__author-label {
       font-weight: bold;
       font-size: variable.$fs-12;
       color: variable.$clr-primary;
     }
 
-    &__author--info {
+    &__author-info {
       font-weight: variable.$fw-400;
       font-size: variable.$fs-12;
       color: variable.$clr-primary;

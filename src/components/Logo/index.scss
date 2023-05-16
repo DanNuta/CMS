@@ -1,0 +1,7 @@
+@use "../../styles/variables.scss" as variable;
+
+.logo {
+  &__title {
+    color: variable.$clr-black;
+  }
+}

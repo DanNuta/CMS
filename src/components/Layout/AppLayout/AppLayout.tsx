@@ -15,11 +15,11 @@ export const AppLayout: React.FC = () => {
   return (
     <div className="app-layout">
       <div>
-        <Menu />
+        <Topbar />
       </div>
 
       <div className="app-layout__content">
-        <Topbar />
+        <Menu />
         {outlet}
       </div>
     </div>

@@ -314,6 +314,24 @@
       "password": "hfghfghfhfg45",
       "rol": "moderator",
       "id": 1684228048161
+    },
+    {
+      "name": "hgfhfgh",
+      "prenume": "ghfghfgh",
+      "email": "ghfghfg@gmail.com",
+      "gender": "masculin",
+      "password": "hfghfghfghfgh343434",
+      "rol": "moderator",
+      "id": 1684248407236
+    },
+    {
+      "name": "dgdfgdfg",
+      "prenume": "gfdgdfgf",
+      "email": "dfgdfgdfg@gmail.com",
+      "gender": "masculin",
+      "password": "hfghfghfghgfh45",
+      "rol": "moderator",
+      "id": 1684248520350
     }
   ]
 }

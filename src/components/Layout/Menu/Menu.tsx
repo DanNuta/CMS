@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { UserImage, PostImage, DashboardImage } from "@/icons";
+import { UserImage, PostImage, DashboardImage, SettingImages } from "@/icons";
 import { ROUTES_PATHS } from "@/routes";
-import { Logo, Link } from "@/components";
+import { Link, Button } from "@/components";
 
 export const Menu = () => {
   const [mobileMod, setMobileMod] = useState(true);
@@ -13,8 +13,6 @@ export const Menu = () => {
         mobileMod ? "mobile" : "desktop"
       }`}
     >
-      <Logo />
-
       <nav className="menu-wrapper__navigation">
         <ul className="menu-wrapper__items">
           <li className="menu-wrapper__item">
@@ -46,7 +44,18 @@ export const Menu = () => {
         </ul>
       </nav>
 
-      <button onClick={() => setMobileMod((prev) => !prev)}>Extend Menu</button>
+      <hr />
+
+      <div className="menu-wrapper__toggle-nav">
+        <Button
+          type="neutral"
+          element="img"
+          dimension="default"
+          onClick={() => setMobileMod((prev) => !prev)}
+        >
+          <SettingImages />
+        </Button>
+      </div>
     </div>
   );
 };

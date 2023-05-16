@@ -44,7 +44,7 @@ export const Create = () => {
   }
 
   return (
-    <PageCard title="Creaza o postare">
+    <PageCard title="Create a post">
       {isLoading && <Loading />}
 
       {isError && (

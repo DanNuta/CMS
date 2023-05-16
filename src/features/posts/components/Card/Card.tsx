@@ -36,26 +36,24 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
         </div>
       </div>
 
-      <Link to={navigateToPost.gotoPostDetails(data.id)}>
+      <Link className="card__link" to={navigateToPost.gotoPostDetails(data.id)}>
         <div className="body">
           <div className="body__title">
-            <div className="body__title-edit">
-              <h1 className="body__title-post">{data.title}</h1>
-            </div>
-            <p className="body__date">{data.date}</p>
+            <h1 className="body__title-post">{data.title}</h1>
+            <p className="body__date-post">{data.date}</p>
           </div>
 
           <div className="body__description">
-            <p className="body__desc--title">
+            <p className="body__description-title">
               {data.description?.slice(0, 100)}
               {lengthDescription}
             </p>
           </div>
 
-          <div>
-            <p className="body__author--label">
+          <div className="body__author">
+            <p className="body__author-label">
               Author:
-              <span className="body__author--info">
+              <span className="body__author-info">
                 {data.author.name} {data.author.prenume}
               </span>
             </p>

@@ -84,12 +84,12 @@ export const Users = () => {
       type="primary"
       onClick={() => setAddUserModalState(true)}
     >
-      Adauga utilizator
+      Add a new user
     </Button>
   );
 
   return (
-    <PageCard title="Utilizatori" extra={btnAdmin}>
+    <PageCard title="Users" extra={btnAdmin}>
       <UsersForm
         onCancel={() => setAddUserModalState((prev) => !prev)}
         onAddUser={addNewUser}

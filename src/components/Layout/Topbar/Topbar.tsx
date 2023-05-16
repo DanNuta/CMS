@@ -5,7 +5,7 @@ import { UserContextType } from "@/types";
 import { UserContext } from "@/context";
 import { ROUTES_PATHS } from "@/routes";
 import { ArrowDown } from "@/icons";
-import { Button } from "@/components/Button";
+import { Button, Logo } from "@/components";
 
 export const Topbar = () => {
   const { user, setUserState } = useContext(UserContext) as UserContextType;
@@ -32,6 +32,8 @@ export const Topbar = () => {
 
   return (
     <div className="top-bar">
+      <Logo />
+
       <div className="top-bar__header-wrapper">
         <h1 className="top-bar__title">{user?.name}</h1>
         <h1 className="top-bar__title">{user?.prenume}</h1>

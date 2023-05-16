@@ -139,7 +139,7 @@ export const Register: React.FC = () => {
 
         <Input
           type="text"
-          placeholder="Nume"
+          placeholder="Name"
           value={name}
           errorMsj={errName}
           onChange={(e) => setName(e.target.value)}
@@ -147,7 +147,7 @@ export const Register: React.FC = () => {
 
         <Input
           type="text"
-          placeholder="Prenume"
+          placeholder="First Name"
           value={prenume}
           errorMsj={errPrenume}
           onChange={(e) => setPrenume(e.target.value)}
@@ -188,7 +188,7 @@ export const Register: React.FC = () => {
         <Checkbox
           type="checkbox"
           onChange={(e) => setCheckBox(e.target.checked)}
-          label="Sunt deacord cu prelucrarea datelor personale"
+          label="I agree with the processing of personal data"
           id={"de-acord"}
           errorMsj={errCheckbox}
         />

@@ -84,7 +84,7 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
         onChange={(e) => setTitle(e.target.value)}
         label="Title"
         id="title"
-        placeholder="Titlul pentru blog"
+        placeholder="The title for the blog"
       />
 
       <Textarea
@@ -105,11 +105,11 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
 
       <Input
         type="text"
-        placeholder="Link la imagine"
+        placeholder="Link to image"
         value={linkImage || ""}
         errorMsj={errorLinkImage}
         onChange={(e) => setLinkImage(e.target.value)}
-        label="Link la imagine"
+        label="Link to image"
         id="image"
       />
 

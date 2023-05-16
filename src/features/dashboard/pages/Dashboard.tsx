@@ -25,11 +25,11 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <ChartParent dataLength={users?.length} title="Numarul de utilizator">
+      <ChartParent dataLength={users?.length} title="User number">
         <ChartPie data={users} />
       </ChartParent>
 
-      <ChartParent dataLength={posts?.length} title="Numarul de postari">
+      <ChartParent dataLength={posts?.length} title="The number of posts">
         <ChartLine data={posts} />
       </ChartParent>
     </div>
