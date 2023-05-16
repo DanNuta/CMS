@@ -19,7 +19,7 @@ export const PopUp: React.FC<PropsWithChildren<PopUpProps>> = ({
     <>
       {openPopUp &&
         createPortal(
-          <div className={`${type} pop-up`}>{children}</div>,
+          <div className={`pop-up pop-up--${type}`}>{children}</div>,
           document.body
         )}
     </>

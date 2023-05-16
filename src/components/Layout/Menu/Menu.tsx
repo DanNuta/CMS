@@ -1,71 +1,52 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 
 import { UserImage, PostImage, DashboardImage } from "@/icons";
 import { ROUTES_PATHS } from "@/routes";
-
-const commonClassName = "root__hover desktop-nav";
+import { Logo, Link } from "@/components";
 
 export const Menu = () => {
-  const [mobileMod] = useState(false);
+  const [mobileMod, setMobileMod] = useState(true);
 
   return (
-    <div className={`menu ${mobileMod ? "mobile" : "desktop"}`}>
-      <div className="logo">
-        <NavLink to={`${ROUTES_PATHS.users}`}>
-          <h1>{mobileMod ? "Dsb" : "Dashboard"}</h1>
-        </NavLink>
-      </div>
+    <div
+      className={`menu-wrapper menu-wrapper--${
+        mobileMod ? "mobile" : "desktop"
+      }`}
+    >
+      <Logo />
 
-      <div className={mobileMod ? "root mobile-root" : "root desktop-root"}>
-        <NavLink to={`${ROUTES_PATHS.users}`}>
-          {({ isActive }) => {
-            return (
-              <div
-                className={
-                  isActive ? ` active ${commonClassName}` : `${commonClassName}`
-                }
-              >
-                <UserImage />
-                {!mobileMod && <h4>Users</h4>}
-              </div>
-            );
-          }}
-        </NavLink>
+      <nav className="menu-wrapper__navigation">
+        <ul className="menu-wrapper__items">
+          <li className="menu-wrapper__item">
+            <Link
+              title="Users"
+              img={<UserImage />}
+              mobileMod={mobileMod}
+              route={ROUTES_PATHS.users}
+            />
+          </li>
 
-        <NavLink
-          className={({ isActive }) => {
-            return isActive ? `active` : "";
-          }}
-          to={`${ROUTES_PATHS.posts}`}
-        >
-          {({ isActive }) => (
-            <div
-              className={
-                isActive ? ` active ${commonClassName}` : `${commonClassName}`
-              }
-            >
-              <PostImage />
-              {!mobileMod && <h4>Posts</h4>}
-            </div>
-          )}
-        </NavLink>
+          <li className="menu-wrapper__item">
+            <Link
+              title="Posts"
+              route={ROUTES_PATHS.posts}
+              mobileMod={mobileMod}
+              img={<PostImage />}
+            />
+          </li>
 
-        <NavLink to={`${ROUTES_PATHS.dashboard}`}>
-          {({ isActive }) => {
-            return (
-              <div
-                className={
-                  isActive ? ` active ${commonClassName}` : `${commonClassName}`
-                }
-              >
-                <DashboardImage />
-                {!mobileMod && <h4>Dashboard</h4>}
-              </div>
-            );
-          }}
-        </NavLink>
-      </div>
+          <li className="menu-wrapper__item">
+            <Link
+              title="Dashboard"
+              route={ROUTES_PATHS.dashboard}
+              mobileMod={mobileMod}
+              img={<DashboardImage />}
+            />
+          </li>
+        </ul>
+      </nav>
+
+      <button onClick={() => setMobileMod((prev) => !prev)}>Extend Menu</button>
     </div>
   );
 };

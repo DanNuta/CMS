@@ -15,17 +15,20 @@ export const Select: React.FC<SelectProps> = ({
   onChange,
 }) => {
   return (
-    <div className="select">
-      <select onChange={onChange} name={name}>
+    <div className="select-container">
+      <select
+        className="select-container__select"
+        onChange={onChange}
+        name={name}
+      >
         {options.map((item, i) => {
           return (
-            <option key={i} value={item}>
+            <option className="select-container__option" key={i} value={item}>
               {item}
             </option>
           );
         })}
       </select>
-      {errorMsj && <p className="error">{errorMsj}</p>}
     </div>
   );
 };

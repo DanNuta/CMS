@@ -15,14 +15,20 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
 
   return (
     <div className="card">
-      <div className="card__img">
-        <img src={data.linkImage} />
+      <div className="image-container">
+        <img className="image-container__image" src={data.linkImage} />
 
-        <div className="btn">
-          <Button onClick={() => onDeletePost(data.id)} dimension="none">
+        <div className="image-container__btns">
+          <Button
+            type="neutral"
+            element="img"
+            dimension="default"
+            onClick={() => onDeletePost(data.id)}
+          >
             <DeleteImage />
           </Button>
-          <Button dimension="none">
+
+          <Button type="neutral" element="img" dimension="default">
             <Link to={navigateToPost.gotoPostEdit(data.id)}>
               <EditImage />
             </Link>
@@ -31,25 +37,25 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
       </div>
 
       <Link to={navigateToPost.gotoPostDetails(data.id)}>
-        <div className="card__body">
-          <div className="card-title">
-            <div className="title-edit">
-              <h1>{data.title}</h1>
+        <div className="body">
+          <div className="body__title">
+            <div className="body__title-edit">
+              <h1 className="body__title-post">{data.title}</h1>
             </div>
-            <p className="date">{data.date}</p>
+            <p className="body__date">{data.date}</p>
           </div>
 
-          <div className="description">
-            <p>
+          <div className="body__description">
+            <p className="body__desc--title">
               {data.description?.slice(0, 100)}
               {lengthDescription}
             </p>
           </div>
 
-          <div className="author">
-            <p>
+          <div>
+            <p className="body__author--label">
               Author:
-              <span>
+              <span className="body__author--info">
                 {data.author.name} {data.author.prenume}
               </span>
             </p>

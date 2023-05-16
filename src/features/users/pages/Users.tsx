@@ -78,7 +78,12 @@ export const Users = () => {
   }
 
   const btnAdmin = auth?.user?.rol === "administrator" && (
-    <Button type="primary" onClick={() => setAddUserModalState(true)}>
+    <Button
+      element="text"
+      dimension="custom"
+      type="primary"
+      onClick={() => setAddUserModalState(true)}
+    >
       Adauga utilizator
     </Button>
   );

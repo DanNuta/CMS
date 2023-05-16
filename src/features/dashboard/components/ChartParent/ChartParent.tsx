@@ -12,7 +12,7 @@ export const ChartParent: React.FC<PropsWithChildren<ChartProps>> = ({
 }) => {
   return (
     <div className="chart">
-      <h1>
+      <h1 className="chart__title">
         {title}: {dataLength}
       </h1>
       {children}

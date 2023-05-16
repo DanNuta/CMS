@@ -278,6 +278,42 @@
       "password": "gfgdfgdfgdfg34",
       "rol": "moderator",
       "id": 1684150903847
+    },
+    {
+      "name": "hghfgh",
+      "prenume": "hfghgfh",
+      "email": "hfghfg@gmail.com",
+      "gender": "masculin",
+      "password": "gdfgfdgdfgdfg45",
+      "rol": "moderator",
+      "id": 1684162579572
+    },
+    {
+      "name": "dfgfdgdfg",
+      "prenume": "gdfgdfgdfg",
+      "email": "dfgdfggdf@gmail.com",
+      "gender": "masculin",
+      "password": "gdfgdfgdfgdfgdf45",
+      "rol": "moderator",
+      "id": 1684226842788
+    },
+    {
+      "name": "fghghfg",
+      "prenume": "fghfghfgh",
+      "email": "hfghfghfg@gmail.com",
+      "gender": "masculin",
+      "password": "nbvnvbnvbnvb45",
+      "rol": "moderator",
+      "id": 1684227213750
+    },
+    {
+      "name": "hhfgh",
+      "prenume": "hfghfghf",
+      "email": "fghfgh@gmail.com",
+      "gender": "masculin",
+      "password": "hfghfghfhfg45",
+      "rol": "moderator",
+      "id": 1684228048161
     }
   ]
 }

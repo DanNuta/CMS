@@ -7,7 +7,7 @@
   padding-inline: variable.$padding-content-inline;
   padding-block: variable.$padding-content-block;
 
-  .title {
+  &__title {
     display: flex;
     justify-content: space-between;
     align-items: center;

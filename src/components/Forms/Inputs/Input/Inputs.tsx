@@ -2,13 +2,13 @@ import { InputProps } from "@/types";
 
 export const Input: React.FC<InputProps> = ({ errorMsj, label, ...props }) => {
   return (
-    <div className="container_input">
+    <div className="input-label-container">
       {label && (
-        <label className="label" htmlFor={props.id}>
+        <label className="input-label-container__label" htmlFor={props.id}>
           {label}
         </label>
       )}
-      <input className="input" {...props} />
+      <input className="input-label-container__input" {...props} />
       {errorMsj && <p className="error">{errorMsj}</p>}
     </div>
   );

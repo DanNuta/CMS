@@ -1,13 +1,14 @@
 @use "../../../styles/mixins" as mixin;
 
-form {
+.form {
   @include mixin.formModel();
-  h1 {
+
+  &__title {
     margin-bottom: 10px;
   }
-}
 
-.custom-form {
-  width: 400px;
-  padding: 32px;
+  &--custom-form {
+    width: 400px;
+    padding: 32px;
+  }
 }

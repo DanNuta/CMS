@@ -2,31 +2,21 @@ import React, { PropsWithChildren } from "react";
 
 interface ButtonProps {
   onClick?: () => void;
-  disabled?: boolean;
-  type?: "danger" | "primary";
-  dimension?: "full" | "custom" | "none";
-  element?: "href";
+  type: "danger" | "primary" | "neutral";
+  dimension: "full" | "custom" | "default";
+  element: "href" | "img" | "text";
 }
 
 export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   onClick,
-  disabled,
   children,
   type,
   dimension,
   element,
 }) => {
-  const typeChildren = typeof children;
-
   return (
-    <button
-      className={`${typeChildren === "string" ? "text" : "img"} ${type} ${
-        dimension ?? "custom"
-      } ${element && element} text`}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {children}
+    <button className={`btn btn--${type} btn--${dimension}`} onClick={onClick}>
+      <div className={`btn__${element}`}>{children}</div>
     </button>
   );
 };

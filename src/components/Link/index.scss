@@ -1,0 +1,33 @@
+@use "../../styles/variables.scss" as variable;
+
+.link-item {
+  &__icon-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-block: 7px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: variable.$clr-black;
+
+    &--mobile {
+      justify-content: center;
+    }
+
+    &--active {
+      background-color: variable.$clr-click-menu;
+      color: variable.$clr-white;
+    }
+  }
+
+  &__icon-title:hover {
+    background-color: variable.$clr-hover-blue;
+    color: variable.$clr-white;
+    box-shadow: 0px 4px 4px rgba(172, 172, 172, 0.19);
+
+    &__title {
+      font-size: variable.$fs-20;
+      font-weight: variable.$fw-400;
+    }
+  }
+}

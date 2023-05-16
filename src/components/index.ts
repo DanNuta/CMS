@@ -10,3 +10,5 @@ export * from "../features/dashboard/components/ChartParent/ChartParent";
 export * from "./Loading";
 export * from "./Forms";
 export * from "./EditCreate";
+export * from "./Logo";
+export * from "./Link";

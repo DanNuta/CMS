@@ -10,31 +10,31 @@
   align-items: center;
   justify-content: end;
 
+  &__title {
+    font-size: variable.$fs-16;
+    font-weight: variable.$fw-400;
+    margin: 0;
+  }
+
   & > :last-child {
     display: flex;
     gap: 10px;
-
-    h1 {
-      font-size: variable.$fs-16;
-      font-weight: variable.$fw-400;
-      margin: 0;
-    }
   }
 
-  .parent-element {
+  &__header-wrapper {
     align-items: center;
     position: relative;
+  }
 
-    .log-out {
-      position: absolute;
-      background-color: variable.$clr-white;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      border-radius: variable.$radius;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 100%;
-    }
+  &__log-out {
+    position: absolute;
+    background-color: variable.$clr-white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: variable.$radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 100%;
   }
 }

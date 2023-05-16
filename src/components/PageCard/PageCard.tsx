@@ -11,7 +11,7 @@ export const PageCard: React.FC<PropsWithChildren<HeaderProps>> = ({
 }) => {
   return (
     <div className="header">
-      <div className="title">
+      <div className="header__title">
         <h1>{title}</h1>
         {extra && extra}
       </div>

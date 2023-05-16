@@ -31,19 +31,29 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
         {users &&
           users.map((user, i) => {
             return (
-              <tr key={i} className="card_name card_col">
-                <td className="card_name card_col">{user.name}</td>
-                <td className="card_prenume card_col">{user.prenume}</td>
-                <td className="card_email card_col">{user.email}</td>
-                <td className="card_gender card_col">{user.gender}</td>
-                <td className="card_role card_col">{user.rol}</td>
+              <tr key={i}>
+                <td>{user.name}</td>
+                <td>{user.prenume}</td>
+                <td>{user.email}</td>
+                <td>{user.gender}</td>
+                <td>{user.rol}</td>
 
                 {userContext?.rol === "administrator" && (
-                  <td className="card_edit_delete card_col">
-                    <Button dimension="none" onClick={() => onDelete(user)}>
+                  <td>
+                    <Button
+                      type="neutral"
+                      element="img"
+                      dimension="default"
+                      onClick={() => onDelete(user)}
+                    >
                       <DeleteImage />
                     </Button>
-                    <Button onClick={() => onEdit(user)}>
+                    <Button
+                      type="neutral"
+                      element="img"
+                      dimension="default"
+                      onClick={() => onEdit(user)}
+                    >
                       <EditImage />
                     </Button>
                   </td>

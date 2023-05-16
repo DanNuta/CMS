@@ -18,7 +18,7 @@ export const AppLayout: React.FC = () => {
         <Menu />
       </div>
 
-      <div className="content">
+      <div className="app-layout__content">
         <Topbar />
         {outlet}
       </div>

@@ -2,14 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-import {
-  Card,
-  Modal,
-  PopUp,
-  Button,
-  PageCard,
-  Loading,
-} from "@/components";
+import { Card, Modal, PopUp, Button, PageCard, Loading } from "@/components";
 import { ROUTES_PATHS } from "@/routes";
 import { getPosts, deletePost } from "@/api";
 import { succesMsj, confirmMjs } from "@/utils";
@@ -42,8 +35,10 @@ export const Posts: React.FC = () => {
   }
 
   const btn = (
-    <Button element="href" type="primary" dimension="none">
-      <Link to={`${ROUTES_PATHS.postCreate}`}>Add new post</Link>
+    <Button element="href" type="primary" dimension="default">
+      <Link className="link" to={`${ROUTES_PATHS.postCreate}`}>
+        Add new post
+      </Link>
     </Button>
   );
 

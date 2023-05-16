@@ -1,12 +1,11 @@
 @use "../../../../styles/variables.scss" as variable;
 
-.select {
+.select-container {
   position: relative;
-
   margin-bottom: 30px;
   cursor: pointer;
 
-  select {
+  &__select {
     cursor: pointer;
     width: 100%;
     border: none;
@@ -18,16 +17,9 @@
     border-radius: 8px;
     color: variable.$clr-black;
 
-    option {
+    &__option {
       border: none;
       outline: none;
     }
-  }
-
-  .error {
-    position: absolute;
-    top: 100%;
-    font-size: 14px;
-    color: variable.$clr-danger;
   }
 }

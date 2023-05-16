@@ -16,13 +16,17 @@ export const Textarea: React.FC<TextAreaProps> = ({
   id,
 }) => {
   return (
-    <div className="text-area">
+    <div className="textarea-label-container">
       {label && (
-        <label className="label" htmlFor={id}>
+        <label className="textarea-label-container__label" htmlFor={id}>
           {label}
         </label>
       )}
-      <textarea value={value} onChange={onChange}></textarea>
+      <textarea
+        className="textarea-label-container__textarea"
+        value={value}
+        onChange={onChange}
+      ></textarea>
       {errorMsj && <p className="error">{errorMsj}</p>}
     </div>
   );

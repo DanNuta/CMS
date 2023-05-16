@@ -1,50 +1,49 @@
 @use "../../styles/mixins" as mixin;
 @use "../../styles/variables.scss" as variable;
 
-.text {
-  @include mixin.btn();
-}
+.btn {
+  @include mixin.btn;
 
-.img {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
+  &--primary {
+    @include mixin.btnColor(variable.$clr-blue, variable.$clr-white);
 
-.full {
-  width: 100%;
-  padding-block: 15px;
-}
+    &:hover {
+      background-color: variable.$clr-hover-blue;
+    }
+  }
 
-.custom {
-  padding-inline: 25px;
-  padding-block: 15px;
-}
+  &--danger {
+    @include mixin.btnColor(variable.$clr-danger, variable.$clr-white);
 
-.none {
-  padding: 0;
-}
+    &:hover {
+      background-color: variable.$clr-hover-red;
+    }
+  }
 
-.danger {
-  @include mixin.btnColor(variable.$clr-danger, variable.$clr-white);
-}
+  &--neutral {
+    background-color: transparent;
+  }
 
-.danger:hover {
-  background-color: variable.$clr-hover-red;
-}
+  &--full {
+    width: 100%;
+    padding-block: 15px;
+  }
 
-.primary {
-  @include mixin.btnColor(variable.$clr-blue, variable.$clr-white);
-}
+  &--custom {
+    padding-inline: 25px;
+    padding-block: 15px;
+  }
 
-.primary:hover {
-  background-color: variable.$clr-hover-blue;
-}
+  &--default {
+    padding: 0;
+  }
 
-.href {
-  a {
+  &__href {
     padding-block: 15px;
     padding-inline: 25px;
-    color: variable.$clr-white;
+
+    .link {
+      color: variable.$clr-white;
+    }
   }
 }

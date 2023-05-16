@@ -2,8 +2,10 @@
 
 table {
   width: 100%;
+
   thead {
     font-weight: bold;
+
     tr {
       width: 100%;
       border-bottom: 1px solid variables.$clr-underline;
@@ -18,10 +20,6 @@ table {
     tr {
       td {
         padding-block: 21px;
-      }
-      .card_edit_delete {
-        display: flex;
-        align-items: center;
       }
     }
   }

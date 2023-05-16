@@ -1,3 +1,5 @@
+@use "./variables.scss" as variable;
+
 .card-parent {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -7,4 +9,11 @@
 .dashboard {
   display: flex;
   gap: 20px;
+}
+
+.error {
+  position: absolute;
+  top: 100%;
+  font-size: variable.$fs-14;
+  color: variable.$clr-danger;
 }

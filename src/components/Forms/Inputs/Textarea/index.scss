@@ -1,6 +1,6 @@
 @use "../../../../styles/variables.scss" as variable;
 
-.text-area {
+.textarea-label-container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   position: relative;
   margin-bottom: 25px;
 
-  textarea {
+  &__textarea {
     outline: none;
     width: 100%;
     height: auto;
@@ -20,10 +20,7 @@
     padding-block: 16px;
   }
 
-  .error {
-    position: absolute;
-    top: 100%;
-    font-size: 14px;
-    color: variable.$clr-danger;
+  &__label {
+    font-weight: variable.$fw-600;
   }
 }

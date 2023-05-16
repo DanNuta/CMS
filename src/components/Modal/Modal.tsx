@@ -34,10 +34,20 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
               {children}
 
               <div className="modal__btns">
-                <Button onClick={onClose} type="danger">
+                <Button
+                  element="text"
+                  dimension="custom"
+                  onClick={onClose}
+                  type="danger"
+                >
                   Cancel
                 </Button>
-                <Button onClick={onConfirm} type="primary">
+                <Button
+                  element="text"
+                  dimension="custom"
+                  onClick={onConfirm}
+                  type="primary"
+                >
                   {typeBtn}
                 </Button>
               </div>

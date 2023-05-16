@@ -1,67 +1,25 @@
 @use "../../../styles/variables.scss" as variable;
 
-.active {
-  background-color: variable.$clr-click-menu;
-  color: variable.$clr-white;
-}
-
-.desktop {
-  width: 260px;
-  padding-inline: 7px;
-}
-
-.mobile {
-  width: 80px;
-}
-
-.mobile-nav {
-  justify-content: center;
-}
-
-.desktop-nav {
-  padding-left: 27px;
-}
-
-.mobile-root {
-  justify-content: center;
-}
-
-.menu {
+.menu-wrapper {
   background-color: variable.$clr-white;
   border-radius: variable.$radius;
   height: 100%;
 
-  .logo {
-    a {
-      color: variable.$clr-blue;
-    }
-
-    padding-block: 38px 42px;
-    text-align: center;
+  &--desktop {
+    width: 260px;
+    padding-inline: 7px;
   }
 
-  .root {
-    a {
-      color: variable.$clr-text-primary;
-      .root__hover {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        padding-block: 7px;
-        border-radius: 5px;
-        margin-bottom: 15px;
+  &--mobile {
+    width: 80px;
+  }
 
-        h4 {
-          background-color: variable.$fs-20;
-          font-weight: variable.$fw-400;
-        }
-      }
-    }
+  &__navigation {
+    color: variable.$clr-text-primary;
+    margin: 0;
+  }
 
-    &__hover:hover {
-      background-color: variable.$clr-hover-blue;
-      color: variable.$clr-white;
-      box-shadow: 0px 4px 4px rgba(172, 172, 172, 0.19);
-    }
+  &__items {
+    margin-top: 50px;
   }
 }

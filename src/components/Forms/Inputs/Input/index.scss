@@ -1,24 +1,17 @@
 @use "../../../../styles/mixins" as mixin;
 @use "../../../../styles/variables.scss" as variable;
 
-.container_input {
+.input-label-container {
   margin-bottom: 30px;
   position: relative;
   display: flex;
   flex-direction: column;
 
-  .label {
+  &__label {
     font-weight: variable.$fw-600;
   }
 
-  .input {
+  &__input {
     @include mixin.input();
-  }
-
-  .error {
-    position: absolute;
-    top: 100%;
-    font-size: 14px;
-    color: red;
   }
 }

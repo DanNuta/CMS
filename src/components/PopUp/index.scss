@@ -10,14 +10,14 @@
   border-radius: variable.$radius;
   z-index: 999;
   top: 10px;
-}
 
-.fail {
-  background-color: variable.$clr-danger;
-  color: variable.$clr-white;
-}
+  &--fail {
+    background-color: variable.$clr-danger;
+    color: variable.$clr-white;
+  }
 
-.succes {
-  background-color: variable.$clr-succes;
-  color: variable.$clr-white;
+  &--succes {
+    background-color: variable.$clr-succes;
+    color: variable.$clr-white;
+  }
 }

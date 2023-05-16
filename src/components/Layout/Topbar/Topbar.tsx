@@ -32,19 +32,29 @@ export const Topbar = () => {
 
   return (
     <div className="top-bar">
-      <div className="parent-element">
-        <h1>{user?.name}</h1>
-        <h1>{user?.prenume}</h1>
+      <div className="top-bar__header-wrapper">
+        <h1 className="top-bar__title">{user?.name}</h1>
+        <h1 className="top-bar__title">{user?.prenume}</h1>
 
         <div className="btn-arrow">
-          <Button onClick={() => setShowLogOut((prev) => !prev)}>
+          <Button
+            type="neutral"
+            element="img"
+            dimension="default"
+            onClick={() => setShowLogOut((prev) => !prev)}
+          >
             <ArrowDown />
           </Button>
         </div>
 
         {showLogOut && (
-          <div className="log-out">
-            <Button onClick={logOut} type="danger">
+          <div className="top-bar__log-out">
+            <Button
+              element="text"
+              dimension="custom"
+              type="danger"
+              onClick={logOut}
+            >
               Log out
             </Button>
           </div>
