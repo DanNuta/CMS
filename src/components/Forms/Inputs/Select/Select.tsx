@@ -8,12 +8,7 @@ interface SelectProps {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const Select: React.FC<SelectProps> = ({
-  name,
-  options,
-  errorMsj,
-  onChange,
-}) => {
+export const Select: React.FC<SelectProps> = ({ name, options, onChange }) => {
   return (
     <div className="select-container">
       <select
