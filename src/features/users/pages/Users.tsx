@@ -10,7 +10,7 @@ import { useAuth } from "@/context";
 import { succesMsj, confirmMjs } from "@/utils";
 
 export const Users = () => {
-  const auth = useAuth();
+  const { user } = useAuth();
 
   const [addUserModalState, setAddUserModalState] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
@@ -55,6 +55,7 @@ export const Users = () => {
 
   // delete user
   function deleteUserFn(data: UserProps) {
+    console.log(data);
     setDeleteUserState(true);
     setIdDelete(data);
   }
@@ -77,7 +78,7 @@ export const Users = () => {
     mutatePutUser(data);
   }
 
-  const btnAdmin = auth?.user?.rol === "administrator" && (
+  const btnAdmin = user?.rol === "administrator" && (
     <Button
       element="text"
       dimension="custom"

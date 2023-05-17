@@ -1,18 +1,16 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { UserContext } from "@/context";
-import { UserContextType, PostProps, EditCreatePropsTypes } from "@/types";
+import { useAuth } from "@/context";
+import { PostProps, EditCreatePropsTypes } from "@/types";
 import { postPOST } from "@/api";
 import { ROUTES_PATHS } from "@/routes";
-import { PageCard, PopUp, Loading } from "@/components";
-
-import { EditPost } from "@/components";
+import { PageCard, PopUp, Loading, EditPost } from "@/components";
 
 export const Create = () => {
   const location = useNavigate();
-  const { user } = useContext(UserContext) as UserContextType;
+  const { user } = useAuth();
   const [serverError, setServerError] = useState<string | null>(null);
 
   const { mutate, isError, isLoading } = useMutation({

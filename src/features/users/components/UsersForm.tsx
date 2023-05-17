@@ -177,12 +177,14 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
           name="gen"
           onChange={(e) => setGender(e.target.value)}
           options={["Masculin", "Femenin", "Ma abtin"]}
+          defaultValue={gender}
         />
 
         <Select
           name="rol"
           onChange={(e) => setRol(e.target.value)}
           options={["moderator", "administrator"]}
+          defaultValue={rol}
         />
 
         {!userEdit && (

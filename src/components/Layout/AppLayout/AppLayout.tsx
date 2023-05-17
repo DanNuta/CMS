@@ -6,9 +6,9 @@ import { ROUTES_PATHS } from "@/routes";
 
 export const AppLayout: React.FC = () => {
   const outlet = useOutlet();
-  const auth = useAuth();
+  const { user } = useAuth();
 
-  if (auth?.user === null) {
+  if (user === null) {
     return <Navigate to={`${ROUTES_PATHS.login}`} />;
   }
 

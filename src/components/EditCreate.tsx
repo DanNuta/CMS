@@ -10,10 +10,10 @@ interface EditCreateProps {
 }
 
 export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
-  const [title, setTitle] = useState<string | undefined>();
-  const [description, setDescription] = useState<string | undefined>();
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [linkImage, setLinkImage] = useState<string>("");
-  const [date, setDate] = useState<string | undefined>();
+  const [date, setDate] = useState<string>("");
 
   const [errorTitle, setErrorTitle] = useState<string | null>(null);
   const [errorDescription, setErrorDescription] = useState<string | null>(null);
@@ -38,12 +38,16 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
     setDate(data);
   }
 
+  console.log(date);
+
   useEffect(() => {
     if (posts === undefined) return;
     setTitle(posts.title);
     setDescription(posts.description);
     setLinkImage(posts.linkImage);
     setDate(posts.date);
+
+    console.log(posts.date, "dasdasd");
   }, [posts]);
 
   function sendPost(e: React.FormEvent<HTMLFormElement>) {
@@ -97,6 +101,7 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
 
       <Input
         type="date"
+        defaultValue={date?.split(" ")[0]}
         errorMsj={errorData}
         onChange={getDataWithDay}
         label="Date"

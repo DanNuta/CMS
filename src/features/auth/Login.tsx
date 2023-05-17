@@ -1,17 +1,17 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { Form, Password, Input, Button, ModalForm, PopUp } from "@/components";
 import { ROUTES_PATHS } from "@/routes";
 import { logIn } from "@/api";
-import { UserContextType, UserProps } from "@/types";
-import { UserContext } from "@/context";
+import { UserProps } from "@/types";
+import { useAuth } from "@/context";
 import { errorInputs } from "@/utils";
 import { useStateGlobal } from "@/hooks";
 
 export const Login = () => {
-  const { setUserState } = useContext(UserContext) as UserContextType;
+  const { setUserState } = useAuth();
   const { errEmail, setErrEmail, setErrPassword, errPassword } =
     useStateGlobal();
 

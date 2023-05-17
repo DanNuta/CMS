@@ -5,3 +5,4 @@ export * from "./UserImage";
 export * from "./DashboardImage";
 export * from "./ArrowDown";
 export * from "./SettingImages";
+export * from "./ArrowUp";

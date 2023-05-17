@@ -1,34 +1,13 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-import { UserContextType } from "@/types";
-import { UserContext } from "@/context";
-import { ROUTES_PATHS } from "@/routes";
-import { ArrowDown } from "@/icons";
+import { useAuth } from "@/context";
+import { ArrowDown, ArrowUp } from "@/icons";
 import { Button, Logo } from "@/components";
 
 export const Topbar = () => {
-  const { user, setUserState } = useContext(UserContext) as UserContextType;
-  const location = useNavigate();
+  const { logOut, user } = useAuth();
 
   const [showLogOut, setShowLogOut] = useState(false);
-
-  function logOut() {
-    localStorage.clear();
-    setUserState(null);
-    location(`${ROUTES_PATHS.login}`);
-  }
-
-  window.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    if (target.closest(".btn-arrow")) {
-      setShowLogOut(true);
-    } else {
-      if (showLogOut) {
-        setShowLogOut(false);
-      }
-    }
-  });
 
   return (
     <div className="top-bar">
@@ -45,7 +24,7 @@ export const Topbar = () => {
             dimension="default"
             onClick={() => setShowLogOut((prev) => !prev)}
           >
-            <ArrowDown />
+            {showLogOut ? <ArrowUp /> : <ArrowDown />}
           </Button>
         </div>
 

@@ -1,9 +1,7 @@
-import { useContext } from "react";
-
-import { UserProps, UserContextType } from "@/types";
+import { UserProps } from "@/types";
 import { Button } from "@/components";
 import { DeleteImage, EditImage } from "@/icons";
-import { UserContext } from "@/context";
+import { useAuth } from "@/context";
 
 interface UserPropsData {
   users?: UserProps[];
@@ -12,7 +10,7 @@ interface UserPropsData {
 }
 
 export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
-  const { user: userContext } = useContext(UserContext) as UserContextType;
+  const { user } = useAuth();
 
   return (
     <table>
@@ -23,28 +21,28 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
           <td>Email</td>
           <td>Gender</td>
           <td>Role</td>
-          {userContext?.rol === "administrator" && <td>Action</td>}
+          {user?.rol === "administrator" && <td>Action</td>}
         </tr>
       </thead>
 
       <tbody>
         {users &&
-          users.map((user, i) => {
+          users.map((u, i) => {
             return (
               <tr key={i}>
-                <td>{user.name}</td>
-                <td>{user.prenume}</td>
-                <td>{user.email}</td>
-                <td>{user.gender}</td>
-                <td>{user.rol}</td>
+                <td>{u.name}</td>
+                <td>{u.prenume}</td>
+                <td>{u.email}</td>
+                <td>{u.gender}</td>
+                <td>{u.rol}</td>
 
-                {userContext?.rol === "administrator" && (
+                {user?.rol === "administrator" && (
                   <td>
                     <Button
                       type="neutral"
                       element="img"
                       dimension="default"
-                      onClick={() => onDelete(user)}
+                      onClick={() => onDelete(u)}
                     >
                       <DeleteImage />
                     </Button>
@@ -52,7 +50,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                       type="neutral"
                       element="img"
                       dimension="default"
-                      onClick={() => onEdit(user)}
+                      onClick={() => onEdit(u)}
                     >
                       <EditImage />
                     </Button>

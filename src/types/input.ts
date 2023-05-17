@@ -7,6 +7,7 @@ export interface InputProps {
   errorMsj: string | null;
   value?: string;
   label?: string;
+  defaultValue?: string;
 
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;

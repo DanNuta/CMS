@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
@@ -14,13 +14,13 @@ import {
 } from "@/components";
 import { ROUTES_PATHS } from "@/routes";
 import { postUsers } from "@/api";
-import { UserProps, UserContextType } from "@/types";
+import { UserProps } from "@/types";
 import { errorInputs, patternRegEx } from "@/utils";
-import { UserContext } from "@/context";
+import { useAuth } from "@/context";
 import { useStateGlobal } from "@/hooks";
 
 export const Register: React.FC = () => {
-  const { setUserState } = useContext(UserContext) as UserContextType;
+  const { setUserState } = useAuth();
 
   const {
     name,

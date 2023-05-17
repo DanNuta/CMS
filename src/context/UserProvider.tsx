@@ -14,13 +14,24 @@ export const UserContextProvider: React.FC<PropsWithChildren> = ({
 }) => {
   const [user, setUserState] = useState<UserProps | null>(null);
 
+  function logOut() {
+    localStorage.clear();
+    setUserState(null);
+  }
+
   return (
-    <UserContext.Provider value={{ user, setUserState }}>
+    <UserContext.Provider value={{ user, setUserState, logOut }}>
       {children}
     </UserContext.Provider>
   );
 };
 
-export const useAuth = () => {
-  return useContext(UserContext);
+export const useAuth = (): UserContextType => {
+  const authContext = useContext(UserContext);
+
+  if (!authContext) {
+    throw new Error("The context is not defined");
+  }
+  const { logOut, setUserState, user } = authContext as UserContextType;
+  return { logOut, setUserState, user };
 };
