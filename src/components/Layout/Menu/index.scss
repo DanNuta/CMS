@@ -3,6 +3,7 @@
 .menu-wrapper {
   background-color: variable.$clr-white;
   border-radius: variable.$radius;
+  padding-block: 37px;
   height: 100%;
 
   &--desktop {
@@ -19,12 +20,12 @@
     margin: 0;
   }
 
-  &__items {
-    margin-top: 50px;
-  }
-
   &__toggle-nav {
     display: flex;
     justify-content: center;
+  }
+
+  &__toggle-nav {
+    margin-top: 20px;
   }
 }

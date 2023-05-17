@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-import { UserImage, PostImage, DashboardImage, SettingImages } from "@/icons";
+import {
+  UserImage,
+  PostImage,
+  DashboardImage,
+  ArrowLeft,
+  ArrowRight,
+} from "@/icons";
 import { ROUTES_PATHS } from "@/routes";
 import { Link, Button } from "@/components";
 
@@ -53,7 +59,7 @@ export const Menu = () => {
           dimension="default"
           onClick={() => setMobileMod((prev) => !prev)}
         >
-          <SettingImages />
+          {mobileMod ? <ArrowRight /> : <ArrowLeft />}
         </Button>
       </div>
     </div>
