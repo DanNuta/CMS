@@ -1,9 +1,8 @@
-import { PropsWithChildren } from "react";
 import {
-  Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
+  redirect,
 } from "react-router-dom";
 
 import {
@@ -15,7 +14,6 @@ import {
   Register,
   Login,
 } from "@/features";
-import { useAuth } from "@/context";
 import { AppLayout, BlogDetails } from "@/components";
 
 export const ROUTES_PATHS = {
@@ -34,17 +32,6 @@ export const navigateToPost = {
     `${ROUTES_PATHS.postDetails.replace(":id", id.toString())}`,
   gotoPostEdit: (id: number) =>
     `${ROUTES_PATHS.postIdEdit.replace(":id", id.toString())}`,
-};
-
-export const ProtectedRouterLogin: React.FC<PropsWithChildren> = ({
-  children,
-}): any => {
-  const auth = useAuth();
-
-  if (auth?.user !== null) {
-    return <Navigate to={`${ROUTES_PATHS.users}`} />;
-  }
-  return children;
 };
 
 const appRouters = [
@@ -81,26 +68,28 @@ const appRouters = [
 const authRoutes = [
   {
     path: `${ROUTES_PATHS.login}`,
-    element: (
-      <ProtectedRouterLogin>
-        <Login />
-      </ProtectedRouterLogin>
-    ),
+    element: <Login />,
   },
   {
     path: `${ROUTES_PATHS.register}`,
-    element: (
-      <ProtectedRouterLogin>
-        <Register />
-      </ProtectedRouterLogin>
-    ),
+    element: <Register />,
   },
 ];
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route element={<AppLayout />}>
+      <Route
+        loader={() => {
+          const userId = localStorage.getItem("userId");
+
+          if (userId === null) {
+            throw redirect("/login");
+          }
+          return "dan";
+        }}
+        element={<AppLayout />}
+      >
         {appRouters.map((router, i) => {
           return <Route key={i} {...router} />;
         })}
