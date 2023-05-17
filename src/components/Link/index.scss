@@ -29,10 +29,5 @@
     background-color: variable.$clr-hover-blue;
     color: variable.$clr-white;
     box-shadow: 0px 4px 4px rgba(172, 172, 172, 0.19);
-
-    &__title {
-      font-size: variable.$fs-20;
-      font-weight: variable.$fw-400;
-    }
   }
 }

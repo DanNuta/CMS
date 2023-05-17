@@ -13,7 +13,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
   const { user } = useAuth();
 
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           <td>Name</td>
@@ -37,12 +37,13 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                 <td>{u.rol}</td>
 
                 {user?.rol === "administrator" && (
-                  <td>
+                  <td className="table__td-action">
                     <Button
                       type="neutral"
                       element="img"
                       dimension="default"
                       onClick={() => onDelete(u)}
+                      className="btn-custom"
                     >
                       <DeleteImage />
                     </Button>
@@ -51,6 +52,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                       element="img"
                       dimension="default"
                       onClick={() => onEdit(u)}
+                      className="btn-custom"
                     >
                       <EditImage />
                     </Button>

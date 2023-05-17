@@ -5,6 +5,7 @@ interface ButtonProps {
   type: "danger" | "primary" | "neutral";
   dimension: "full" | "custom" | "default";
   element: "href" | "img" | "text";
+  className?: string;
 }
 
 export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
@@ -13,10 +14,14 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   type,
   dimension,
   element,
+  className,
 }) => {
   return (
-    <button className={`btn btn--${type} btn--${dimension}`} onClick={onClick}>
-      <div className={`btn__${element}`}>{children}</div>
+    <button
+      className={`btn btn--${type} btn--${dimension} ${className}`}
+      onClick={onClick}
+    >
+      <div className={`btn__element btn__${element}`}>{children}</div>
     </button>
   );
 };

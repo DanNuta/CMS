@@ -1,7 +1,22 @@
 @use "../../../../styles/variables.scss" as variables;
 
-table {
+.table {
   width: 100%;
+
+  &__td-action {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+
+    & .btn-custom {
+      border: 1px solid variables.$clr-primary;
+      height: 40px;
+      width: 40px;
+      display: grid;
+      place-items: center;
+    }
+  }
 
   thead {
     font-weight: bold;

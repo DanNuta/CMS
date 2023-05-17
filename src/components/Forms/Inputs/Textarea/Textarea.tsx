@@ -23,6 +23,7 @@ export const Textarea: React.FC<TextAreaProps> = ({
         </label>
       )}
       <textarea
+        rows={4}
         className="textarea-label-container__textarea"
         value={value}
         onChange={onChange}
