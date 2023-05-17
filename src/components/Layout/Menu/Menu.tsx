@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   UserImage,
@@ -11,7 +11,24 @@ import { ROUTES_PATHS } from "@/routes";
 import { Link, Button } from "@/components";
 
 export const Menu = () => {
-  const [mobileMod, setMobileMod] = useState(true);
+  const [mobileMod, setMobileMod] = useState<boolean>(true);
+
+  useEffect(() => {
+    const localDataMenu = localStorage.getItem("menu");
+    if (localDataMenu !== null) {
+      const local = localDataMenu === "true";
+      setMobileMod(local);
+    }
+  }, []);
+
+  function togglemenu() {
+    setMobileMod((prev) => {
+      console.log(!prev);
+      const stateValue = !prev;
+      localStorage.setItem("menu", stateValue.toString());
+      return !prev;
+    });
+  }
 
   return (
     <div
@@ -57,7 +74,7 @@ export const Menu = () => {
           type="neutral"
           element="img"
           dimension="default"
-          onClick={() => setMobileMod((prev) => !prev)}
+          onClick={togglemenu}
         >
           {mobileMod ? <ArrowRight /> : <ArrowLeft />}
         </Button>

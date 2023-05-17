@@ -17,6 +17,15 @@
       "rol": "moderator",
       "password": "dannuta1234",
       "id": 1684310172925
+    },
+    {
+      "name": "hfghfgh",
+      "prenume": "fghfgh",
+      "email": "ghfgh@gmail.com",
+      "gender": "masculin",
+      "password": "fghfghffghfg45",
+      "rol": "moderator",
+      "id": 1684321584870
     }
   ]
 }
