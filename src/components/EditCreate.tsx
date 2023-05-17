@@ -38,16 +38,12 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
     setDate(data);
   }
 
-  console.log(date);
-
   useEffect(() => {
     if (posts === undefined) return;
     setTitle(posts.title);
     setDescription(posts.description);
     setLinkImage(posts.linkImage);
     setDate(posts.date);
-
-    console.log(posts.date, "dasdasd");
   }, [posts]);
 
   function sendPost(e: React.FormEvent<HTMLFormElement>) {

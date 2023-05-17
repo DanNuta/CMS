@@ -34,7 +34,6 @@ export const Register: React.FC = () => {
     errName,
     errEmail,
     errPrenume,
-    errGender,
     errPassword,
     errVerifyPassword,
     errCheckbox,
@@ -164,8 +163,6 @@ export const Register: React.FC = () => {
         <Select
           name="sex"
           options={["Masculin", "Femenin", "Ma abtin"]}
-          value={gender}
-          errorMsj={errGender}
           onChange={(e) => setGender(e.target.value)}
         />
 
