@@ -11,7 +11,7 @@ import { ROUTES_PATHS } from "@/routes";
 import { Link, Button } from "@/components";
 
 export const Menu = () => {
-  const [mobileMod, setMobileMod] = useState<boolean>(true);
+  const [mobileMod, setMobileMod] = useState(true);
 
   useEffect(() => {
     const localDataMenu = localStorage.getItem("menu");
@@ -23,7 +23,6 @@ export const Menu = () => {
 
   function togglemenu() {
     setMobileMod((prev) => {
-      console.log(!prev);
       const stateValue = !prev;
       localStorage.setItem("menu", stateValue.toString());
       return !prev;
