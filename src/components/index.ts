@@ -12,3 +12,4 @@ export * from "./Forms";
 export * from "./EditCreate";
 export * from "./Logo";
 export * from "./Link";
+export * from "./AuthLayout";

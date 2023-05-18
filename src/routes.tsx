@@ -1,11 +1,4 @@
 import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  redirect,
-} from "react-router-dom";
-
-import {
   Posts,
   Create,
   Edit,
@@ -14,7 +7,7 @@ import {
   Register,
   Login,
 } from "@/features";
-import { AppLayout, BlogDetails } from "@/components";
+import { BlogDetails } from "@/components";
 
 export const ROUTES_PATHS = {
   users: "/",
@@ -34,7 +27,7 @@ export const navigateToPost = {
     `${ROUTES_PATHS.postIdEdit.replace(":id", id.toString())}`,
 };
 
-const appRouters = [
+export const appRouters = [
   {
     path: `${ROUTES_PATHS.users}`,
     element: <Users />,
@@ -65,7 +58,7 @@ const appRouters = [
   },
 ];
 
-const authRoutes = [
+export const authRoutes = [
   {
     path: `${ROUTES_PATHS.login}`,
     element: <Login />,
@@ -75,31 +68,3 @@ const authRoutes = [
     element: <Register />,
   },
 ];
-
-export const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route
-        loader={() => {
-          const userId = localStorage.getItem("userId");
-
-          if (userId === null) {
-            throw redirect("/login");
-          }
-          return "dan";
-        }}
-        element={<AppLayout />}
-      >
-        {appRouters.map((router, i) => {
-          return <Route key={i} {...router} />;
-        })}
-      </Route>
-
-      <Route>
-        {authRoutes.map((route, i) => {
-          return <Route key={i} {...route} />;
-        })}
-      </Route>
-    </>
-  )
-);

@@ -5,7 +5,8 @@ import { UserProps } from "../types";
 const urlUsers = import.meta.env.VITE_ENDPOINT_USERS;
 
 export async function postUsers(data: UserProps): Promise<UserProps> {
-  return await axios.post(urlUsers, data);
+  const user = await axios.post(urlUsers, data);
+  return user.data;
 }
 
 export async function getsUsers(): Promise<UserProps[]> {
@@ -17,7 +18,9 @@ export async function deleteUser(id: number): Promise<void> {
   await axios.delete(`${urlUsers}/${id}`);
 }
 
-export async function getUser(id: number): Promise<UserProps> {
+export async function getUser(): Promise<UserProps> {
+  const id = Number(localStorage.getItem("userId"));
+
   const data = await axios.get(`${urlUsers}/${id}`);
 
   return data.data;

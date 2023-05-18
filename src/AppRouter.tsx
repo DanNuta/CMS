@@ -1,26 +1,62 @@
-import { RouterProvider } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { PropsWithChildren } from "react";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  defer,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 
 import { useAuth } from "@/context";
-import { UserProps } from "@/types";
 import { getUser } from "@/api";
-import { router } from "@/routes";
+import { authRoutes, appRouters } from "./routes";
+import { AppLayout, AuthLayout } from "@/components";
 
 import "./styles/index.scss";
 
-function AppRouter() {
-  const { setUserState } = useAuth();
-  const idLocalUser = Number(localStorage.getItem("userId"));
+export const ProtectedRouterLogin: React.FC<PropsWithChildren> = () => {
+  const { user } = useAuth();
 
-  useQuery<UserProps>([idLocalUser], () => getUser(idLocalUser), {
-    enabled: !!idLocalUser,
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
-    onSuccess: (data) => {
-      setUserState(data);
-    },
-  });
+  return <Outlet />;
+};
 
-  return <RouterProvider router={router} />;
-}
+export const ProtectRouter: React.FC<PropsWithChildren> = ({ children }) => {
+  const { user } = useAuth();
+  if (!user) {
+    <Navigate to="/login"></Navigate>;
+  }
 
-export default AppRouter;
+  return <>{children}</>;
+};
+
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route
+        loader={() =>
+          defer({
+            userPromise: localStorage.getItem("userId") && getUser(),
+          })
+        }
+        element={<AuthLayout />}
+      >
+        <Route element={<AppLayout />}>
+          {appRouters.map((router, i) => {
+            return <Route key={i} {...router} />;
+          })}
+        </Route>
+
+        <Route element={<ProtectedRouterLogin />}>
+          {authRoutes.map((route, i) => {
+            return <Route key={i} {...route} />;
+          })}
+        </Route>
+      </Route>
+    </>
+  )
+);

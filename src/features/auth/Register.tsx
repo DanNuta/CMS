@@ -65,7 +65,7 @@ export const Register: React.FC = () => {
   const { mutate, status } = useMutation({
     mutationFn: postUsers,
 
-    onSuccess: (newData: UserProps) => {
+    onSuccess: (newData) => {
       setUserState(newData);
       navigate(`${ROUTES_PATHS.users}`);
     },

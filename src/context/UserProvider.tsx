@@ -6,17 +6,24 @@ import React, {
 } from "react";
 
 import { UserProps, UserContextType } from "@/types";
+import { useNavigate } from "react-router-dom";
+
+interface UserConterxtProps {
+  userData: UserProps;
+}
 
 export const UserContext = createContext<UserContextType | null>(null);
 
-export const UserContextProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
-  const [user, setUserState] = useState<UserProps | null>(null);
+export const UserContextProvider: React.FC<
+  PropsWithChildren<UserConterxtProps>
+> = ({ children, userData }) => {
+  const [user, setUserState] = useState<UserProps | null>(userData);
 
+  const location = useNavigate();
   function logOut() {
     localStorage.clear();
     setUserState(null);
+    location("/login");
   }
 
   return (
