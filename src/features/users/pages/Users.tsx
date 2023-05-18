@@ -55,7 +55,6 @@ export const Users = () => {
 
   // delete user
   function deleteUserFn(data: UserProps) {
-    console.log(data);
     setDeleteUserState(true);
     setIdDelete(data);
   }

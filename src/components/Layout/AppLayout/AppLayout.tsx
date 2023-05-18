@@ -1,10 +1,9 @@
 import { Navigate, useOutlet } from "react-router-dom";
 
 import { Topbar, Menu } from "@/components/Layout";
-import { PropsWithChildren } from "react";
 import { useAuth } from "@/context";
 
-export const AppLayout: React.FC<PropsWithChildren> = ({ children }) => {
+export const AppLayout: React.FC = () => {
   const outlet = useOutlet();
 
   const { user } = useAuth();

@@ -5,6 +5,12 @@
   border-spacing: 0;
   border-radius: 10px 10px 0 0;
 
+  &__tr-user {
+    &--current-user {
+      background-color: variables.$clr-hover-users;
+    }
+  }
+
   &__td-action {
     display: flex;
     align-items: center;

@@ -2,201 +2,30 @@
   "users": [
     {
       "name": "dan",
-      "prenume": "nuta",
-      "email": "nuta@gmail.com",
+      "prenume": "nutas",
+      "email": "fsdf@gmail.com",
       "gender": "masculin",
-      "password": "nutadan12",
-      "rol": "administrator",
-      "id": 1684309489075
+      "password": "vxcvcvxcvc45",
+      "rol": "moderator",
+      "id": 1684413163793
     },
     {
       "name": "Dan",
       "prenume": "Nuta",
-      "email": "dany@gmail.com",
+      "email": "danu@gmail.com",
       "gender": "masculin",
-      "password": "dannuta12",
+      "password": "gdfgfdgdfg34",
       "rol": "administrator",
-      "id": 1684326802398
+      "id": 1684413231431
     },
     {
-      "name": "gfdgdfg",
-      "prenume": "dfgdfg",
-      "email": "dfgdfg@gmail.com",
+      "name": "Ion",
+      "prenume": "erhan",
+      "email": "erhan@gmail.com",
       "gender": "masculin",
-      "password": "fdsfsdfsd34",
+      "password": "erhanion23",
       "rol": "moderator",
-      "id": 1684328287264
-    },
-    {
-      "name": "ghfgh",
-      "prenume": "ghfgh",
-      "email": "fghfgh@gmail.com",
-      "gender": "masculin",
-      "password": "fdgdfggdfgd45",
-      "rol": "moderator",
-      "id": 1684328404811
-    },
-    {
-      "name": "Vasile",
-      "prenume": "Arici",
-      "email": "arici@gmail.com",
-      "gender": "masculin",
-      "password": "aricifsd23",
-      "rol": "moderator",
-      "id": 1684329331193
-    },
-    {
-      "name": "hfghfgh",
-      "prenume": "gfhfgh",
-      "email": "fsfds@gmail.com",
-      "gender": "masculin",
-      "password": "gdfgdfgdf34",
-      "rol": "moderator",
-      "id": 1684329454677
-    },
-    {
-      "name": "gfdgdf",
-      "prenume": "dfgdfg",
-      "email": "dfgdfg@gmail.com",
-      "gender": "masculin",
-      "password": "dfgdfgdfgdf34",
-      "rol": "moderator",
-      "id": 1684329542614
-    },
-    {
-      "name": "ghfghgf",
-      "prenume": "ghfghfgh",
-      "email": "fghfgh@gmal.com",
-      "gender": "masculin",
-      "password": "fghfghfghfgh45",
-      "rol": "moderator",
-      "id": 1684391282722
-    },
-    {
-      "name": "hfghfg",
-      "prenume": "hfghfgh",
-      "email": "gfhfghfgh@gmail.com",
-      "gender": "masculin",
-      "password": "gfhfghfghfg45",
-      "rol": "moderator",
-      "id": 1684391364931
-    },
-    {
-      "name": "hjghjg",
-      "prenume": "ghjghj",
-      "email": "ghjgh@gmail.com",
-      "gender": "masculin",
-      "password": "ghjghjghjgh56",
-      "rol": "moderator",
-      "id": 1684397005370
-    },
-    {
-      "name": "hfghfg",
-      "prenume": "hfghfgh",
-      "email": "fghfgh@gmail.com",
-      "gender": "masculin",
-      "password": "ghjghjghjgh56",
-      "rol": "moderator",
-      "id": 1684397074370
-    },
-    {
-      "name": "hfghf",
-      "prenume": "hfghfgh",
-      "email": "hfghfg@gmail.com",
-      "gender": "masculin",
-      "password": "fghfghfgh45",
-      "rol": "moderator",
-      "id": 1684399935970
-    },
-    {
-      "name": "ghfghfg",
-      "prenume": "fghfgh",
-      "email": "fghfghfg@gmail.com",
-      "gender": "masculin",
-      "password": "fghfghghfgh45",
-      "rol": "moderator",
-      "id": 1684401076756
-    },
-    {
-      "name": "fghfgh",
-      "prenume": "fghfgh",
-      "email": "fghfghf@gmail.com",
-      "gender": "masculin",
-      "password": "fghfghfgh45",
-      "rol": "moderator",
-      "id": 1684401231164
-    },
-    {
-      "name": "hfghfgh",
-      "prenume": "fghfghfgh",
-      "email": "ghjghj@gmail.com",
-      "gender": "masculin",
-      "password": "mbnmbnmbn56",
-      "rol": "moderator",
-      "id": 1684401331148
-    },
-    {
-      "name": "jghjgh",
-      "prenume": "jghjgh",
-      "email": "ghjghj@gmail.com",
-      "gender": "masculin",
-      "password": "ghjghjghgj56",
-      "rol": "moderator",
-      "id": 1684401514461
-    },
-    {
-      "name": "gdfgdfg",
-      "prenume": "dfgdfgdfg",
-      "email": "dfgdfgf@gmail.com",
-      "gender": "masculin",
-      "password": "fghfghfghfg45",
-      "rol": "moderator",
-      "id": 1684401578893
-    },
-    {
-      "name": "jhj",
-      "prenume": "kjhk",
-      "email": "jhkjh@gmail.com",
-      "gender": "masculin",
-      "password": "gdfgdfgdfgdf34",
-      "rol": "moderator",
-      "id": 1684406122613
-    },
-    {
-      "name": "ggfd",
-      "prenume": "dfg",
-      "email": "dfgdfg@gmail.com",
-      "gender": "masculin",
-      "password": "sdfsdfsd34",
-      "rol": "moderator",
-      "id": 1684406184686
-    },
-    {
-      "name": "kjhkjh",
-      "prenume": "ghjghj",
-      "email": "ghjghj@gmail.com",
-      "gender": "masculin",
-      "password": "gfhfghfghfg45",
-      "rol": "moderator",
-      "id": 1684406362677
-    },
-    {
-      "name": "fhfg",
-      "prenume": "hfghfg",
-      "email": "hfghfg@gmail.com",
-      "gender": "masculin",
-      "password": "gfhfghfghg45",
-      "rol": "moderator",
-      "id": 1684406443197
-    },
-    {
-      "name": "hjghj",
-      "prenume": "ghjghj",
-      "email": "jghjgh@gmail.com",
-      "gender": "masculin",
-      "password": "vxcvxcvxc34",
-      "rol": "moderator",
-      "id": 1684406528821
+      "id": 1684413727980
     }
   ]
 }

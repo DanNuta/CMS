@@ -29,15 +29,20 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
         {users &&
           users.map((u, i) => {
             return (
-              <tr className="table__tr-user" key={i}>
+              <tr
+                className={`table__tr-user table__tr-user--${
+                  user?.id === u.id && "current-user"
+                }`}
+                key={i}
+              >
                 <td>{u.name}</td>
                 <td>{u.prenume}</td>
                 <td>{u.email}</td>
                 <td>{u.gender}</td>
                 <td>{u.rol}</td>
 
-                {user?.rol === "administrator" && (
-                  <td className="table__td-action">
+                {user?.rol === "administrator" && u.rol === "moderator" && (
+                  <td className={`table__td-action`}>
                     <Button
                       type="neutral"
                       element="img"

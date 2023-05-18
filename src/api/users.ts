@@ -1,4 +1,5 @@
 import axios from "axios";
+import { redirect } from "react-router-dom";
 
 import { UserProps } from "../types";
 
@@ -18,12 +19,16 @@ export async function deleteUser(id: number): Promise<void> {
   await axios.delete(`${urlUsers}/${id}`);
 }
 
-export async function getUser(): Promise<UserProps> {
-  const id = Number(localStorage.getItem("userId"));
-
-  const data = await axios.get(`${urlUsers}/${id}`);
-
-  return data.data;
+export async function getUser(): Promise<any> {
+  try {
+    const id = Number(localStorage.getItem("userId"));
+    const data = await axios.get(`${urlUsers}/${id}`);
+    return data.data;
+  } catch (e) {
+    localStorage.clear();
+    console.log(e, "err");
+    return redirect("/login");
+  }
 }
 
 export async function logIn(

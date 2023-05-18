@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { useOutlet, useLoaderData, Await } from "react-router-dom";
+import { useOutlet, useLoaderData, Await, Navigate } from "react-router-dom";
 
 import { UserContextProvider } from "@/context";
 import { UserProps } from "@/types";
