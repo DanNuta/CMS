@@ -99,7 +99,7 @@ export const Login = () => {
             errorMsj={errPassword}
           />
 
-          <Button element="text"  type="primary" dimension="full">
+          <Button element="text" butontype="primary" dimension="full">
             Log In
           </Button>
         </Form>

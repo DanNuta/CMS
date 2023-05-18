@@ -20,7 +20,7 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
 
         <div className="image-container__btns">
           <Button
-            type="neutral"
+            butontype="neutral"
             element="img"
             dimension="default"
             onClick={() => onDeletePost(data.id)}
@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
             <DeleteImage />
           </Button>
 
-          <Button type="neutral" element="img" dimension="default">
+          <Button butontype="neutral" element="img" dimension="default">
             <Link to={navigateToPost.gotoPostEdit(data.id)}>
               <EditImage />
             </Link>

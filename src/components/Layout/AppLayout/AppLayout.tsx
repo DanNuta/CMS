@@ -2,6 +2,7 @@ import { Navigate, useOutlet } from "react-router-dom";
 
 import { Topbar, Menu } from "@/components/Layout";
 import { useAuth } from "@/context";
+import { ROUTES_PATHS } from "@/routes";
 
 export const AppLayout: React.FC = () => {
   const outlet = useOutlet();
@@ -9,7 +10,7 @@ export const AppLayout: React.FC = () => {
   const { user } = useAuth();
 
   if (user === null) {
-    return <Navigate to="/login" />;
+    return <Navigate to={`${ROUTES_PATHS.login}`} />;
   }
 
   return (

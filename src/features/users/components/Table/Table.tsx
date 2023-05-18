@@ -44,7 +44,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                 {user?.rol === "administrator" && u.rol === "moderator" && (
                   <td className={`table__td-action`}>
                     <Button
-                      type="neutral"
+                      butontype="neutral"
                       element="img"
                       dimension="default"
                       onClick={() => onDelete(u)}
@@ -53,7 +53,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                       <DeleteImage />
                     </Button>
                     <Button
-                      type="neutral"
+                      butontype="neutral"
                       element="img"
                       dimension="default"
                       onClick={() => onEdit(u)}

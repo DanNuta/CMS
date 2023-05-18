@@ -70,7 +70,7 @@ export const Menu = () => {
 
       <div className="menu-wrapper__toggle-nav">
         <Button
-          type="neutral"
+          butontype="neutral"
           element="img"
           dimension="default"
           onClick={togglemenu}

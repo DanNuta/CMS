@@ -7,6 +7,7 @@ import React, {
 
 import { UserProps, UserContextType } from "@/types";
 import { useNavigate } from "react-router-dom";
+import { ROUTES_PATHS } from "@/routes";
 
 interface UserConterxtProps {
   userData: UserProps;
@@ -23,7 +24,7 @@ export const UserContextProvider: React.FC<
   function logOut() {
     localStorage.clear();
     setUserState(null);
-    location("/login");
+    location(`${ROUTES_PATHS.login}`);
   }
 
   return (

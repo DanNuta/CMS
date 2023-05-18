@@ -114,7 +114,7 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
         id="image"
       />
 
-      <Button element="text" dimension="custom" type="primary">
+      <Button element="text" dimension="custom" butontype="primary">
         Save
       </Button>
     </Form>

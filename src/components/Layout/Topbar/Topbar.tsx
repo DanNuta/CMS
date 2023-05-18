@@ -19,7 +19,7 @@ export const Topbar = () => {
 
         <div className="btn-arrow">
           <Button
-            type="neutral"
+            butontype="neutral"
             element="img"
             dimension="default"
             onClick={() => setShowLogOut((prev) => !prev)}
@@ -33,7 +33,7 @@ export const Topbar = () => {
             <Button
               element="text"
               dimension="custom"
-              type="danger"
+              butontype="danger"
               onClick={logOut}
             >
               Log out

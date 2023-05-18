@@ -10,7 +10,7 @@ import {
 
 import { useAuth } from "@/context";
 import { getUser } from "@/api";
-import { authRoutes, appRouters } from "./routes";
+import { authRoutes, appRouters, ROUTES_PATHS } from "./routes";
 import { AppLayout, AuthLayout } from "@/components";
 
 import "./styles/index.scss";
@@ -19,7 +19,7 @@ export const ProtectedRouterLogin: React.FC<PropsWithChildren> = () => {
   const { user } = useAuth();
 
   if (user) {
-    return <Navigate to="/" />;
+    return <Navigate to={`${ROUTES_PATHS.users}`} />;
   }
 
   return <Outlet />;
@@ -28,7 +28,7 @@ export const ProtectedRouterLogin: React.FC<PropsWithChildren> = () => {
 export const ProtectRouter: React.FC<PropsWithChildren> = ({ children }) => {
   const { user } = useAuth();
   if (!user) {
-    <Navigate to="/login"></Navigate>;
+    <Navigate to={`${ROUTES_PATHS.login}`}></Navigate>;
   }
 
   return <>{children}</>;

@@ -190,7 +190,7 @@ export const Register: React.FC = () => {
           errorMsj={errCheckbox}
         />
 
-        <Button element="text" dimension="full" type="primary">
+        <Button element="text" dimension="full" butontype="primary">
           Sign Up
         </Button>
       </Form>

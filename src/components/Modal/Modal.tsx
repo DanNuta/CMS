@@ -38,7 +38,7 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
                   element="text"
                   dimension="custom"
                   onClick={onClose}
-                  type="danger"
+                  butontype="danger"
                 >
                   Cancel
                 </Button>
@@ -46,7 +46,7 @@ export const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
                   element="text"
                   dimension="custom"
                   onClick={onConfirm}
-                  type="primary"
+                  butontype="primary"
                 >
                   {typeBtn}
                 </Button>

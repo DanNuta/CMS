@@ -81,7 +81,7 @@ export const Users = () => {
     <Button
       element="text"
       dimension="custom"
-      type="primary"
+      butontype="primary"
       onClick={() => setAddUserModalState(true)}
     >
       Add a new user
