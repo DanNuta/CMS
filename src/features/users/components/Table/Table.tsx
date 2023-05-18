@@ -29,7 +29,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
         {users &&
           users.map((u, i) => {
             return (
-              <tr key={i}>
+              <tr className="table__tr-user" key={i}>
                 <td>{u.name}</td>
                 <td>{u.prenume}</td>
                 <td>{u.email}</td>

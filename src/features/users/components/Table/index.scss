@@ -2,6 +2,8 @@
 
 .table {
   width: 100%;
+  border-spacing: 0;
+  border-radius: 10px 10px 0 0;
 
   &__td-action {
     display: flex;
@@ -20,10 +22,14 @@
 
   thead {
     font-weight: bold;
+    background-color: variables.$clr-succes;
+    border-radius: 10px;
+    color: white;
 
     tr {
       width: 100%;
       border-bottom: 1px solid variables.$clr-underline;
+      border-radius: 10px;
 
       td {
         padding-block: 21px;
@@ -33,9 +39,17 @@
 
   tbody {
     tr {
+      transition: 0.2s ease-in-out;
       td {
         padding-block: 21px;
+        border-bottom: 1px solid variables.$clr-underline;
       }
+    }
+
+    tr:hover {
+      background-color: variables.$clr-hover-users;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
     }
   }
 }
