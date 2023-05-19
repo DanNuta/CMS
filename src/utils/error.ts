@@ -9,7 +9,7 @@ export const errorInputs: ErrorProps = {
 
   passwordErr: "Trebuie sa introduci o parola",
   weakPassword:
-    "Minim opt caractere, cel puțin o literă, un număr și un caracter special",
+    "Minim opt caractere, cel puțin o literă, o cifra și un caracter special",
   passwordIsNotTheSame: "Parolele nu coicid",
 
   rolErr: "Selecteaza un rol",

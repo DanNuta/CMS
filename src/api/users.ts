@@ -26,7 +26,6 @@ export async function getUser(): Promise<any> {
     return data.data;
   } catch (e) {
     localStorage.clear();
-    console.log(e, "err");
     return redirect("/login");
   }
 }

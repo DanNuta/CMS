@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import {
   Route,
   createBrowserRouter,
@@ -18,20 +18,31 @@ import "./styles/index.scss";
 export const ProtectedRouterLogin: React.FC<PropsWithChildren> = () => {
   const { user } = useAuth();
 
-  if (user) {
-    return <Navigate to={`${ROUTES_PATHS.users}`} />;
-  }
-
-  return <Outlet />;
+  return user ? (
+    <Navigate to={`${ROUTES_PATHS.users}`} />
+  ) : (
+    <React.Suspense fallback={<h1>loading...</h1>}>
+      <Outlet />
+    </React.Suspense>
+  );
 };
 
 export const ProtectRouter: React.FC<PropsWithChildren> = ({ children }) => {
   const { user } = useAuth();
-  if (!user) {
-    <Navigate to={`${ROUTES_PATHS.login}`}></Navigate>;
+
+  return user ? <>{children}</> : <Navigate to={`${ROUTES_PATHS.login}`} />;
+};
+
+export const RedirectUser = () => {
+  const url = window.location.pathname;
+
+  if (url === "/") {
+    return <Navigate to={`${ROUTES_PATHS.users}`}></Navigate>;
   }
 
-  return <>{children}</>;
+  const splitURL = url.split("/")[1];
+
+  return <Navigate to={`${splitURL}`} />;
 };
 
 export const router = createBrowserRouter(
@@ -43,9 +54,10 @@ export const router = createBrowserRouter(
             userPromise: localStorage.getItem("userId") && getUser(),
           })
         }
+        errorElement={<RedirectUser />}
         element={<AuthLayout />}
       >
-        <Route element={<AppLayout />}>
+        <Route errorElement={<RedirectUser />} element={<AppLayout />}>
           {appRouters.map((router, i) => {
             return <Route key={i} {...router} />;
           })}
