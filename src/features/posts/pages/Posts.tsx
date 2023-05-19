@@ -43,7 +43,7 @@ export const Posts: React.FC = () => {
   );
 
   return (
-    <PageCard title={`Posts ${data?.length}`} extra={btn}>
+    <PageCard title={`Posts, ${data?.length}`} extra={btn}>
       {isSuccess && (
         <PopUp type="succes">
           <p>{succesMsj.succesDeletedPost}</p>

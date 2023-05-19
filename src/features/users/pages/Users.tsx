@@ -89,7 +89,7 @@ export const Users = () => {
   );
 
   return (
-    <PageCard title={`Users ${data?.length}`} extra={btnAdmin}>
+    <PageCard title={`Users, ${data?.length}`} extra={btnAdmin}>
       <UsersForm
         onCancel={() => setAddUserModalState((prev) => !prev)}
         onAddUser={addNewUser}

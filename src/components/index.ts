@@ -13,4 +13,3 @@ export * from "./EditCreate";
 export * from "./Logo";
 export * from "./Link";
 export * from "./AuthLayout";
-export * from "./ErrorBoundary";
