@@ -47,13 +47,15 @@
     tr {
       transition: 0.2s ease-in-out;
       td {
-        padding-block: 21px;
         border-bottom: 1px solid variables.$clr-underline;
+        padding-block: 21px;
       }
     }
 
-    tr::after {
-      content: "";
+    tr {
+      td {
+        border-bottom: 1px solid variables.$clr-underline;
+      }
     }
 
     tr:hover {

@@ -1,8 +1,8 @@
 export const DeleteImage = () => {
   return (
     <svg
-      width="16"
-      height="18"
+      width="1rem"
+      height="1rem"
       viewBox="0 0 16 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

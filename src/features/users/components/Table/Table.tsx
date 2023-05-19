@@ -41,7 +41,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                 <td>{u.gender}</td>
                 <td>{u.rol}</td>
 
-                {user?.rol === "administrator" && u.rol === "moderator" && (
+                {user?.rol === "administrator" && u.rol === "moderator" ? (
                   <td className={`table__td-action`}>
                     <Button
                       butontype="neutral"
@@ -62,6 +62,8 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
                       <EditImage />
                     </Button>
                   </td>
+                ) : (
+                  <td></td>
                 )}
               </tr>
             );
