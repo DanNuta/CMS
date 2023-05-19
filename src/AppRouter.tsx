@@ -36,7 +36,7 @@ export const ProtectRouter: React.FC<PropsWithChildren> = ({ children }) => {
 export const RedirectUser = () => {
   const url = window.location.pathname;
 
-  if (url === "/") {
+  if (url !== `${ROUTES_PATHS.users}`) {
     return <Navigate to={`${ROUTES_PATHS.users}`}></Navigate>;
   }
 
