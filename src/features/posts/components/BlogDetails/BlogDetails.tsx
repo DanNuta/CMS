@@ -22,7 +22,7 @@ export const BlogDetails = () => {
       <div className="details-blog">
         <div className="details-blog__author">
           <p className="details-blog__author">
-            Author:
+            Author: &nbsp;
             <span className="details-blog__author--info">
               {data?.author.name}
             </span>{" "}

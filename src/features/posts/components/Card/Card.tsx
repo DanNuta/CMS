@@ -52,7 +52,7 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
 
           <div className="body__author">
             <p className="body__author-label">
-              Author &:
+              Author: &nbsp;
               <span className="body__author-info">
                 {data.author.name} {data.author.prenume}
               </span>

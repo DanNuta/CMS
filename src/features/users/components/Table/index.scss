@@ -52,11 +52,14 @@
       }
     }
 
+    tr::after {
+      content: "";
+    }
+
     tr:hover {
-      background-color: variables.$clr-hover-blue;
-      color: white;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
       cursor: pointer;
+      background: variables.$clr-hover-blue !important;
     }
   }
 }
