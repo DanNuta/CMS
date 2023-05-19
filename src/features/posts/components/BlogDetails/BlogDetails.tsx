@@ -26,7 +26,7 @@ export const BlogDetails = () => {
             <span className="details-blog__author--info">
               {data?.author.name}
             </span>{" "}
-            <span className="details-blog_author--info">
+            <span className="details-blog__author--info">
               {data?.author.prenume}
             </span>
           </p>

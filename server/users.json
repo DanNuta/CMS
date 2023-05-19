@@ -17,6 +17,15 @@
       "rol": "administrator",
       "password": "hfghfghfg2@",
       "id": 1684498626855
+    },
+    {
+      "name": "gfdgd",
+      "prenume": "dfgdfgf",
+      "email": "gdfg@gmail.com",
+      "gender": "masculin",
+      "password": "dfgdfgdfgf@45",
+      "rol": "moderator",
+      "id": 1684505298613
     }
   ]
 }
