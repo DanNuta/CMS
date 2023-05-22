@@ -15,31 +15,35 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
 
   return (
     <div className="card">
-      <Link className="card__link" to={navigateToPost.gotoPostDetails(data.id)}>
-        <div className="image-container">
+      <div className="image-container">
+        <Link
+          className="card__link"
+          to={navigateToPost.gotoPostDetails(data.id)}
+        >
           <img className="image-container__image" src={data.linkImage} />
-
-          <div
-            onClick={(e) => e.preventDefault()}
-            className="image-container__btns"
+        </Link>
+        <div
+          onClick={(e) => e.preventDefault()}
+          className="image-container__btns"
+        >
+          <Button
+            butontype="neutral"
+            element="img"
+            dimension="default"
+            onClick={() => onDeletePost(data.id)}
           >
-            <Button
-              butontype="neutral"
-              element="img"
-              dimension="default"
-              onClick={() => onDeletePost(data.id)}
-            >
-              <DeleteImage />
-            </Button>
+            <DeleteImage />
+          </Button>
 
-            <Button butontype="neutral" element="img" dimension="default">
-              <Link to={navigateToPost.gotoPostEdit(data.id)}>
-                <EditImage />
-              </Link>
-            </Button>
-          </div>
+          <Button butontype="neutral" element="img" dimension="default">
+            <Link to={navigateToPost.gotoPostEdit(data.id)}>
+              <EditImage />
+            </Link>
+          </Button>
         </div>
+      </div>
 
+      <Link className="card__link" to={navigateToPost.gotoPostDetails(data.id)}>
         <div className="body">
           <div className="body__title">
             <h1 className="body__title-post">{data.title}</h1>
