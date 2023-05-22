@@ -35,6 +35,24 @@
       "password": "victor@4",
       "rol": "moderator",
       "id": 1684665210865
+    },
+    {
+      "name": "ghg",
+      "prenume": "hfgh",
+      "email": "hfghf@gmail.com",
+      "gender": "masculin",
+      "password": "dgdfgdfgfdgdfg4@",
+      "rol": "moderator",
+      "id": 1684734959341
+    },
+    {
+      "name": "fgdfg",
+      "prenume": "dfgdfg",
+      "email": "dfgdfg@gmail.com",
+      "gender": "masculin",
+      "password": "dannuta12@",
+      "rol": "moderator",
+      "id": 1684735654983
     }
   ]
 }

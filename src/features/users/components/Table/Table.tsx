@@ -14,8 +14,8 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
 
   return (
     <table className="table">
-      <thead>
-        <tr>
+      <thead className="table__thead">
+        <tr className="table__thead-tr">
           <td>Name</td>
           <td>First name</td>
           <td>Email</td>
@@ -25,7 +25,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
         </tr>
       </thead>
 
-      <tbody>
+      <tbody className="table__tbody">
         {users &&
           users.map((u, i) => {
             return (

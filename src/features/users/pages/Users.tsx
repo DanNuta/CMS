@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { getsUsers, deleteUser, updateUser, postUsers } from "@/api";
@@ -21,7 +21,14 @@ export const Users = () => {
 
   const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery<UserProps[]>(["users"], getsUsers);
+  const { data, isLoading, error } = useQuery<UserProps[]>(
+    ["users"],
+    getsUsers
+  );
+
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
 
   const { mutate: mutateDeleteUser, status: statusDelete } = useMutation({
     mutationFn: deleteUser,
@@ -88,49 +95,57 @@ export const Users = () => {
     </Button>
   );
 
+  console.log(isLoading, "loading");
+
   return (
-    <PageCard title={`Users, ${data?.length}`} extra={btnAdmin}>
-      <UsersForm
-        onCancel={() => setAddUserModalState((prev) => !prev)}
-        onAddUser={addNewUser}
-        type="create"
-        modalOpen={addUserModalState}
-      />
-
-      <Modal
-        typeBtn="Confirm"
-        openModal={deleteUserState}
-        onClose={() => setDeleteUserState(false)}
-        onConfirm={confirmDeleteUser}
-      >
-        <h1>{confirmMjs.confirmDeleteUser}</h1>
-      </Modal>
-
-      <UsersForm
-        onCancel={() => setEditUserState(false)}
-        onAddUser={editUserOnServer}
-        type="edit"
-        modalOpen={editUserState}
-        userEdit={changeUser}
-      />
-
-      {statusDelete === "success" && (
-        <PopUp type="succes">{succesMsj.succesDeleteUser}</PopUp>
-      )}
-
-      {statusPostUser === "success" && (
-        <PopUp type="succes">{succesMsj.succesAddUser}</PopUp>
-      )}
-
-      {statusEdit === "success" && (
-        <PopUp type="succes">{succesMsj.succesEditUser}</PopUp>
-      )}
-
-      {isLoading ? (
+    <>
+      {!data ? (
         <Loading />
       ) : (
-        <Table users={data} onEdit={editUser} onDelete={deleteUserFn} />
+        <PageCard title={`Users, ${data?.length}`} extra={btnAdmin}>
+          <UsersForm
+            onCancel={() => setAddUserModalState((prev) => !prev)}
+            onAddUser={addNewUser}
+            type="create"
+            modalOpen={addUserModalState}
+          />
+
+          <Modal
+            typeBtn="Confirm"
+            openModal={deleteUserState}
+            onClose={() => setDeleteUserState(false)}
+            onConfirm={confirmDeleteUser}
+          >
+            <h1>{confirmMjs.confirmDeleteUser}</h1>
+          </Modal>
+
+          <UsersForm
+            onCancel={() => setEditUserState(false)}
+            onAddUser={editUserOnServer}
+            type="edit"
+            modalOpen={editUserState}
+            userEdit={changeUser}
+          />
+
+          {statusDelete === "success" && (
+            <PopUp type="succes">{succesMsj.succesDeleteUser}</PopUp>
+          )}
+
+          {statusPostUser === "success" && (
+            <PopUp type="succes">{succesMsj.succesAddUser}</PopUp>
+          )}
+
+          {statusEdit === "success" && (
+            <PopUp type="succes">{succesMsj.succesEditUser}</PopUp>
+          )}
+
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <Table users={data} onEdit={editUser} onDelete={deleteUserFn} />
+          )}
+        </PageCard>
       )}
-    </PageCard>
+    </>
   );
 };
