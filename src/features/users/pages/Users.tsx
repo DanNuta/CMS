@@ -15,6 +15,7 @@ export const Users = () => {
   const [addUserModalState, setAddUserModalState] = useState(false);
   const [editUserState, setEditUserState] = useState(false);
   const [deleteUserState, setDeleteUserState] = useState(false);
+  const [errorServer, setErrorServer] = useState<string | null>(null);
 
   const [changeUser, setChangeUser] = useState<UserProps | undefined>();
   const [idDelete, setIdDelete] = useState<UserProps | undefined>();
@@ -23,11 +24,17 @@ export const Users = () => {
 
   const { data, isLoading, error } = useQuery<UserProps[]>(
     ["users"],
-    getsUsers
+    getsUsers,
+
+    {
+      onError: (e: any) => {
+        setErrorServer(e.message);
+      },
+    }
   );
 
   useEffect(() => {
-    console.log(error);
+    //setEditUserState(error: Error.)
   }, [error]);
 
   const { mutate: mutateDeleteUser, status: statusDelete } = useMutation({
@@ -95,11 +102,13 @@ export const Users = () => {
     </Button>
   );
 
-  console.log(isLoading, "loading");
+  if (errorServer) {
+    return <h1>{errorServer}</h1>;
+  }
 
   return (
     <>
-      {!data ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <PageCard title={`Users, ${data?.length}`} extra={btnAdmin}>

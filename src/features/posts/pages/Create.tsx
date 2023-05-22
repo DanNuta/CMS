@@ -21,9 +21,7 @@ export const Create = () => {
     },
 
     onError: (error: Error) => {
-      if (typeof error === "object" && error !== null) {
-        setServerError(error.message);
-      }
+      setServerError(error.message);
     },
   });
 
