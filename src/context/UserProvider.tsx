@@ -4,21 +4,21 @@ import React, {
   PropsWithChildren,
   useContext,
 } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { UserProps, UserContextType } from "@/types";
-import { useNavigate } from "react-router-dom";
 import { ROUTES_PATHS } from "@/routes";
 
-interface UserConterxtProps {
-  userData: UserProps;
+interface UserContextProps {
+  userData: any
 }
 
-export const UserContext = createContext<UserContextType | null>(null);
+export const UserContext = createContext<any>(null);
 
 export const UserContextProvider: React.FC<
-  PropsWithChildren<UserConterxtProps>
+  PropsWithChildren<UserContextProps>
 > = ({ children, userData }) => {
-  const [user, setUserState] = useState<UserProps | null>(userData);
+  const [user, setUserState] = useState<UserProps | string | null>(userData);
 
   const location = useNavigate();
   function logOut() {

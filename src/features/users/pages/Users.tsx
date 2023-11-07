@@ -76,12 +76,12 @@ export const Users = () => {
   function confirmDeleteUser() {
     if (idDelete === undefined) return;
     setDeleteUserState(false);
-    mutateDeleteUser(idDelete.id);
+    mutateDeleteUser(idDelete._id);
   }
 
   // edit user
   function editUser(editUser: UserProps) {
-    const findUser = data?.find((item) => item.id === editUser.id);
+    const findUser = data?.find((item) => item._id === editUser._id);
     setEditUserState(true);
     setChangeUser(findUser);
   }

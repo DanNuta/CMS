@@ -16,7 +16,7 @@ export async function getsUsers(): Promise<UserProps[]> {
   return data.data;
 }
 
-export async function deleteUser(id: number): Promise<void> {
+export async function deleteUser(id: string): Promise<void> {
   await axios.delete(`${urlUsers}/${id}`);
 }
 
