@@ -103,7 +103,7 @@ export const Register: React.FC = () => {
     setCheckBox(false);
     setVerifyPassword("");
 
-    const uniq = new Date().getTime();
+    const uniq = String(new Date().getTime());
 
     const dataForm: UserProps = {
       name,
@@ -112,7 +112,7 @@ export const Register: React.FC = () => {
       gender,
       password,
       rol: "moderator",
-      id: uniq,
+      _id: uniq,
     };
 
     localStorage.setItem("userId", uniq.toString());

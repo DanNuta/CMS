@@ -106,7 +106,7 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
     if (!userEdit) {
       if (!checkbox) return;
 
-      const uniq = new Date().getTime();
+      const uniq = String(new Date().getTime());
       const dataForm: UserProps = {
         name,
         prenume,
@@ -114,7 +114,7 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
         gender,
         password,
         rol,
-        id: uniq,
+        _id: uniq,
       };
 
       onAddUser(dataForm);
@@ -127,7 +127,7 @@ export const UsersForm: React.FC<AddNewUserProps> = ({
         gender,
         rol,
         password,
-        id: userEdit.id,
+        _id: userEdit._id,
       };
       onAddUser(editUser);
     }

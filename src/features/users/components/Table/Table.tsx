@@ -31,7 +31,7 @@ export const Table: React.FC<UserPropsData> = ({ users, onDelete, onEdit }) => {
             return (
               <tr
                 className={`table__tr-user table__tr-user--${
-                  user?.id === u.id && "current-user"
+                  user?._id === u._id && "current-user"
                 }`}
                 key={i}
               >
