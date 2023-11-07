@@ -9,7 +9,7 @@ import { succesMsj, confirmMjs } from "@/utils";
 
 export const Posts: React.FC = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [deleteId, setDeleteId] = useState<number>();
+  const [deleteId, setDeleteId] = useState<string>();
 
   const queryClient = useQueryClient();
 
@@ -23,7 +23,7 @@ export const Posts: React.FC = () => {
     },
   });
 
-  function openDeleteModalFn(id: number) {
+  function openDeleteModalFn(id: string) {
     setOpenDeleteModal(true);
     setDeleteId(id);
   }
@@ -64,7 +64,7 @@ export const Posts: React.FC = () => {
           <div className="card-parent">
             {data.map((item, i) => {
               return (
-                <Card onDeletePost={openDeleteModalFn} data={item} key={i} />
+                <Card onDeletePost={openDeleteModalFn} {...item} key={i} />
               );
             })}
           </div>

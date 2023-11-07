@@ -4,6 +4,7 @@ import { redirect } from "react-router-dom";
 import { UserProps } from "../types";
 
 const urlUsers = import.meta.env.VITE_ENDPOINT_USERS;
+const loginApi = import.meta.env.VITE_ENDPOINT_LOGIN;
 
 export async function postUsers(data: UserProps): Promise<UserProps> {
   const user = await axios.post(urlUsers, data);
@@ -33,20 +34,20 @@ export async function getUser(): Promise<any> {
 export async function logIn(
   email: string,
   password: string
-): Promise<UserProps[]> {
-  const data = await axios.get(
-    `${urlUsers}?email=${email}&password=${password}`
-  );
-  const res = await data.data;
+): Promise<UserProps> {
+  const { data } = await axios.post<UserProps>(loginApi, {
+    email,
+    password,
+  });
 
-  if (!res.length) {
+  if (!Object.keys(data).length) {
     throw new Error("Acest utilizator nu exista");
   }
 
-  return res;
+  return data;
 }
 
 export async function updateUser(data: UserProps) {
-  const id = data.id;
+  const id = data._id;
   await axios.put(`${urlUsers}/${id}`, data);
 }

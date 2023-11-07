@@ -27,14 +27,14 @@ export const Create = () => {
 
   function mutateElement(data: EditCreatePropsTypes) {
     if (user === null) return;
-    const uniq = new Date().getTime();
+    const uniq = String(new Date().getTime());
     const postBlog: PostProps = {
       ...data,
       author: {
         name: user.name,
         prenume: user.prenume,
       },
-      id: uniq,
+      _id: uniq,
     };
     mutate(postBlog);
   }

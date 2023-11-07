@@ -42,7 +42,7 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
     if (posts === undefined) return;
     setTitle(posts.title);
     setDescription(posts.description);
-    setLinkImage(posts.linkImage);
+    setLinkImage(posts.img);
     setDate(posts.date);
   }, [posts]);
 
@@ -63,7 +63,7 @@ export const EditPost: React.FC<EditCreateProps> = ({ onClick, posts }) => {
     const postObj: EditCreatePropsTypes = {
       title,
       description,
-      linkImage,
+      img: linkImage,
       date,
     };
 

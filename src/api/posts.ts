@@ -9,21 +9,21 @@ export async function postPOST(blog: PostProps) {
 }
 
 export async function getPosts(): Promise<PostProps[]> {
-  const posts = await axios.get(url);
-  return posts.data;
+  const { data } = await axios.get(url);
+  return data;
 }
 
-export async function getPost(id: number): Promise<PostProps> {
-  const posts = await axios.get(`${url}/${id}`);
-  return posts.data;
+export async function getPost(id?: string): Promise<PostProps> {
+  const { data } = await axios.get(`${url}/${id}`);
+  return data;
 }
 
-export async function deletePost(id: number) {
+export async function deletePost(id: string) {
   await axios.delete(`${url}/${id}`);
 }
 
 export async function updatePostPUT(updateData: PostProps): Promise<void> {
-  await axios.put(`${url}/${updateData.id}`, updateData);
+  await axios.put(`${url}/${updateData._id}`, updateData);
 }
 
 export async function getData<T>(urls: string): Promise<T> {

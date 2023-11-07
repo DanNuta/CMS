@@ -1,6 +1,6 @@
 export interface EditCreatePropsTypes {
   title: string;
   description: string;
-  linkImage: string;
+  img: string;
   date: string;
 }

@@ -11,12 +11,10 @@ import { PageCard, Loading } from "@/components";
 export const Edit = () => {
   const { id } = useParams();
 
-  const idToNumber = Number(id);
-
   const location = useNavigate();
 
   const { data, isLoading } = useQuery<PostProps>(["post", id], () =>
-    getPost(idToNumber)
+    getPost(id)
   );
 
   const { mutate } = useMutation({
@@ -34,7 +32,7 @@ export const Edit = () => {
         name: data.author.name,
         prenume: data.author.prenume,
       },
-      id: data.id,
+      _id: data._id,
     };
 
     mutate(editBlog);

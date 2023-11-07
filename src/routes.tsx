@@ -21,9 +21,9 @@ export const ROUTES_PATHS = {
 };
 
 export const navigateToPost = {
-  gotoPostDetails: (id: number) =>
+  gotoPostDetails: (id: string) =>
     `${ROUTES_PATHS.postDetails.replace(":id", id.toString())}`,
-  gotoPostEdit: (id: number) =>
+  gotoPostEdit: (id: string) =>
     `${ROUTES_PATHS.postIdEdit.replace(":id", id.toString())}`,
 };
 

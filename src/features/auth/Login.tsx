@@ -22,14 +22,13 @@ export const Login = () => {
 
   const [errorMsj, setErrorMsj] = useState<string | null>(null);
 
-  const { status, mutate } = useMutation<UserProps[]>({
+  const { status, mutate } = useMutation<UserProps>({
     mutationFn: () => logIn(emailTest.current, passwordTest.current),
 
     onSuccess: (data) => {
-      const val = data[0];
-      const id = val.id;
-      localStorage.setItem("userId", id.toString());
-      setUserState(val);
+      const id = data._id;
+      localStorage.setItem("userId", id);
+      setUserState(id);
       location(`${ROUTES_PATHS.users}`);
     },
 

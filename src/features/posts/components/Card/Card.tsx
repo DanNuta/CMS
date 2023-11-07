@@ -5,22 +5,21 @@ import { DeleteImage, EditImage } from "@/icons";
 import { Button } from "@/components/Button/Button";
 import { navigateToPost } from "@/routes";
 
-interface CardProps {
-  data: PostProps;
-  onDeletePost: (id: number) => void;
+interface CardProps extends PostProps {
+  onDeletePost: (id: string) => void;
 }
 
-export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
-  const lengthDescription = data.description?.length > 100 ? "..." : "";
+export const Card: React.FC<CardProps> = ({ ...props }) => {
+  const lengthDescription = props.description?.length > 100 ? "..." : "";
 
   return (
     <div className="card">
       <div className="image-container">
         <Link
           className="card__link"
-          to={navigateToPost.gotoPostDetails(data.id)}
+          to={navigateToPost.gotoPostDetails(props._id)}
         >
-          <img className="image-container__image" src={data.linkImage} />
+          <img className="image-container__image" src={props.img} />
         </Link>
         <div
           onClick={(e) => e.preventDefault()}
@@ -30,29 +29,32 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
             butontype="neutral"
             element="img"
             dimension="default"
-            onClick={() => onDeletePost(data.id)}
+            onClick={() => props.onDeletePost(props._id)}
           >
             <DeleteImage />
           </Button>
 
           <Button butontype="neutral" element="img" dimension="default">
-            <Link to={navigateToPost.gotoPostEdit(data.id)}>
+            <Link to={navigateToPost.gotoPostEdit(props._id)}>
               <EditImage />
             </Link>
           </Button>
         </div>
       </div>
 
-      <Link className="card__link" to={navigateToPost.gotoPostDetails(data.id)}>
+      <Link
+        className="card__link"
+        to={navigateToPost.gotoPostDetails(props._id)}
+      >
         <div className="body">
           <div className="body__title">
-            <h1 className="body__title-post">{data.title}</h1>
-            <p className="body__date-post">{data.date}</p>
+            <h1 className="body__title-post">{props.title}</h1>
+            <p className="body__date-post">{props.date}</p>
           </div>
 
           <div className="body__description">
             <p className="body__description-title">
-              {data.description?.slice(0, 100)}
+              {props.description?.slice(0, 100)}
               {lengthDescription}
             </p>
           </div>
@@ -61,7 +63,7 @@ export const Card: React.FC<CardProps> = ({ data, onDeletePost }) => {
             <p className="body__author-label">
               Author: &nbsp;
               <span className="body__author-info">
-                {data.author.name} {data.author.prenume}
+                {props?.author?.name} {props?.author?.prenume}
               </span>
             </p>
           </div>

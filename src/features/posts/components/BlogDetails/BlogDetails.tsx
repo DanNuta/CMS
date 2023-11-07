@@ -9,7 +9,7 @@ export const BlogDetails = () => {
   const { id } = useParams();
   const regEx = /\d/.test(id!);
 
-  const { data, isLoading } = useQuery(["post", id], () => getPost(Number(id)));
+  const { data, isLoading } = useQuery(["post", id], () => getPost(id));
 
   if (!regEx) {
     return <Navigate to={`${ROUTES_PATHS.posts}`}></Navigate>;
@@ -24,10 +24,10 @@ export const BlogDetails = () => {
           <p className="details-blog__author">
             Author: &nbsp;
             <span className="details-blog__author--info">
-              {data?.author.name}
+              {data?.author?.name}
             </span>{" "}
             <span className="details-blog__author--info">
-              {data?.author.prenume}
+              {data?.author?.prenume}
             </span>
           </p>
         </div>
@@ -38,7 +38,7 @@ export const BlogDetails = () => {
         </div>
 
         <p className="details-blog__description">{data?.description}</p>
-        <img className="details-blog__image" src={data?.linkImage} />
+        <img className="details-blog__image" src={data?.img} />
       </div>
     </PageCard>
   );

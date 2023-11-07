@@ -1,11 +1,11 @@
 export interface PostProps {
   title: string;
   description: string;
-  linkImage: string;
+  img: string;
   date: string;
   author: {
     name: string;
     prenume: string;
   };
-  id: number;
+  _id: string;
 }

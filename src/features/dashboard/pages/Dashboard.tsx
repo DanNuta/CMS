@@ -8,7 +8,10 @@ import {
 import { getData } from "@/api";
 import { UserProps, PostProps } from "@/types";
 
-const urls = ["http://localhost:3001/posts", "http://localhost:3000/users"];
+const urls = [
+  import.meta.env.VITE_ENDPOINT_POSTS,
+  import.meta.env.VITE_ENDPOINT_USERS,
+];
 
 export const Dashboard: React.FC = () => {
   const queries = useQueries({
