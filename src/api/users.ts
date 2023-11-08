@@ -22,7 +22,7 @@ export async function deleteUser(id: string): Promise<void> {
 
 export async function getUser(): Promise<any> {
   try {
-    const id = Number(localStorage.getItem("userId"));
+    const id = String(localStorage.getItem("userId"));
     const data = await axios.get(`${urlUsers}/${id}`);
     return data.data;
   } catch (e) {
@@ -48,6 +48,5 @@ export async function logIn(
 }
 
 export async function updateUser(data: UserProps) {
-  const id = data._id;
-  await axios.put(`${urlUsers}/${id}`, data);
+  await axios.put(`${urlUsers}/${data._id}`, data);
 }

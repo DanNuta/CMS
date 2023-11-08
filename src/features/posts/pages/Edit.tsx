@@ -29,8 +29,8 @@ export const Edit = () => {
     const editBlog: PostProps = {
       ...v,
       author: {
-        name: data.author.name,
-        prenume: data.author.prenume,
+        name: data.author?.name,
+        prenume: data.author?.prenume,
       },
       _id: data._id,
     };

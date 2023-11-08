@@ -5,5 +5,5 @@ export interface UserProps {
   gender: string;
   password: string;
   rol: string;
-  _id: string;
+  _id?: string;
 }

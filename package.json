@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "servers": "concurrently --kill-others \"json-server --host 0.0.0.0 --watch server/users.json --port 3000\"  \"json-server --host 0.0.0.0 --watch server/posts.json --port 3001\""
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.5",

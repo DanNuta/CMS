@@ -74,7 +74,7 @@ export const Users = () => {
   }
 
   function confirmDeleteUser() {
-    if (idDelete === undefined) return;
+    if (idDelete?._id === undefined) return;
     setDeleteUserState(false);
     mutateDeleteUser(idDelete._id);
   }
@@ -87,8 +87,10 @@ export const Users = () => {
   }
 
   function editUserOnServer(data: UserProps) {
-    setEditUserState(false);
-    mutatePutUser(data);
+    if (data) {
+      setEditUserState(false);
+      mutatePutUser(data);
+    }
   }
 
   const btnAdmin = user?.rol === "administrator" && (

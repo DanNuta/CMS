@@ -27,6 +27,7 @@ export const Create = () => {
 
   function mutateElement(data: EditCreatePropsTypes) {
     if (user === null) return;
+
     const uniq = String(new Date().getTime());
     const postBlog: PostProps = {
       ...data,
