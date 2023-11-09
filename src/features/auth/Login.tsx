@@ -27,9 +27,12 @@ export const Login = () => {
 
     onSuccess: (data) => {
       const id = data._id;
-      localStorage.setItem("userId", id!);
-      setUserState(id!);
-      location(`${ROUTES_PATHS.users}`);
+
+      if (id) {
+        localStorage.setItem("userId", id);
+        setUserState(data);
+        location(`${ROUTES_PATHS.users}`);
+      }
     },
 
     onError: (error) => {

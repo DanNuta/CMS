@@ -13,15 +13,18 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   dimension,
   element,
   butontype,
+  className,
   ...props
 }) => {
   return (
     <button
       {...props}
-      className={`btn btn--${butontype} btn--${dimension} ${props.className}`}
+      className={`btn btn--${butontype} btn--${dimension} ${
+        className ? className : ""
+      }`}
       onClick={onClick}
     >
-      <div className={`btn__element btn__${element}`}>{children}</div>
+      {children}
     </button>
   );
 };

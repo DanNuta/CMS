@@ -7,9 +7,11 @@ import { PostProps, EditCreatePropsTypes } from "@/types";
 import { ROUTES_PATHS } from "@/routes";
 import { EditPost } from "@/components";
 import { PageCard, Loading } from "@/components";
+import { useAuth } from "@/context";
 
 export const Edit = () => {
   const { id } = useParams();
+  const { user } = useAuth();
 
   const location = useNavigate();
 
@@ -25,12 +27,14 @@ export const Edit = () => {
   });
 
   function editBlogFn(v: EditCreatePropsTypes) {
-    if (data === undefined) return;
+    console.log(user);
+    if (user === undefined || data === undefined) return;
     const editBlog: PostProps = {
       ...v,
       author: {
-        name: data.author?.name,
-        prenume: data.author?.prenume,
+        name: user?.name,
+        prenume: user?.prenume,
+        id: user!._id!,
       },
       _id: data._id,
     };

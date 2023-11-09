@@ -3,9 +3,10 @@ export interface PostProps {
   description: string;
   img: string;
   date: string;
-  author: {
-    name: string;
-    prenume: string;
+  author?: {
+    name?: string;
+    prenume?: string;
+    id: string;
   };
   _id: string;
 }

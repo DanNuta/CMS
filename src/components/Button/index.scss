@@ -2,6 +2,10 @@
 @use "../../styles/variables.scss" as variable;
 
 .btn {
+  display: grid;
+  place-items: center;
+  padding-block: 15px;
+  padding-inline: 25px;
   @include mixin.btn;
 
   &--primary {
@@ -24,31 +28,16 @@
     background-color: transparent;
   }
 
-  &__element {
-    display: grid;
-    place-items: center;
-  }
-
   &--full {
     width: 100%;
-    padding-block: 15px;
-  }
-
-  &--custom {
-    padding-inline: 25px;
-    padding-block: 15px;
   }
 
   &--default {
     padding: 0;
   }
 
-  &__href {
+  &__no-href {
     padding-block: 15px;
     padding-inline: 25px;
-
-    .link {
-      color: variable.$clr-white;
-    }
   }
 }

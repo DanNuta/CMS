@@ -34,6 +34,7 @@ export const Create = () => {
       author: {
         name: user.name,
         prenume: user.prenume,
+        id: user._id!,
       },
       _id: uniq,
     };

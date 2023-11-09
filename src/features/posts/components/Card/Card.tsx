@@ -4,6 +4,7 @@ import { PostProps } from "@/types";
 import { DeleteImage, EditImage } from "@/icons";
 import { Button } from "@/components/Button/Button";
 import { navigateToPost } from "@/routes";
+import { useAuth } from "@/context";
 
 interface CardProps extends PostProps {
   onDeletePost: (id: string) => void;
@@ -11,6 +12,8 @@ interface CardProps extends PostProps {
 
 export const Card: React.FC<CardProps> = ({ ...props }) => {
   const lengthDescription = props.description?.length > 100 ? "..." : "";
+
+  const { user } = useAuth();
 
   return (
     <div className="card">
@@ -21,25 +24,28 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
         >
           <img className="image-container__image" src={props.img} />
         </Link>
-        <div
-          onClick={(e) => e.preventDefault()}
-          className="image-container__btns"
-        >
-          <Button
-            butontype="neutral"
-            element="img"
-            dimension="default"
-            onClick={() => props.onDeletePost(props._id)}
-          >
-            <DeleteImage />
-          </Button>
 
-          <Button butontype="neutral" element="img" dimension="default">
-            <Link to={navigateToPost.gotoPostEdit(props._id)}>
-              <EditImage />
-            </Link>
-          </Button>
-        </div>
+        {(props.author?.id === user?._id || user?.rol === "administrator") && (
+          <div
+            onClick={(e) => e.preventDefault()}
+            className="image-container__btns"
+          >
+            <Button
+              butontype="neutral"
+              element="img"
+              dimension="default"
+              onClick={() => props.onDeletePost(props._id)}
+            >
+              <DeleteImage />
+            </Button>
+
+            <Button butontype="neutral" element="img" dimension="default">
+              <Link to={navigateToPost.gotoPostEdit(props._id)}>
+                <EditImage />
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
 
       <Link
@@ -59,14 +65,16 @@ export const Card: React.FC<CardProps> = ({ ...props }) => {
             </p>
           </div>
 
-          <div className="body__author">
-            <p className="body__author-label">
-              Author: &nbsp;
-              <span className="body__author-info">
-                {props?.author?.name} {props?.author?.prenume}
-              </span>
-            </p>
-          </div>
+          {props.author?.name && (
+            <div className="body__author">
+              <p className="body__author-label">
+                Author: &nbsp;
+                <span className="body__author-info">
+                  {props?.author?.name} {props?.author?.prenume}
+                </span>
+              </p>
+            </div>
+          )}
         </div>
       </Link>
     </div>

@@ -66,8 +66,11 @@ export const Register: React.FC = () => {
     mutationFn: postUsers,
 
     onSuccess: (newData) => {
-      setUserState(newData);
-      navigate(`${ROUTES_PATHS.users}`);
+      if (newData._id) {
+        setUserState(newData);
+        localStorage.setItem("userId", newData._id);
+        navigate(`${ROUTES_PATHS.users}`);
+      }
     },
 
     onError: (e: Error) => {
@@ -103,8 +106,6 @@ export const Register: React.FC = () => {
     setCheckBox(false);
     setVerifyPassword("");
 
-    const uniq = String(new Date().getTime());
-
     const dataForm: UserProps = {
       name,
       prenume,
@@ -112,10 +113,7 @@ export const Register: React.FC = () => {
       gender,
       password,
       rol: "moderator",
-      _id: uniq,
     };
-
-    localStorage.setItem("userId", uniq.toString());
 
     mutate(dataForm);
   }

@@ -36,7 +36,14 @@ export const Posts: React.FC = () => {
 
   const btn = (
     <Button element="href" butontype="primary" dimension="default">
-      <Link className="link" to={`${ROUTES_PATHS.postCreate}`}>
+      <Link
+        style={{
+          paddingBlock: 15,
+          paddingInline: 25,
+          color: "#ffffff",
+        }}
+        to={`${ROUTES_PATHS.postCreate}`}
+      >
         Add new post
       </Link>
     </Button>

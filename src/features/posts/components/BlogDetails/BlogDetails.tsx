@@ -20,17 +20,19 @@ export const BlogDetails = () => {
       {isLoading && <Loading />}
 
       <div className="details-blog">
-        <div className="details-blog__author">
-          <p className="details-blog__author">
-            Author: &nbsp;
-            <span className="details-blog__author--info">
-              {data?.author?.name}
-            </span>{" "}
-            <span className="details-blog__author--info">
-              {data?.author?.prenume}
-            </span>
-          </p>
-        </div>
+        {data?.author && (
+          <div className="details-blog__author">
+            <p className="details-blog__author">
+              Author: &nbsp;
+              <span className="details-blog__author--info">
+                {data?.author?.name}
+              </span>{" "}
+              <span className="details-blog__author--info">
+                {data?.author?.prenume}
+              </span>
+            </p>
+          </div>
+        )}
 
         <div className="details-blog__title-date">
           <h1>{data?.title}</h1>
