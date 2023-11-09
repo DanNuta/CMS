@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import { useAuth } from "@/context";
 import { ArrowDown, ArrowUp } from "@/icons";

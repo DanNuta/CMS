@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Input, Form, Textarea, Button } from "@/components";
 import { errorBlog, patternRegEx } from "@/utils";
 import { PostProps, EditCreatePropsTypes } from "@/types";
-import { useAuth } from "@/context";
 
 interface EditCreateProps {
   posts?: PostProps;
