@@ -20,7 +20,7 @@ import { useAuth } from "@/context";
 import { useStateGlobal } from "@/hooks";
 
 export const Register: React.FC = () => {
-  const { setUserState } = useAuth();
+  const { updateUser } = useAuth();
 
   const {
     name,
@@ -66,7 +66,7 @@ export const Register: React.FC = () => {
     mutationFn: postUsers,
 
     onSuccess: (newData) => {
-      setUserState(newData);
+      updateUser(newData);
       navigate(`${ROUTES_PATHS.users}`);
     },
 

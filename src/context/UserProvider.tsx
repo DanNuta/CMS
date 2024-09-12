@@ -9,12 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { UserProps, UserContextType } from "@/types";
 import { ROUTES_PATHS } from "@/routes";
 
-interface UserContextProps {
-  userData: UserProps,
-  logOut: () => void,
-
-  
-}
 
 export const UserContext = createContext<UserContextType>({
   logOut: () => {
@@ -28,9 +22,9 @@ export const UserContext = createContext<UserContextType>({
 });
 
 export const UserContextProvider: React.FC<
-  PropsWithChildren<UserContextProps>
-> = ({ children, userData }) => {
-  const [user, setUserState] = useState<UserProps | null>(userData);
+  PropsWithChildren
+> = ({ children }) => {
+  const [user, setUserState] = useState<UserProps | null>(null);
 
   const location = useNavigate();
   function logOut() {

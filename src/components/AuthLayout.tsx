@@ -2,20 +2,19 @@ import { Suspense } from "react";
 import { useOutlet, useLoaderData, Await } from "react-router-dom";
 
 import { UserContextProvider } from "@/context";
-import { UserProps } from "@/types";
 
 export const AuthLayout = () => {
   const outlet = useOutlet();
-  const { userPromise } = useLoaderData() as any;
+  const  userPromise = useLoaderData();
 
   return (
     <Suspense>
       <Await
         resolve={userPromise}
         errorElement={<h1>Error</h1>}
-        children={(user: UserProps) => {
+        children={() => {
           return (
-            <UserContextProvider userData={user}>{outlet}</UserContextProvider>
+            <UserContextProvider >{outlet}</UserContextProvider>
           );
         }}
       />
