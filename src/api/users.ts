@@ -20,9 +20,9 @@ export async function deleteUser(id: string): Promise<void> {
   await axios.delete(`${urlUsers}/${id}`);
 }
 
-export async function getUser(): Promise<any> {
+export async function getUser(): Promise<UserProps | Response> {
   try {
-    const id = Number(localStorage.getItem("userId"));
+    const id = localStorage.getItem("userId");
     const data = await axios.get(`${urlUsers}/${id}`);
     return data.data;
   } catch (e) {

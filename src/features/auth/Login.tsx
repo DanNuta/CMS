@@ -11,7 +11,7 @@ import { errorInputs } from "@/utils";
 import { useStateGlobal } from "@/hooks";
 
 export const Login = () => {
-  const { setUserState } = useAuth();
+  const { updateUser } = useAuth();
   const { errEmail, setErrEmail, setErrPassword, errPassword } =
     useStateGlobal();
 
@@ -28,7 +28,7 @@ export const Login = () => {
     onSuccess: (data) => {
       const id = data._id;
       localStorage.setItem("userId", id);
-      setUserState(id);
+      updateUser(data);
       location(`${ROUTES_PATHS.users}`);
     },
 

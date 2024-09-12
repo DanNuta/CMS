@@ -22,20 +22,17 @@ export const Users = () => {
 
   const queryClient = useQueryClient();
 
-  const { data, isLoading, error } = useQuery<UserProps[]>(
+  const { data, isLoading } = useQuery<UserProps[]>(
     ["users"],
     getsUsers,
 
     {
-      onError: (e: any) => {
-        setErrorServer(e.message);
+      onError: (e: unknown) => {
+        const error = e as Record<string, string>
+        setErrorServer(error.message);
       },
     }
   );
-
-  useEffect(() => {
-    //setEditUserState(error: Error.)
-  }, [error]);
 
   const { mutate: mutateDeleteUser, status: statusDelete } = useMutation({
     mutationFn: deleteUser,
@@ -61,13 +58,11 @@ export const Users = () => {
     },
   });
 
-  // ---------------- useQuery -------------------------------------------
 
   function addNewUser(userAdd: UserProps) {
     mutatePostUser(userAdd);
   }
 
-  // delete user
   function deleteUserFn(data: UserProps) {
     setDeleteUserState(true);
     setIdDelete(data);
@@ -79,7 +74,6 @@ export const Users = () => {
     mutateDeleteUser(idDelete._id);
   }
 
-  // edit user
   function editUser(editUser: UserProps) {
     const findUser = data?.find((item) => item._id === editUser._id);
     setEditUserState(true);

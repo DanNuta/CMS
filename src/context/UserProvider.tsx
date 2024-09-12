@@ -10,15 +10,27 @@ import { UserProps, UserContextType } from "@/types";
 import { ROUTES_PATHS } from "@/routes";
 
 interface UserContextProps {
-  userData: any
+  userData: UserProps,
+  logOut: () => void,
+
+  
 }
 
-export const UserContext = createContext<any>(null);
+export const UserContext = createContext<UserContextType>({
+  logOut: () => {
+    // 
+  },
+  user: null,
+  updateUser: () => {
+    // 
+  }
+  
+});
 
 export const UserContextProvider: React.FC<
   PropsWithChildren<UserContextProps>
 > = ({ children, userData }) => {
-  const [user, setUserState] = useState<UserProps | string | null>(userData);
+  const [user, setUserState] = useState<UserProps | null>(userData);
 
   const location = useNavigate();
   function logOut() {
@@ -27,8 +39,12 @@ export const UserContextProvider: React.FC<
     location(`${ROUTES_PATHS.login}`);
   }
 
+  function updateUser(user: UserProps)  {
+    setUserState(user);
+  }
+
   return (
-    <UserContext.Provider value={{ user, setUserState, logOut }}>
+    <UserContext.Provider value={{ user, updateUser, logOut }}>
       {children}
     </UserContext.Provider>
   );
@@ -40,6 +56,5 @@ export const useAuth = (): UserContextType => {
   if (!authContext) {
     throw new Error("The context is not defined");
   }
-  const { logOut, setUserState, user } = authContext as UserContextType;
-  return { logOut, setUserState, user };
+  return authContext
 };
